@@ -4,12 +4,14 @@
 package org.xtext.classifier.dsl.pClassifier.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.classifier.dsl.pClassifier.Evaluation;
+import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.PClassifierPackage;
 import org.xtext.classifier.dsl.pClassifier.Run;
 
@@ -23,7 +25,7 @@ import org.xtext.classifier.dsl.pClassifier.Run;
  * <ul>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl#getDataset <em>Dataset</em>}</li>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl#getSplit <em>Split</em>}</li>
- *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl#getEvaluation <em>Evaluation</em>}</li>
+ *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl#getEvaluations <em>Evaluations</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,24 +73,14 @@ public class RunImpl extends StatementImpl implements Run
   protected double split = SPLIT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getEvaluation() <em>Evaluation</em>}' attribute.
+   * The cached value of the '{@link #getEvaluations() <em>Evaluations</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEvaluation()
+   * @see #getEvaluations()
    * @generated
    * @ordered
    */
-  protected static final Evaluation EVALUATION_EDEFAULT = Evaluation.ACCURACY;
-
-  /**
-   * The cached value of the '{@link #getEvaluation() <em>Evaluation</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEvaluation()
-   * @generated
-   * @ordered
-   */
-  protected Evaluation evaluation = EVALUATION_EDEFAULT;
+  protected EvaluationList evaluations;
 
   /**
    * <!-- begin-user-doc -->
@@ -167,9 +159,26 @@ public class RunImpl extends StatementImpl implements Run
    * @generated
    */
   @Override
-  public Evaluation getEvaluation()
+  public EvaluationList getEvaluations()
   {
-    return evaluation;
+    return evaluations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEvaluations(EvaluationList newEvaluations, NotificationChain msgs)
+  {
+    EvaluationList oldEvaluations = evaluations;
+    evaluations = newEvaluations;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PClassifierPackage.RUN__EVALUATIONS, oldEvaluations, newEvaluations);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -178,12 +187,36 @@ public class RunImpl extends StatementImpl implements Run
    * @generated
    */
   @Override
-  public void setEvaluation(Evaluation newEvaluation)
+  public void setEvaluations(EvaluationList newEvaluations)
   {
-    Evaluation oldEvaluation = evaluation;
-    evaluation = newEvaluation == null ? EVALUATION_EDEFAULT : newEvaluation;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PClassifierPackage.RUN__EVALUATION, oldEvaluation, evaluation));
+    if (newEvaluations != evaluations)
+    {
+      NotificationChain msgs = null;
+      if (evaluations != null)
+        msgs = ((InternalEObject)evaluations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PClassifierPackage.RUN__EVALUATIONS, null, msgs);
+      if (newEvaluations != null)
+        msgs = ((InternalEObject)newEvaluations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PClassifierPackage.RUN__EVALUATIONS, null, msgs);
+      msgs = basicSetEvaluations(newEvaluations, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PClassifierPackage.RUN__EVALUATIONS, newEvaluations, newEvaluations));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case PClassifierPackage.RUN__EVALUATIONS:
+        return basicSetEvaluations(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -200,8 +233,8 @@ public class RunImpl extends StatementImpl implements Run
         return getDataset();
       case PClassifierPackage.RUN__SPLIT:
         return getSplit();
-      case PClassifierPackage.RUN__EVALUATION:
-        return getEvaluation();
+      case PClassifierPackage.RUN__EVALUATIONS:
+        return getEvaluations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -222,8 +255,8 @@ public class RunImpl extends StatementImpl implements Run
       case PClassifierPackage.RUN__SPLIT:
         setSplit((Double)newValue);
         return;
-      case PClassifierPackage.RUN__EVALUATION:
-        setEvaluation((Evaluation)newValue);
+      case PClassifierPackage.RUN__EVALUATIONS:
+        setEvaluations((EvaluationList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -245,8 +278,8 @@ public class RunImpl extends StatementImpl implements Run
       case PClassifierPackage.RUN__SPLIT:
         setSplit(SPLIT_EDEFAULT);
         return;
-      case PClassifierPackage.RUN__EVALUATION:
-        setEvaluation(EVALUATION_EDEFAULT);
+      case PClassifierPackage.RUN__EVALUATIONS:
+        setEvaluations((EvaluationList)null);
         return;
     }
     super.eUnset(featureID);
@@ -266,8 +299,8 @@ public class RunImpl extends StatementImpl implements Run
         return DATASET_EDEFAULT == null ? dataset != null : !DATASET_EDEFAULT.equals(dataset);
       case PClassifierPackage.RUN__SPLIT:
         return split != SPLIT_EDEFAULT;
-      case PClassifierPackage.RUN__EVALUATION:
-        return evaluation != EVALUATION_EDEFAULT;
+      case PClassifierPackage.RUN__EVALUATIONS:
+        return evaluations != null;
     }
     return super.eIsSet(featureID);
   }
@@ -287,8 +320,6 @@ public class RunImpl extends StatementImpl implements Run
     result.append(dataset);
     result.append(", split: ");
     result.append(split);
-    result.append(", evaluation: ");
-    result.append(evaluation);
     result.append(')');
     return result.toString();
   }

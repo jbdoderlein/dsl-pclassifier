@@ -73,6 +73,7 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
       case PClassifierPackage.LOAD: return createLoad();
       case PClassifierPackage.SAVE: return createSave();
       case PClassifierPackage.FEATURE_LIST: return createFeatureList();
+      case PClassifierPackage.EVALUATION_LIST: return createEvaluationList();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -198,6 +199,18 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
   {
     FeatureListImpl featureList = new FeatureListImpl();
     return featureList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EvaluationList createEvaluationList()
+  {
+    EvaluationListImpl evaluationList = new EvaluationListImpl();
+    return evaluationList;
   }
 
   /**

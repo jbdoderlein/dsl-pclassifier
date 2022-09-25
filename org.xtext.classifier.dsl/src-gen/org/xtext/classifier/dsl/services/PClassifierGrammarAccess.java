@@ -163,29 +163,29 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cDatasetKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cDatasetAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cDatasetIDTerminalRuleCall_5_0 = (RuleCall)cDatasetAssignment_5.eContents().get(0);
+		private final RuleCall cDatasetSTRINGTerminalRuleCall_5_0 = (RuleCall)cDatasetAssignment_5.eContents().get(0);
 		private final Keyword cSplitKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cSplitAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cSplitFLOATTerminalRuleCall_8_0 = (RuleCall)cSplitAssignment_8.eContents().get(0);
-		private final Keyword cEvaluationKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cEvaluationsKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cEvaluationAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cEvaluationEvaluationEnumRuleCall_11_0 = (RuleCall)cEvaluationAssignment_11.eContents().get(0);
+		private final Assignment cEvaluationsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cEvaluationsEvaluationListParserRuleCall_11_0 = (RuleCall)cEvaluationsAssignment_11.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//Run:
 		//    'Run(' name=ID '){'
-		//        'dataset' ':' dataset=ID
+		//        'dataset' ':' dataset=STRING
 		//        'split' ':' split=FLOAT
-		//        'evaluation' ':' evaluation=Evaluation
+		//        'evaluations' ':' evaluations=EvaluationList
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Run(' name=ID '){'
-		//    'dataset' ':' dataset=ID
+		//    'dataset' ':' dataset=STRING
 		//    'split' ':' split=FLOAT
-		//    'evaluation' ':' evaluation=Evaluation
+		//    'evaluations' ':' evaluations=EvaluationList
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -207,11 +207,11 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//':'
 		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
 		
-		//dataset=ID
+		//dataset=STRING
 		public Assignment getDatasetAssignment_5() { return cDatasetAssignment_5; }
 		
-		//ID
-		public RuleCall getDatasetIDTerminalRuleCall_5_0() { return cDatasetIDTerminalRuleCall_5_0; }
+		//STRING
+		public RuleCall getDatasetSTRINGTerminalRuleCall_5_0() { return cDatasetSTRINGTerminalRuleCall_5_0; }
 		
 		//'split'
 		public Keyword getSplitKeyword_6() { return cSplitKeyword_6; }
@@ -225,17 +225,17 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//FLOAT
 		public RuleCall getSplitFLOATTerminalRuleCall_8_0() { return cSplitFLOATTerminalRuleCall_8_0; }
 		
-		//'evaluation'
-		public Keyword getEvaluationKeyword_9() { return cEvaluationKeyword_9; }
+		//'evaluations'
+		public Keyword getEvaluationsKeyword_9() { return cEvaluationsKeyword_9; }
 		
 		//':'
 		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
 		
-		//evaluation=Evaluation
-		public Assignment getEvaluationAssignment_11() { return cEvaluationAssignment_11; }
+		//evaluations=EvaluationList
+		public Assignment getEvaluationsAssignment_11() { return cEvaluationsAssignment_11; }
 		
-		//Evaluation
-		public RuleCall getEvaluationEvaluationEnumRuleCall_11_0() { return cEvaluationEvaluationEnumRuleCall_11_0; }
+		//EvaluationList
+		public RuleCall getEvaluationsEvaluationListParserRuleCall_11_0() { return cEvaluationsEvaluationListParserRuleCall_11_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
@@ -384,6 +384,48 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//','*
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 	}
+	public class EvaluationListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.EvaluationList");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCommaKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValsEvaluationEnumRuleCall_1_0 = (RuleCall)cValsAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cValsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cValsEvaluationEnumRuleCall_2_1_0 = (RuleCall)cValsAssignment_2_1.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//EvaluationList: ','* vals+=Evaluation (','+ vals+=Evaluation)* ','* ;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//','* vals+=Evaluation (','+ vals+=Evaluation)* ','*
+		public Group getGroup() { return cGroup; }
+		
+		//','*
+		public Keyword getCommaKeyword_0() { return cCommaKeyword_0; }
+		
+		//vals+=Evaluation
+		public Assignment getValsAssignment_1() { return cValsAssignment_1; }
+		
+		//Evaluation
+		public RuleCall getValsEvaluationEnumRuleCall_1_0() { return cValsEvaluationEnumRuleCall_1_0; }
+		
+		//(','+ vals+=Evaluation)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//','+
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		
+		//vals+=Evaluation
+		public Assignment getValsAssignment_2_1() { return cValsAssignment_2_1; }
+		
+		//Evaluation
+		public RuleCall getValsEvaluationEnumRuleCall_2_1_0() { return cValsEvaluationEnumRuleCall_2_1_0; }
+		
+		//','*
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+	}
 	
 	public class MLModelElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.MLModel");
@@ -457,6 +499,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final LoadElements pLoad;
 	private final SaveElements pSave;
 	private final FeatureListElements pFeatureList;
+	private final EvaluationListElements pEvaluationList;
 	private final TerminalRule tFLOAT;
 	
 	private final Grammar grammar;
@@ -477,6 +520,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pLoad = new LoadElements();
 		this.pSave = new SaveElements();
 		this.pFeatureList = new FeatureListElements();
+		this.pEvaluationList = new EvaluationListElements();
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.FLOAT");
 	}
 	
@@ -563,9 +607,9 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	//Run:
 	//    'Run(' name=ID '){'
-	//        'dataset' ':' dataset=ID
+	//        'dataset' ':' dataset=STRING
 	//        'split' ':' split=FLOAT
-	//        'evaluation' ':' evaluation=Evaluation
+	//        'evaluations' ':' evaluations=EvaluationList
 	//    '}';
 	public RunElements getRunAccess() {
 		return pRun;
@@ -606,6 +650,15 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	public ParserRule getFeatureListRule() {
 		return getFeatureListAccess().getRule();
+	}
+	
+	//EvaluationList: ','* vals+=Evaluation (','+ vals+=Evaluation)* ','* ;
+	public EvaluationListElements getEvaluationListAccess() {
+		return pEvaluationList;
+	}
+	
+	public ParserRule getEvaluationListRule() {
+		return getEvaluationListAccess().getRule();
 	}
 	
 	//// Terminals

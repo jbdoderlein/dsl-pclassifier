@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xtext.classifier.dsl.pClassifier.Classifier;
 import org.xtext.classifier.dsl.pClassifier.Evaluation;
+import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.MLModel;
@@ -79,6 +80,13 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * @generated
    */
   private EClass featureListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass evaluationListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -284,9 +292,9 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * @generated
    */
   @Override
-  public EAttribute getRun_Evaluation()
+  public EReference getRun_Evaluations()
   {
-    return (EAttribute)runEClass.getEStructuralFeatures().get(2);
+    return (EReference)runEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -361,6 +369,28 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * @generated
    */
   @Override
+  public EClass getEvaluationList()
+  {
+    return evaluationListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEvaluationList_Vals()
+  {
+    return (EAttribute)evaluationListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getMLModel()
   {
     return mlModelEEnum;
@@ -422,7 +452,7 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     runEClass = createEClass(RUN);
     createEAttribute(runEClass, RUN__DATASET);
     createEAttribute(runEClass, RUN__SPLIT);
-    createEAttribute(runEClass, RUN__EVALUATION);
+    createEReference(runEClass, RUN__EVALUATIONS);
 
     loadEClass = createEClass(LOAD);
     createEAttribute(loadEClass, LOAD__FILE);
@@ -432,6 +462,9 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
 
     featureListEClass = createEClass(FEATURE_LIST);
     createEAttribute(featureListEClass, FEATURE_LIST__VALS);
+
+    evaluationListEClass = createEClass(EVALUATION_LIST);
+    createEAttribute(evaluationListEClass, EVALUATION_LIST__VALS);
 
     // Create enums
     mlModelEEnum = createEEnum(ML_MODEL);
@@ -487,7 +520,7 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     initEClass(runEClass, Run.class, "Run", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRun_Dataset(), ecorePackage.getEString(), "dataset", null, 0, 1, Run.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRun_Split(), ecorePackage.getEDouble(), "split", null, 0, 1, Run.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRun_Evaluation(), this.getEvaluation(), "evaluation", null, 0, 1, Run.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRun_Evaluations(), this.getEvaluationList(), null, "evaluations", null, 0, 1, Run.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loadEClass, Load.class, "Load", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLoad_File(), ecorePackage.getEString(), "file", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -497,6 +530,9 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
 
     initEClass(featureListEClass, FeatureList.class, "FeatureList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFeatureList_Vals(), ecorePackage.getEString(), "vals", null, 0, -1, FeatureList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(evaluationListEClass, EvaluationList.class, "EvaluationList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvaluationList_Vals(), this.getEvaluation(), "vals", null, 0, -1, EvaluationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(mlModelEEnum, MLModel.class, "MLModel");

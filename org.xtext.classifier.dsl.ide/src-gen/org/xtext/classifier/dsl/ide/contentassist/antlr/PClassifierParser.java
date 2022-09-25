@@ -40,6 +40,8 @@ public class PClassifierParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSaveAccess().getGroup(), "rule__Save__Group__0");
 			builder.put(grammarAccess.getFeatureListAccess().getGroup(), "rule__FeatureList__Group__0");
 			builder.put(grammarAccess.getFeatureListAccess().getGroup_2(), "rule__FeatureList__Group_2__0");
+			builder.put(grammarAccess.getEvaluationListAccess().getGroup(), "rule__EvaluationList__Group__0");
+			builder.put(grammarAccess.getEvaluationListAccess().getGroup_2(), "rule__EvaluationList__Group_2__0");
 			builder.put(grammarAccess.getPClassfierAccess().getElementsAssignment(), "rule__PClassfier__ElementsAssignment");
 			builder.put(grammarAccess.getClassifierAccess().getNameAssignment_1(), "rule__Classifier__NameAssignment_1");
 			builder.put(grammarAccess.getClassifierAccess().getFeaturesAssignment_5(), "rule__Classifier__FeaturesAssignment_5");
@@ -48,13 +50,15 @@ public class PClassifierParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRunAccess().getNameAssignment_1(), "rule__Run__NameAssignment_1");
 			builder.put(grammarAccess.getRunAccess().getDatasetAssignment_5(), "rule__Run__DatasetAssignment_5");
 			builder.put(grammarAccess.getRunAccess().getSplitAssignment_8(), "rule__Run__SplitAssignment_8");
-			builder.put(grammarAccess.getRunAccess().getEvaluationAssignment_11(), "rule__Run__EvaluationAssignment_11");
+			builder.put(grammarAccess.getRunAccess().getEvaluationsAssignment_11(), "rule__Run__EvaluationsAssignment_11");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_1(), "rule__Load__NameAssignment_1");
 			builder.put(grammarAccess.getLoadAccess().getFileAssignment_5(), "rule__Load__FileAssignment_5");
 			builder.put(grammarAccess.getSaveAccess().getNameAssignment_1(), "rule__Save__NameAssignment_1");
 			builder.put(grammarAccess.getSaveAccess().getFileAssignment_5(), "rule__Save__FileAssignment_5");
 			builder.put(grammarAccess.getFeatureListAccess().getValsAssignment_1(), "rule__FeatureList__ValsAssignment_1");
 			builder.put(grammarAccess.getFeatureListAccess().getValsAssignment_2_1(), "rule__FeatureList__ValsAssignment_2_1");
+			builder.put(grammarAccess.getEvaluationListAccess().getValsAssignment_1(), "rule__EvaluationList__ValsAssignment_1");
+			builder.put(grammarAccess.getEvaluationListAccess().getValsAssignment_2_1(), "rule__EvaluationList__ValsAssignment_2_1");
 		}
 	}
 	

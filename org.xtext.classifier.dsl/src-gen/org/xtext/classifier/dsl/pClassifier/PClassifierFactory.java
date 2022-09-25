@@ -87,6 +87,15 @@ public interface PClassifierFactory extends EFactory
   FeatureList createFeatureList();
 
   /**
+   * Returns a new object of class '<em>Evaluation List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Evaluation List</em>'.
+   * @generated
+   */
+  EvaluationList createEvaluationList();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

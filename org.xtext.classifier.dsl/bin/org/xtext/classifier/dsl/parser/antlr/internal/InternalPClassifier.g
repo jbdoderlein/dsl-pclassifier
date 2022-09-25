@@ -332,9 +332,9 @@ ruleRun returns [EObject current=null]
 		}
 		(
 			(
-				lv_dataset_5_0=RULE_ID
+				lv_dataset_5_0=RULE_STRING
 				{
-					newLeafNode(lv_dataset_5_0, grammarAccess.getRunAccess().getDatasetIDTerminalRuleCall_5_0());
+					newLeafNode(lv_dataset_5_0, grammarAccess.getRunAccess().getDatasetSTRINGTerminalRuleCall_5_0());
 				}
 				{
 					if ($current==null) {
@@ -344,7 +344,7 @@ ruleRun returns [EObject current=null]
 						$current,
 						"dataset",
 						lv_dataset_5_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -374,9 +374,9 @@ ruleRun returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_9='evaluation'
+		otherlv_9='evaluations'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getRunAccess().getEvaluationKeyword_9());
+			newLeafNode(otherlv_9, grammarAccess.getRunAccess().getEvaluationsKeyword_9());
 		}
 		otherlv_10=':'
 		{
@@ -385,18 +385,18 @@ ruleRun returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRunAccess().getEvaluationEvaluationEnumRuleCall_11_0());
+					newCompositeNode(grammarAccess.getRunAccess().getEvaluationsEvaluationListParserRuleCall_11_0());
 				}
-				lv_evaluation_11_0=ruleEvaluation
+				lv_evaluations_11_0=ruleEvaluationList
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRunRule());
 					}
 					set(
 						$current,
-						"evaluation",
-						lv_evaluation_11_0,
-						"org.xtext.classifier.dsl.PClassifier.Evaluation");
+						"evaluations",
+						lv_evaluations_11_0,
+						"org.xtext.classifier.dsl.PClassifier.EvaluationList");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -628,6 +628,83 @@ ruleFeatureList returns [EObject current=null]
 			otherlv_4=','
 			{
 				newLeafNode(otherlv_4, grammarAccess.getFeatureListAccess().getCommaKeyword_3());
+			}
+		)*
+	)
+;
+
+// Entry rule entryRuleEvaluationList
+entryRuleEvaluationList returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEvaluationListRule()); }
+	iv_ruleEvaluationList=ruleEvaluationList
+	{ $current=$iv_ruleEvaluationList.current; }
+	EOF;
+
+// Rule EvaluationList
+ruleEvaluationList returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0=','
+			{
+				newLeafNode(otherlv_0, grammarAccess.getEvaluationListAccess().getCommaKeyword_0());
+			}
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_1_0());
+				}
+				lv_vals_1_0=ruleEvaluation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEvaluationListRule());
+					}
+					add(
+						$current,
+						"vals",
+						lv_vals_1_0,
+						"org.xtext.classifier.dsl.PClassifier.Evaluation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				otherlv_2=','
+				{
+					newLeafNode(otherlv_2, grammarAccess.getEvaluationListAccess().getCommaKeyword_2_0());
+				}
+			)+
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_2_1_0());
+					}
+					lv_vals_3_0=ruleEvaluation
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEvaluationListRule());
+						}
+						add(
+							$current,
+							"vals",
+							lv_vals_3_0,
+							"org.xtext.classifier.dsl.PClassifier.Evaluation");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		(
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getEvaluationListAccess().getCommaKeyword_3());
 			}
 		)*
 	)

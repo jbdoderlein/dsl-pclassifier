@@ -15,6 +15,7 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
+import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.PClassfier;
@@ -39,6 +40,9 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 			switch (semanticObject.eClass().getClassifierID()) {
 			case PClassifierPackage.CLASSIFIER:
 				sequence_Classifier(context, (Classifier) semanticObject); 
+				return; 
+			case PClassifierPackage.EVALUATION_LIST:
+				sequence_EvaluationList(context, (EvaluationList) semanticObject); 
 				return; 
 			case PClassifierPackage.FEATURE_LIST:
 				sequence_FeatureList(context, (FeatureList) semanticObject); 
@@ -87,6 +91,20 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 		feeder.accept(grammarAccess.getClassifierAccess().getTargetSTRINGTerminalRuleCall_8_0(), semanticObject.getTarget());
 		feeder.accept(grammarAccess.getClassifierAccess().getModelMLModelEnumRuleCall_11_0(), semanticObject.getModel());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     EvaluationList returns EvaluationList
+	 *
+	 * Constraint:
+	 *     (vals+=Evaluation vals+=Evaluation*)
+	 * </pre>
+	 */
+	protected void sequence_EvaluationList(ISerializationContext context, EvaluationList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -149,7 +167,7 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Run returns Run
 	 *
 	 * Constraint:
-	 *     (name=ID dataset=ID split=FLOAT evaluation=Evaluation)
+	 *     (name=ID dataset=STRING split=FLOAT evaluations=EvaluationList)
 	 * </pre>
 	 */
 	protected void sequence_Run(ISerializationContext context, Run semanticObject) {
@@ -160,14 +178,14 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__DATASET));
 			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__SPLIT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__SPLIT));
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__EVALUATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__EVALUATION));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__EVALUATIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__EVALUATIONS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRunAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRunAccess().getDatasetIDTerminalRuleCall_5_0(), semanticObject.getDataset());
+		feeder.accept(grammarAccess.getRunAccess().getDatasetSTRINGTerminalRuleCall_5_0(), semanticObject.getDataset());
 		feeder.accept(grammarAccess.getRunAccess().getSplitFLOATTerminalRuleCall_8_0(), semanticObject.getSplit());
-		feeder.accept(grammarAccess.getRunAccess().getEvaluationEvaluationEnumRuleCall_11_0(), semanticObject.getEvaluation());
+		feeder.accept(grammarAccess.getRunAccess().getEvaluationsEvaluationListParserRuleCall_11_0(), semanticObject.getEvaluations());
 		feeder.finish();
 	}
 	

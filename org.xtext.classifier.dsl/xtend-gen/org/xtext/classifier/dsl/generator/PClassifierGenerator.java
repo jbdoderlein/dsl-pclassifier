@@ -3,23 +3,132 @@
  */
 package org.xtext.classifier.dsl.generator;
 
-import com.google.common.collect.Iterators;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
+import org.xtext.classifier.dsl.pClassifier.Evaluation;
+import org.xtext.classifier.dsl.pClassifier.EvaluationList;
+import org.xtext.classifier.dsl.pClassifier.FeatureList;
+import org.xtext.classifier.dsl.pClassifier.MLModel;
+import org.xtext.classifier.dsl.pClassifier.Run;
 
 @SuppressWarnings("all")
 public class PClassifierGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    final Function1<Classifier, String> _function = (Classifier it) -> {
-      return it.getName();
-    };
-    fsa.generateFile("test.py", 
-      IteratorExtensions.join(IteratorExtensions.<Classifier, String>map(Iterators.<Classifier>filter(resource.getAllContents(), Classifier.class), _function), ", "));
+    String result = "";
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(resource.getAllContents());
+    for (final EObject e : _iterable) {
+      boolean _matched = false;
+      if ((e instanceof Classifier)) {
+        _matched=true;
+        String _result = result;
+        CharSequence _generateClassifier = this.generateClassifier(((Classifier) e));
+        result = (_result + _generateClassifier);
+        String _result_1 = result;
+        result = (_result_1 + "\n");
+      }
+      if (!_matched) {
+        if ((e instanceof Run)) {
+          _matched=true;
+          String _result_2 = result;
+          CharSequence _generateRun = this.generateRun(((Run) e));
+          result = (_result_2 + _generateRun);
+          String _result_3 = result;
+          result = (_result_3 + "\n");
+        }
+      }
+    }
+    fsa.generateFile("test.py", result);
+  }
+  
+  private CharSequence generateClassifier(final Classifier classifier) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("class ");
+    String _name = classifier.getName();
+    _builder.append(_name);
+    _builder.append(":");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("features = ");
+    String _handleFeatures = this.handleFeatures(classifier.getFeatures());
+    _builder.append(_handleFeatures, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("target = ");
+    String _target = classifier.getTarget();
+    _builder.append(_target, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def __init__(self):");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("pass");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def run(*args,**kwargs):");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("print(\"");
+    String _handleMLModel = this.handleMLModel(classifier.getModel());
+    _builder.append(_handleMLModel, "\t\t");
+    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private CharSequence generateRun(final Run run) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("df = pd.read_csv(\"");
+    String _dataset = run.getDataset();
+    _builder.append(_dataset);
+    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    _builder.append("classifier = ");
+    String _name = run.getName();
+    _builder.append(_name);
+    _builder.append("(df, ");
+    double _split = run.getSplit();
+    _builder.append(_split);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    _builder.append("classifier.train()");
+    _builder.newLine();
+    _builder.append("classifier.report([");
+    String _handleEvaluationList = this.handleEvaluationList(run.getEvaluations());
+    _builder.append(_handleEvaluationList);
+    _builder.append("])");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public String handleFeatures(final FeatureList features) {
+    String _join = IterableExtensions.join(features.getVals(), "\",\"");
+    String _plus = ("\"" + _join);
+    return (_plus + "\"");
+  }
+  
+  public String handleEvaluationList(final EvaluationList eval_list) {
+    String _join = IterableExtensions.join(eval_list.getVals(), "\",\"");
+    String _plus = ("\"" + _join);
+    return (_plus + "\"");
+  }
+  
+  public String handleMLModel(final MLModel mlmodel) {
+    return mlmodel.getLiteral();
+  }
+  
+  public String handleEvaluation(final Evaluation evaluation) {
+    return evaluation.getLiteral();
   }
 }

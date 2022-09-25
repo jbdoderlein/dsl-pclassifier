@@ -26,9 +26,9 @@ Classifier:
  
 Run:
     'Run(' name=ID '){'
-        'dataset' ':' dataset=ID
+        'dataset' ':' dataset=STRING
         'split' ':' split=FLOAT
-        'evaluation' ':' evaluation=Evaluation
+        'evaluations' ':' evaluations=EvaluationList
     '}';
     
 Load:
@@ -42,6 +42,8 @@ Save:
     '}';
     
 FeatureList: ','* vals+=STRING (','+ vals+=STRING)* ','* ;
+
+EvaluationList: ','* vals+=Evaluation (','+ vals+=Evaluation)* ','* ;
  
  
 // Terminals

@@ -15,7 +15,7 @@ package org.xtext.classifier.dsl.pClassifier;
  * <ul>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.Run#getDataset <em>Dataset</em>}</li>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.Run#getSplit <em>Split</em>}</li>
- *   <li>{@link org.xtext.classifier.dsl.pClassifier.Run#getEvaluation <em>Evaluation</em>}</li>
+ *   <li>{@link org.xtext.classifier.dsl.pClassifier.Run#getEvaluations <em>Evaluations</em>}</li>
  * </ul>
  *
  * @see org.xtext.classifier.dsl.pClassifier.PClassifierPackage#getRun()
@@ -69,28 +69,25 @@ public interface Run extends Statement
   void setSplit(double value);
 
   /**
-   * Returns the value of the '<em><b>Evaluation</b></em>' attribute.
-   * The literals are from the enumeration {@link org.xtext.classifier.dsl.pClassifier.Evaluation}.
+   * Returns the value of the '<em><b>Evaluations</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Evaluation</em>' attribute.
-   * @see org.xtext.classifier.dsl.pClassifier.Evaluation
-   * @see #setEvaluation(Evaluation)
-   * @see org.xtext.classifier.dsl.pClassifier.PClassifierPackage#getRun_Evaluation()
-   * @model
+   * @return the value of the '<em>Evaluations</em>' containment reference.
+   * @see #setEvaluations(EvaluationList)
+   * @see org.xtext.classifier.dsl.pClassifier.PClassifierPackage#getRun_Evaluations()
+   * @model containment="true"
    * @generated
    */
-  Evaluation getEvaluation();
+  EvaluationList getEvaluations();
 
   /**
-   * Sets the value of the '{@link org.xtext.classifier.dsl.pClassifier.Run#getEvaluation <em>Evaluation</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.classifier.dsl.pClassifier.Run#getEvaluations <em>Evaluations</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Evaluation</em>' attribute.
-   * @see org.xtext.classifier.dsl.pClassifier.Evaluation
-   * @see #getEvaluation()
+   * @param value the new value of the '<em>Evaluations</em>' containment reference.
+   * @see #getEvaluations()
    * @generated
    */
-  void setEvaluation(Evaluation value);
+  void setEvaluations(EvaluationList value);
 
 } // Run

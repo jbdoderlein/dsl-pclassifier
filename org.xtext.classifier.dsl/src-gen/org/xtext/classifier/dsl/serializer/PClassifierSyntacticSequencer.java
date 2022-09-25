@@ -20,6 +20,9 @@ import org.xtext.classifier.dsl.services.PClassifierGrammarAccess;
 public class PClassifierSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected PClassifierGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_EvaluationList_CommaKeyword_0_a;
+	protected AbstractElementAlias match_EvaluationList_CommaKeyword_2_0_p;
+	protected AbstractElementAlias match_EvaluationList_CommaKeyword_3_a;
 	protected AbstractElementAlias match_FeatureList_CommaKeyword_0_a;
 	protected AbstractElementAlias match_FeatureList_CommaKeyword_2_0_p;
 	protected AbstractElementAlias match_FeatureList_CommaKeyword_3_a;
@@ -27,6 +30,9 @@ public class PClassifierSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (PClassifierGrammarAccess) access;
+		match_EvaluationList_CommaKeyword_0_a = new TokenAlias(true, true, grammarAccess.getEvaluationListAccess().getCommaKeyword_0());
+		match_EvaluationList_CommaKeyword_2_0_p = new TokenAlias(true, false, grammarAccess.getEvaluationListAccess().getCommaKeyword_2_0());
+		match_EvaluationList_CommaKeyword_3_a = new TokenAlias(true, true, grammarAccess.getEvaluationListAccess().getCommaKeyword_3());
 		match_FeatureList_CommaKeyword_0_a = new TokenAlias(true, true, grammarAccess.getFeatureListAccess().getCommaKeyword_0());
 		match_FeatureList_CommaKeyword_2_0_p = new TokenAlias(true, false, grammarAccess.getFeatureListAccess().getCommaKeyword_2_0());
 		match_FeatureList_CommaKeyword_3_a = new TokenAlias(true, true, grammarAccess.getFeatureListAccess().getCommaKeyword_3());
@@ -44,7 +50,13 @@ public class PClassifierSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_FeatureList_CommaKeyword_0_a.equals(syntax))
+			if (match_EvaluationList_CommaKeyword_0_a.equals(syntax))
+				emit_EvaluationList_CommaKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EvaluationList_CommaKeyword_2_0_p.equals(syntax))
+				emit_EvaluationList_CommaKeyword_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EvaluationList_CommaKeyword_3_a.equals(syntax))
+				emit_EvaluationList_CommaKeyword_3_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FeatureList_CommaKeyword_0_a.equals(syntax))
 				emit_FeatureList_CommaKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_FeatureList_CommaKeyword_2_0_p.equals(syntax))
 				emit_FeatureList_CommaKeyword_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -54,6 +66,48 @@ public class PClassifierSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) vals+=Evaluation
+	 
+	 * </pre>
+	 */
+	protected void emit_EvaluationList_CommaKeyword_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     vals+=Evaluation (ambiguity) vals+=Evaluation
+	 
+	 * </pre>
+	 */
+	protected void emit_EvaluationList_CommaKeyword_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     vals+=Evaluation (ambiguity) (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_EvaluationList_CommaKeyword_3_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:

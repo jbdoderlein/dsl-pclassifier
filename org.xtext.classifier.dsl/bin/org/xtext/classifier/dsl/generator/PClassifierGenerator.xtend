@@ -9,14 +9,66 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
 import org.xtext.classifier.dsl.pClassifier.Classifier
+import org.xtext.classifier.dsl.pClassifier.Run
+import org.xtext.classifier.dsl.pClassifier.FeatureList
+import org.xtext.classifier.dsl.pClassifier.MLModel
+import org.xtext.classifier.dsl.pClassifier.Evaluation
+import org.xtext.classifier.dsl.pClassifier.EvaluationList
 
 class PClassifierGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		var result = ""
+		for(e : resource.allContents.toIterable()) {
+			switch (e) {
+				case (e instanceof Classifier): {
+					result += generateClassifier(e as Classifier)
+					result += "\n"
+				}
+				case (e instanceof Run): {
+					result += generateRun(e as Run)
+					result += "\n"
+				}
+				
+			}
+		}
 		fsa.generateFile('test.py',  
-			resource.allContents
-				.filter(Classifier)
-				.map[name]
-				.join(', '))
+			result)
+		
+	}
+	
+	private def generateClassifier(Classifier classifier) '''
+		class «classifier.name»:
+			features = «handleFeatures(classifier.features)»
+			target = «classifier.target»
+			
+			def __init__(self):
+				pass
+			
+			def run(*args,**kwargs):
+				print("«handleMLModel(classifier.model)»")
+    '''
+    
+    private def generateRun(Run run) '''
+    	df = pd.read_csv("«run.dataset»")
+    	classifier = «run.name»(df, «run.split»)
+    	classifier.train()
+    	classifier.report([«handleEvaluationList(run.evaluations)»])
+    '''
+	
+	def handleFeatures(FeatureList features){
+		return "\"" + features.vals.join("\",\"") + "\""
+	}
+	
+	def handleEvaluationList(EvaluationList eval_list){
+		return "\"" + eval_list.vals.join("\",\"") + "\""
+	}
+	
+	def handleMLModel(MLModel mlmodel){
+		return mlmodel.literal
+	}
+	
+	def handleEvaluation(Evaluation evaluation){
+		return evaluation.literal
 	}
 }
