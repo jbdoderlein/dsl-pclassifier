@@ -1,0 +1,52 @@
+grammar org.xtext.classifier.dsl.PClassifier with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate pClassifier "http://www.xtext.org/classifier/dsl/PClassifier"
+
+PClassfier:
+    (elements+=Statement)*;
+ 
+Statement:
+    Classifier | Run | Load | Save;
+    
+
+enum MLModel:
+    DecisonTree = 'DecisionTree' | SVM = 'SVM';
+    
+enum Evaluation:
+    Accuracy = 'accuracy' | F1SCORE = 'f1' | RECALL = 'recall';
+
+Classifier:
+    'Classifier(' name=ID '){'
+        'features' ':' features=FeatureList
+        'target' ':' target=STRING
+        'model' ':' model=MLModel
+    '}';
+ 
+Run:
+    'Run(' name=ID '){'
+        'dataset' ':' dataset=ID
+        'split' ':' split=FLOAT
+        'evaluation' ':' evaluation=Evaluation
+    '}';
+    
+Load:
+    'Load(' name=ID '){'
+        'file' ':' file=STRING
+    '}';
+
+Save:
+    'Save(' name=ID '){'
+        'file' ':' file=STRING
+    '}';
+    
+FeatureList: ','* vals+=STRING (','+ vals+=STRING)* ','* ;
+ 
+ 
+// Terminals
+
+terminal FLOAT returns ecore::EDouble :
+('0'..'9')+ '.' ('0'..'9')* (('e'|'E') ('+' | '-')? ('0'..'9')+)?
+| '.' ('0'..'9')+ (('e'|'E') ('+' | '-')? ('0'..'9')+)?
+| ('0'..'9')+ ('e'|'E') ('+' | '-')? ('0'..'9')+;
