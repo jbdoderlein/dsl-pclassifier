@@ -91,9 +91,14 @@ public class PClassifierAdapterFactory extends AdapterFactoryImpl
         return createClassifierAdapter();
       }
       @Override
-      public Adapter caseRun(Run object)
+      public Adapter caseTrain(Train object)
       {
-        return createRunAdapter();
+        return createTrainAdapter();
+      }
+      @Override
+      public Adapter caseEval(Eval object)
+      {
+        return createEvalAdapter();
       }
       @Override
       public Adapter caseLoad(Load object)
@@ -183,16 +188,31 @@ public class PClassifierAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.classifier.dsl.pClassifier.Run <em>Run</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.classifier.dsl.pClassifier.Train <em>Train</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.classifier.dsl.pClassifier.Run
+   * @see org.xtext.classifier.dsl.pClassifier.Train
    * @generated
    */
-  public Adapter createRunAdapter()
+  public Adapter createTrainAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.classifier.dsl.pClassifier.Eval <em>Eval</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.classifier.dsl.pClassifier.Eval
+   * @generated
+   */
+  public Adapter createEvalAdapter()
   {
     return null;
   }

@@ -12,8 +12,9 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="PClassifier.ecore#//Evaluation">
       <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/Accuracy"/>
-      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/F1SCORE"/>
-      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/RECALL"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/F1Score"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/Recall"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/ConfusionMatrix"/>
     </genEnums>
     <genClasses ecoreClass="PClassifier.ecore#//PClassfier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//PClassfier/elements"/>
@@ -26,10 +27,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Classifier/target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Classifier/model"/>
     </genClasses>
-    <genClasses ecoreClass="PClassifier.ecore#//Run">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Run/dataset"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Run/split"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//Run/evaluations"/>
+    <genClasses ecoreClass="PClassifier.ecore#//Train">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Train/dataset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Train/split"/>
+    </genClasses>
+    <genClasses ecoreClass="PClassifier.ecore#//Eval">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//Eval/evaluations"/>
     </genClasses>
     <genClasses ecoreClass="PClassifier.ecore#//Load">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Load/file"/>

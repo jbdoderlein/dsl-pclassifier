@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPClassifierParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'DecisionTree'", "'SVM'", "'accuracy'", "'f1'", "'recall'", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Run('", "'dataset'", "'split'", "'evaluations'", "'Load('", "'file'", "'Save('", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'DecisionTree'", "'SVM'", "'accuracy'", "'f1'", "'recall'", "'cfm'", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Train('", "'dataset'", "'split'", "'Eval('", "'evaluations'", "'Load('", "'file'", "'Save('", "','"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=9;
@@ -31,12 +31,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
     public static final int T__16=16;
     public static final int T__17=17;
     public static final int T__18=18;
+    public static final int T__33=33;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_ID=4;
     public static final int RULE_WS=10;
     public static final int RULE_ANY_OTHER=11;
@@ -139,7 +141,7 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==17||LA1_0==24||LA1_0==28||LA1_0==30) ) {
+                if ( (LA1_0==18||LA1_0==25||LA1_0==28||LA1_0==30||LA1_0==32) ) {
                     alt1=1;
                 }
 
@@ -338,20 +340,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
     // $ANTLR end "ruleClassifier"
 
 
-    // $ANTLR start "entryRuleRun"
-    // InternalPClassifier.g:128:1: entryRuleRun : ruleRun EOF ;
-    public final void entryRuleRun() throws RecognitionException {
+    // $ANTLR start "entryRuleTrain"
+    // InternalPClassifier.g:128:1: entryRuleTrain : ruleTrain EOF ;
+    public final void entryRuleTrain() throws RecognitionException {
         try {
-            // InternalPClassifier.g:129:1: ( ruleRun EOF )
-            // InternalPClassifier.g:130:1: ruleRun EOF
+            // InternalPClassifier.g:129:1: ( ruleTrain EOF )
+            // InternalPClassifier.g:130:1: ruleTrain EOF
             {
-             before(grammarAccess.getRunRule()); 
+             before(grammarAccess.getTrainRule()); 
             pushFollow(FOLLOW_1);
-            ruleRun();
+            ruleTrain();
 
             state._fsp--;
 
-             after(grammarAccess.getRunRule()); 
+             after(grammarAccess.getTrainRule()); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -365,35 +367,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "entryRuleRun"
+    // $ANTLR end "entryRuleTrain"
 
 
-    // $ANTLR start "ruleRun"
-    // InternalPClassifier.g:137:1: ruleRun : ( ( rule__Run__Group__0 ) ) ;
-    public final void ruleRun() throws RecognitionException {
+    // $ANTLR start "ruleTrain"
+    // InternalPClassifier.g:137:1: ruleTrain : ( ( rule__Train__Group__0 ) ) ;
+    public final void ruleTrain() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:141:2: ( ( ( rule__Run__Group__0 ) ) )
-            // InternalPClassifier.g:142:2: ( ( rule__Run__Group__0 ) )
+            // InternalPClassifier.g:141:2: ( ( ( rule__Train__Group__0 ) ) )
+            // InternalPClassifier.g:142:2: ( ( rule__Train__Group__0 ) )
             {
-            // InternalPClassifier.g:142:2: ( ( rule__Run__Group__0 ) )
-            // InternalPClassifier.g:143:3: ( rule__Run__Group__0 )
+            // InternalPClassifier.g:142:2: ( ( rule__Train__Group__0 ) )
+            // InternalPClassifier.g:143:3: ( rule__Train__Group__0 )
             {
-             before(grammarAccess.getRunAccess().getGroup()); 
-            // InternalPClassifier.g:144:3: ( rule__Run__Group__0 )
-            // InternalPClassifier.g:144:4: rule__Run__Group__0
+             before(grammarAccess.getTrainAccess().getGroup()); 
+            // InternalPClassifier.g:144:3: ( rule__Train__Group__0 )
+            // InternalPClassifier.g:144:4: rule__Train__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__Run__Group__0();
+            rule__Train__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getRunAccess().getGroup()); 
+             after(grammarAccess.getTrainAccess().getGroup()); 
 
             }
 
@@ -412,15 +414,92 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "ruleRun"
+    // $ANTLR end "ruleTrain"
+
+
+    // $ANTLR start "entryRuleEval"
+    // InternalPClassifier.g:153:1: entryRuleEval : ruleEval EOF ;
+    public final void entryRuleEval() throws RecognitionException {
+        try {
+            // InternalPClassifier.g:154:1: ( ruleEval EOF )
+            // InternalPClassifier.g:155:1: ruleEval EOF
+            {
+             before(grammarAccess.getEvalRule()); 
+            pushFollow(FOLLOW_1);
+            ruleEval();
+
+            state._fsp--;
+
+             after(grammarAccess.getEvalRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleEval"
+
+
+    // $ANTLR start "ruleEval"
+    // InternalPClassifier.g:162:1: ruleEval : ( ( rule__Eval__Group__0 ) ) ;
+    public final void ruleEval() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:166:2: ( ( ( rule__Eval__Group__0 ) ) )
+            // InternalPClassifier.g:167:2: ( ( rule__Eval__Group__0 ) )
+            {
+            // InternalPClassifier.g:167:2: ( ( rule__Eval__Group__0 ) )
+            // InternalPClassifier.g:168:3: ( rule__Eval__Group__0 )
+            {
+             before(grammarAccess.getEvalAccess().getGroup()); 
+            // InternalPClassifier.g:169:3: ( rule__Eval__Group__0 )
+            // InternalPClassifier.g:169:4: rule__Eval__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEvalAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleEval"
 
 
     // $ANTLR start "entryRuleLoad"
-    // InternalPClassifier.g:153:1: entryRuleLoad : ruleLoad EOF ;
+    // InternalPClassifier.g:178:1: entryRuleLoad : ruleLoad EOF ;
     public final void entryRuleLoad() throws RecognitionException {
         try {
-            // InternalPClassifier.g:154:1: ( ruleLoad EOF )
-            // InternalPClassifier.g:155:1: ruleLoad EOF
+            // InternalPClassifier.g:179:1: ( ruleLoad EOF )
+            // InternalPClassifier.g:180:1: ruleLoad EOF
             {
              before(grammarAccess.getLoadRule()); 
             pushFollow(FOLLOW_1);
@@ -446,21 +525,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleLoad"
-    // InternalPClassifier.g:162:1: ruleLoad : ( ( rule__Load__Group__0 ) ) ;
+    // InternalPClassifier.g:187:1: ruleLoad : ( ( rule__Load__Group__0 ) ) ;
     public final void ruleLoad() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:166:2: ( ( ( rule__Load__Group__0 ) ) )
-            // InternalPClassifier.g:167:2: ( ( rule__Load__Group__0 ) )
+            // InternalPClassifier.g:191:2: ( ( ( rule__Load__Group__0 ) ) )
+            // InternalPClassifier.g:192:2: ( ( rule__Load__Group__0 ) )
             {
-            // InternalPClassifier.g:167:2: ( ( rule__Load__Group__0 ) )
-            // InternalPClassifier.g:168:3: ( rule__Load__Group__0 )
+            // InternalPClassifier.g:192:2: ( ( rule__Load__Group__0 ) )
+            // InternalPClassifier.g:193:3: ( rule__Load__Group__0 )
             {
              before(grammarAccess.getLoadAccess().getGroup()); 
-            // InternalPClassifier.g:169:3: ( rule__Load__Group__0 )
-            // InternalPClassifier.g:169:4: rule__Load__Group__0
+            // InternalPClassifier.g:194:3: ( rule__Load__Group__0 )
+            // InternalPClassifier.g:194:4: rule__Load__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Load__Group__0();
@@ -493,11 +572,11 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleSave"
-    // InternalPClassifier.g:178:1: entryRuleSave : ruleSave EOF ;
+    // InternalPClassifier.g:203:1: entryRuleSave : ruleSave EOF ;
     public final void entryRuleSave() throws RecognitionException {
         try {
-            // InternalPClassifier.g:179:1: ( ruleSave EOF )
-            // InternalPClassifier.g:180:1: ruleSave EOF
+            // InternalPClassifier.g:204:1: ( ruleSave EOF )
+            // InternalPClassifier.g:205:1: ruleSave EOF
             {
              before(grammarAccess.getSaveRule()); 
             pushFollow(FOLLOW_1);
@@ -523,21 +602,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleSave"
-    // InternalPClassifier.g:187:1: ruleSave : ( ( rule__Save__Group__0 ) ) ;
+    // InternalPClassifier.g:212:1: ruleSave : ( ( rule__Save__Group__0 ) ) ;
     public final void ruleSave() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:191:2: ( ( ( rule__Save__Group__0 ) ) )
-            // InternalPClassifier.g:192:2: ( ( rule__Save__Group__0 ) )
+            // InternalPClassifier.g:216:2: ( ( ( rule__Save__Group__0 ) ) )
+            // InternalPClassifier.g:217:2: ( ( rule__Save__Group__0 ) )
             {
-            // InternalPClassifier.g:192:2: ( ( rule__Save__Group__0 ) )
-            // InternalPClassifier.g:193:3: ( rule__Save__Group__0 )
+            // InternalPClassifier.g:217:2: ( ( rule__Save__Group__0 ) )
+            // InternalPClassifier.g:218:3: ( rule__Save__Group__0 )
             {
              before(grammarAccess.getSaveAccess().getGroup()); 
-            // InternalPClassifier.g:194:3: ( rule__Save__Group__0 )
-            // InternalPClassifier.g:194:4: rule__Save__Group__0
+            // InternalPClassifier.g:219:3: ( rule__Save__Group__0 )
+            // InternalPClassifier.g:219:4: rule__Save__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Save__Group__0();
@@ -570,11 +649,11 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleFeatureList"
-    // InternalPClassifier.g:203:1: entryRuleFeatureList : ruleFeatureList EOF ;
+    // InternalPClassifier.g:228:1: entryRuleFeatureList : ruleFeatureList EOF ;
     public final void entryRuleFeatureList() throws RecognitionException {
         try {
-            // InternalPClassifier.g:204:1: ( ruleFeatureList EOF )
-            // InternalPClassifier.g:205:1: ruleFeatureList EOF
+            // InternalPClassifier.g:229:1: ( ruleFeatureList EOF )
+            // InternalPClassifier.g:230:1: ruleFeatureList EOF
             {
              before(grammarAccess.getFeatureListRule()); 
             pushFollow(FOLLOW_1);
@@ -600,21 +679,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleFeatureList"
-    // InternalPClassifier.g:212:1: ruleFeatureList : ( ( rule__FeatureList__Group__0 ) ) ;
+    // InternalPClassifier.g:237:1: ruleFeatureList : ( ( rule__FeatureList__Group__0 ) ) ;
     public final void ruleFeatureList() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:216:2: ( ( ( rule__FeatureList__Group__0 ) ) )
-            // InternalPClassifier.g:217:2: ( ( rule__FeatureList__Group__0 ) )
+            // InternalPClassifier.g:241:2: ( ( ( rule__FeatureList__Group__0 ) ) )
+            // InternalPClassifier.g:242:2: ( ( rule__FeatureList__Group__0 ) )
             {
-            // InternalPClassifier.g:217:2: ( ( rule__FeatureList__Group__0 ) )
-            // InternalPClassifier.g:218:3: ( rule__FeatureList__Group__0 )
+            // InternalPClassifier.g:242:2: ( ( rule__FeatureList__Group__0 ) )
+            // InternalPClassifier.g:243:3: ( rule__FeatureList__Group__0 )
             {
              before(grammarAccess.getFeatureListAccess().getGroup()); 
-            // InternalPClassifier.g:219:3: ( rule__FeatureList__Group__0 )
-            // InternalPClassifier.g:219:4: rule__FeatureList__Group__0
+            // InternalPClassifier.g:244:3: ( rule__FeatureList__Group__0 )
+            // InternalPClassifier.g:244:4: rule__FeatureList__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__FeatureList__Group__0();
@@ -647,11 +726,11 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleEvaluationList"
-    // InternalPClassifier.g:228:1: entryRuleEvaluationList : ruleEvaluationList EOF ;
+    // InternalPClassifier.g:253:1: entryRuleEvaluationList : ruleEvaluationList EOF ;
     public final void entryRuleEvaluationList() throws RecognitionException {
         try {
-            // InternalPClassifier.g:229:1: ( ruleEvaluationList EOF )
-            // InternalPClassifier.g:230:1: ruleEvaluationList EOF
+            // InternalPClassifier.g:254:1: ( ruleEvaluationList EOF )
+            // InternalPClassifier.g:255:1: ruleEvaluationList EOF
             {
              before(grammarAccess.getEvaluationListRule()); 
             pushFollow(FOLLOW_1);
@@ -677,21 +756,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleEvaluationList"
-    // InternalPClassifier.g:237:1: ruleEvaluationList : ( ( rule__EvaluationList__Group__0 ) ) ;
+    // InternalPClassifier.g:262:1: ruleEvaluationList : ( ( rule__EvaluationList__Group__0 ) ) ;
     public final void ruleEvaluationList() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:241:2: ( ( ( rule__EvaluationList__Group__0 ) ) )
-            // InternalPClassifier.g:242:2: ( ( rule__EvaluationList__Group__0 ) )
+            // InternalPClassifier.g:266:2: ( ( ( rule__EvaluationList__Group__0 ) ) )
+            // InternalPClassifier.g:267:2: ( ( rule__EvaluationList__Group__0 ) )
             {
-            // InternalPClassifier.g:242:2: ( ( rule__EvaluationList__Group__0 ) )
-            // InternalPClassifier.g:243:3: ( rule__EvaluationList__Group__0 )
+            // InternalPClassifier.g:267:2: ( ( rule__EvaluationList__Group__0 ) )
+            // InternalPClassifier.g:268:3: ( rule__EvaluationList__Group__0 )
             {
              before(grammarAccess.getEvaluationListAccess().getGroup()); 
-            // InternalPClassifier.g:244:3: ( rule__EvaluationList__Group__0 )
-            // InternalPClassifier.g:244:4: rule__EvaluationList__Group__0
+            // InternalPClassifier.g:269:3: ( rule__EvaluationList__Group__0 )
+            // InternalPClassifier.g:269:4: rule__EvaluationList__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__EvaluationList__Group__0();
@@ -724,21 +803,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleMLModel"
-    // InternalPClassifier.g:253:1: ruleMLModel : ( ( rule__MLModel__Alternatives ) ) ;
+    // InternalPClassifier.g:278:1: ruleMLModel : ( ( rule__MLModel__Alternatives ) ) ;
     public final void ruleMLModel() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:257:1: ( ( ( rule__MLModel__Alternatives ) ) )
-            // InternalPClassifier.g:258:2: ( ( rule__MLModel__Alternatives ) )
+            // InternalPClassifier.g:282:1: ( ( ( rule__MLModel__Alternatives ) ) )
+            // InternalPClassifier.g:283:2: ( ( rule__MLModel__Alternatives ) )
             {
-            // InternalPClassifier.g:258:2: ( ( rule__MLModel__Alternatives ) )
-            // InternalPClassifier.g:259:3: ( rule__MLModel__Alternatives )
+            // InternalPClassifier.g:283:2: ( ( rule__MLModel__Alternatives ) )
+            // InternalPClassifier.g:284:3: ( rule__MLModel__Alternatives )
             {
              before(grammarAccess.getMLModelAccess().getAlternatives()); 
-            // InternalPClassifier.g:260:3: ( rule__MLModel__Alternatives )
-            // InternalPClassifier.g:260:4: rule__MLModel__Alternatives
+            // InternalPClassifier.g:285:3: ( rule__MLModel__Alternatives )
+            // InternalPClassifier.g:285:4: rule__MLModel__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__MLModel__Alternatives();
@@ -771,21 +850,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleEvaluation"
-    // InternalPClassifier.g:269:1: ruleEvaluation : ( ( rule__Evaluation__Alternatives ) ) ;
+    // InternalPClassifier.g:294:1: ruleEvaluation : ( ( rule__Evaluation__Alternatives ) ) ;
     public final void ruleEvaluation() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:273:1: ( ( ( rule__Evaluation__Alternatives ) ) )
-            // InternalPClassifier.g:274:2: ( ( rule__Evaluation__Alternatives ) )
+            // InternalPClassifier.g:298:1: ( ( ( rule__Evaluation__Alternatives ) ) )
+            // InternalPClassifier.g:299:2: ( ( rule__Evaluation__Alternatives ) )
             {
-            // InternalPClassifier.g:274:2: ( ( rule__Evaluation__Alternatives ) )
-            // InternalPClassifier.g:275:3: ( rule__Evaluation__Alternatives )
+            // InternalPClassifier.g:299:2: ( ( rule__Evaluation__Alternatives ) )
+            // InternalPClassifier.g:300:3: ( rule__Evaluation__Alternatives )
             {
              before(grammarAccess.getEvaluationAccess().getAlternatives()); 
-            // InternalPClassifier.g:276:3: ( rule__Evaluation__Alternatives )
-            // InternalPClassifier.g:276:4: rule__Evaluation__Alternatives
+            // InternalPClassifier.g:301:3: ( rule__Evaluation__Alternatives )
+            // InternalPClassifier.g:301:4: rule__Evaluation__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__Evaluation__Alternatives();
@@ -818,21 +897,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Statement__Alternatives"
-    // InternalPClassifier.g:284:1: rule__Statement__Alternatives : ( ( ruleClassifier ) | ( ruleRun ) | ( ruleLoad ) | ( ruleSave ) );
+    // InternalPClassifier.g:309:1: rule__Statement__Alternatives : ( ( ruleClassifier ) | ( ruleTrain ) | ( ruleEval ) | ( ruleLoad ) | ( ruleSave ) );
     public final void rule__Statement__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:288:1: ( ( ruleClassifier ) | ( ruleRun ) | ( ruleLoad ) | ( ruleSave ) )
-            int alt2=4;
+            // InternalPClassifier.g:313:1: ( ( ruleClassifier ) | ( ruleTrain ) | ( ruleEval ) | ( ruleLoad ) | ( ruleSave ) )
+            int alt2=5;
             switch ( input.LA(1) ) {
-            case 17:
+            case 18:
                 {
                 alt2=1;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt2=2;
                 }
@@ -847,6 +926,11 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                 alt2=4;
                 }
                 break;
+            case 32:
+                {
+                alt2=5;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
@@ -856,10 +940,10 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
             switch (alt2) {
                 case 1 :
-                    // InternalPClassifier.g:289:2: ( ruleClassifier )
+                    // InternalPClassifier.g:314:2: ( ruleClassifier )
                     {
-                    // InternalPClassifier.g:289:2: ( ruleClassifier )
-                    // InternalPClassifier.g:290:3: ruleClassifier
+                    // InternalPClassifier.g:314:2: ( ruleClassifier )
+                    // InternalPClassifier.g:315:3: ruleClassifier
                     {
                      before(grammarAccess.getStatementAccess().getClassifierParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -875,18 +959,18 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:295:2: ( ruleRun )
+                    // InternalPClassifier.g:320:2: ( ruleTrain )
                     {
-                    // InternalPClassifier.g:295:2: ( ruleRun )
-                    // InternalPClassifier.g:296:3: ruleRun
+                    // InternalPClassifier.g:320:2: ( ruleTrain )
+                    // InternalPClassifier.g:321:3: ruleTrain
                     {
-                     before(grammarAccess.getStatementAccess().getRunParserRuleCall_1()); 
+                     before(grammarAccess.getStatementAccess().getTrainParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
-                    ruleRun();
+                    ruleTrain();
 
                     state._fsp--;
 
-                     after(grammarAccess.getStatementAccess().getRunParserRuleCall_1()); 
+                     after(grammarAccess.getStatementAccess().getTrainParserRuleCall_1()); 
 
                     }
 
@@ -894,18 +978,18 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 3 :
-                    // InternalPClassifier.g:301:2: ( ruleLoad )
+                    // InternalPClassifier.g:326:2: ( ruleEval )
                     {
-                    // InternalPClassifier.g:301:2: ( ruleLoad )
-                    // InternalPClassifier.g:302:3: ruleLoad
+                    // InternalPClassifier.g:326:2: ( ruleEval )
+                    // InternalPClassifier.g:327:3: ruleEval
                     {
-                     before(grammarAccess.getStatementAccess().getLoadParserRuleCall_2()); 
+                     before(grammarAccess.getStatementAccess().getEvalParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
-                    ruleLoad();
+                    ruleEval();
 
                     state._fsp--;
 
-                     after(grammarAccess.getStatementAccess().getLoadParserRuleCall_2()); 
+                     after(grammarAccess.getStatementAccess().getEvalParserRuleCall_2()); 
 
                     }
 
@@ -913,18 +997,37 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 4 :
-                    // InternalPClassifier.g:307:2: ( ruleSave )
+                    // InternalPClassifier.g:332:2: ( ruleLoad )
                     {
-                    // InternalPClassifier.g:307:2: ( ruleSave )
-                    // InternalPClassifier.g:308:3: ruleSave
+                    // InternalPClassifier.g:332:2: ( ruleLoad )
+                    // InternalPClassifier.g:333:3: ruleLoad
                     {
-                     before(grammarAccess.getStatementAccess().getSaveParserRuleCall_3()); 
+                     before(grammarAccess.getStatementAccess().getLoadParserRuleCall_3()); 
+                    pushFollow(FOLLOW_2);
+                    ruleLoad();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getStatementAccess().getLoadParserRuleCall_3()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalPClassifier.g:338:2: ( ruleSave )
+                    {
+                    // InternalPClassifier.g:338:2: ( ruleSave )
+                    // InternalPClassifier.g:339:3: ruleSave
+                    {
+                     before(grammarAccess.getStatementAccess().getSaveParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
                     ruleSave();
 
                     state._fsp--;
 
-                     after(grammarAccess.getStatementAccess().getSaveParserRuleCall_3()); 
+                     after(grammarAccess.getStatementAccess().getSaveParserRuleCall_4()); 
 
                     }
 
@@ -949,13 +1052,13 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__MLModel__Alternatives"
-    // InternalPClassifier.g:317:1: rule__MLModel__Alternatives : ( ( ( 'DecisionTree' ) ) | ( ( 'SVM' ) ) );
+    // InternalPClassifier.g:348:1: rule__MLModel__Alternatives : ( ( ( 'DecisionTree' ) ) | ( ( 'SVM' ) ) );
     public final void rule__MLModel__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:321:1: ( ( ( 'DecisionTree' ) ) | ( ( 'SVM' ) ) )
+            // InternalPClassifier.g:352:1: ( ( ( 'DecisionTree' ) ) | ( ( 'SVM' ) ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -973,14 +1076,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
             }
             switch (alt3) {
                 case 1 :
-                    // InternalPClassifier.g:322:2: ( ( 'DecisionTree' ) )
+                    // InternalPClassifier.g:353:2: ( ( 'DecisionTree' ) )
                     {
-                    // InternalPClassifier.g:322:2: ( ( 'DecisionTree' ) )
-                    // InternalPClassifier.g:323:3: ( 'DecisionTree' )
+                    // InternalPClassifier.g:353:2: ( ( 'DecisionTree' ) )
+                    // InternalPClassifier.g:354:3: ( 'DecisionTree' )
                     {
                      before(grammarAccess.getMLModelAccess().getDecisonTreeEnumLiteralDeclaration_0()); 
-                    // InternalPClassifier.g:324:3: ( 'DecisionTree' )
-                    // InternalPClassifier.g:324:4: 'DecisionTree'
+                    // InternalPClassifier.g:355:3: ( 'DecisionTree' )
+                    // InternalPClassifier.g:355:4: 'DecisionTree'
                     {
                     match(input,12,FOLLOW_2); 
 
@@ -994,14 +1097,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:328:2: ( ( 'SVM' ) )
+                    // InternalPClassifier.g:359:2: ( ( 'SVM' ) )
                     {
-                    // InternalPClassifier.g:328:2: ( ( 'SVM' ) )
-                    // InternalPClassifier.g:329:3: ( 'SVM' )
+                    // InternalPClassifier.g:359:2: ( ( 'SVM' ) )
+                    // InternalPClassifier.g:360:3: ( 'SVM' )
                     {
                      before(grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1()); 
-                    // InternalPClassifier.g:330:3: ( 'SVM' )
-                    // InternalPClassifier.g:330:4: 'SVM'
+                    // InternalPClassifier.g:361:3: ( 'SVM' )
+                    // InternalPClassifier.g:361:4: 'SVM'
                     {
                     match(input,13,FOLLOW_2); 
 
@@ -1032,14 +1135,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Evaluation__Alternatives"
-    // InternalPClassifier.g:338:1: rule__Evaluation__Alternatives : ( ( ( 'accuracy' ) ) | ( ( 'f1' ) ) | ( ( 'recall' ) ) );
+    // InternalPClassifier.g:369:1: rule__Evaluation__Alternatives : ( ( ( 'accuracy' ) ) | ( ( 'f1' ) ) | ( ( 'recall' ) ) | ( ( 'cfm' ) ) );
     public final void rule__Evaluation__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:342:1: ( ( ( 'accuracy' ) ) | ( ( 'f1' ) ) | ( ( 'recall' ) ) )
-            int alt4=3;
+            // InternalPClassifier.g:373:1: ( ( ( 'accuracy' ) ) | ( ( 'f1' ) ) | ( ( 'recall' ) ) | ( ( 'cfm' ) ) )
+            int alt4=4;
             switch ( input.LA(1) ) {
             case 14:
                 {
@@ -1056,6 +1159,11 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                 alt4=3;
                 }
                 break;
+            case 17:
+                {
+                alt4=4;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 4, 0, input);
@@ -1065,14 +1173,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
             switch (alt4) {
                 case 1 :
-                    // InternalPClassifier.g:343:2: ( ( 'accuracy' ) )
+                    // InternalPClassifier.g:374:2: ( ( 'accuracy' ) )
                     {
-                    // InternalPClassifier.g:343:2: ( ( 'accuracy' ) )
-                    // InternalPClassifier.g:344:3: ( 'accuracy' )
+                    // InternalPClassifier.g:374:2: ( ( 'accuracy' ) )
+                    // InternalPClassifier.g:375:3: ( 'accuracy' )
                     {
                      before(grammarAccess.getEvaluationAccess().getAccuracyEnumLiteralDeclaration_0()); 
-                    // InternalPClassifier.g:345:3: ( 'accuracy' )
-                    // InternalPClassifier.g:345:4: 'accuracy'
+                    // InternalPClassifier.g:376:3: ( 'accuracy' )
+                    // InternalPClassifier.g:376:4: 'accuracy'
                     {
                     match(input,14,FOLLOW_2); 
 
@@ -1086,20 +1194,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:349:2: ( ( 'f1' ) )
+                    // InternalPClassifier.g:380:2: ( ( 'f1' ) )
                     {
-                    // InternalPClassifier.g:349:2: ( ( 'f1' ) )
-                    // InternalPClassifier.g:350:3: ( 'f1' )
+                    // InternalPClassifier.g:380:2: ( ( 'f1' ) )
+                    // InternalPClassifier.g:381:3: ( 'f1' )
                     {
-                     before(grammarAccess.getEvaluationAccess().getF1SCOREEnumLiteralDeclaration_1()); 
-                    // InternalPClassifier.g:351:3: ( 'f1' )
-                    // InternalPClassifier.g:351:4: 'f1'
+                     before(grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1()); 
+                    // InternalPClassifier.g:382:3: ( 'f1' )
+                    // InternalPClassifier.g:382:4: 'f1'
                     {
                     match(input,15,FOLLOW_2); 
 
                     }
 
-                     after(grammarAccess.getEvaluationAccess().getF1SCOREEnumLiteralDeclaration_1()); 
+                     after(grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1()); 
 
                     }
 
@@ -1107,20 +1215,41 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 3 :
-                    // InternalPClassifier.g:355:2: ( ( 'recall' ) )
+                    // InternalPClassifier.g:386:2: ( ( 'recall' ) )
                     {
-                    // InternalPClassifier.g:355:2: ( ( 'recall' ) )
-                    // InternalPClassifier.g:356:3: ( 'recall' )
+                    // InternalPClassifier.g:386:2: ( ( 'recall' ) )
+                    // InternalPClassifier.g:387:3: ( 'recall' )
                     {
-                     before(grammarAccess.getEvaluationAccess().getRECALLEnumLiteralDeclaration_2()); 
-                    // InternalPClassifier.g:357:3: ( 'recall' )
-                    // InternalPClassifier.g:357:4: 'recall'
+                     before(grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2()); 
+                    // InternalPClassifier.g:388:3: ( 'recall' )
+                    // InternalPClassifier.g:388:4: 'recall'
                     {
                     match(input,16,FOLLOW_2); 
 
                     }
 
-                     after(grammarAccess.getEvaluationAccess().getRECALLEnumLiteralDeclaration_2()); 
+                     after(grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalPClassifier.g:392:2: ( ( 'cfm' ) )
+                    {
+                    // InternalPClassifier.g:392:2: ( ( 'cfm' ) )
+                    // InternalPClassifier.g:393:3: ( 'cfm' )
+                    {
+                     before(grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3()); 
+                    // InternalPClassifier.g:394:3: ( 'cfm' )
+                    // InternalPClassifier.g:394:4: 'cfm'
+                    {
+                    match(input,17,FOLLOW_2); 
+
+                    }
+
+                     after(grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3()); 
 
                     }
 
@@ -1145,14 +1274,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__0"
-    // InternalPClassifier.g:365:1: rule__Classifier__Group__0 : rule__Classifier__Group__0__Impl rule__Classifier__Group__1 ;
+    // InternalPClassifier.g:402:1: rule__Classifier__Group__0 : rule__Classifier__Group__0__Impl rule__Classifier__Group__1 ;
     public final void rule__Classifier__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:369:1: ( rule__Classifier__Group__0__Impl rule__Classifier__Group__1 )
-            // InternalPClassifier.g:370:2: rule__Classifier__Group__0__Impl rule__Classifier__Group__1
+            // InternalPClassifier.g:406:1: ( rule__Classifier__Group__0__Impl rule__Classifier__Group__1 )
+            // InternalPClassifier.g:407:2: rule__Classifier__Group__0__Impl rule__Classifier__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Classifier__Group__0__Impl();
@@ -1183,20 +1312,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__0__Impl"
-    // InternalPClassifier.g:377:1: rule__Classifier__Group__0__Impl : ( 'Classifier(' ) ;
+    // InternalPClassifier.g:414:1: rule__Classifier__Group__0__Impl : ( 'Classifier(' ) ;
     public final void rule__Classifier__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:381:1: ( ( 'Classifier(' ) )
-            // InternalPClassifier.g:382:1: ( 'Classifier(' )
+            // InternalPClassifier.g:418:1: ( ( 'Classifier(' ) )
+            // InternalPClassifier.g:419:1: ( 'Classifier(' )
             {
-            // InternalPClassifier.g:382:1: ( 'Classifier(' )
-            // InternalPClassifier.g:383:2: 'Classifier('
+            // InternalPClassifier.g:419:1: ( 'Classifier(' )
+            // InternalPClassifier.g:420:2: 'Classifier('
             {
              before(grammarAccess.getClassifierAccess().getClassifierKeyword_0()); 
-            match(input,17,FOLLOW_2); 
+            match(input,18,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getClassifierKeyword_0()); 
 
             }
@@ -1220,14 +1349,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__1"
-    // InternalPClassifier.g:392:1: rule__Classifier__Group__1 : rule__Classifier__Group__1__Impl rule__Classifier__Group__2 ;
+    // InternalPClassifier.g:429:1: rule__Classifier__Group__1 : rule__Classifier__Group__1__Impl rule__Classifier__Group__2 ;
     public final void rule__Classifier__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:396:1: ( rule__Classifier__Group__1__Impl rule__Classifier__Group__2 )
-            // InternalPClassifier.g:397:2: rule__Classifier__Group__1__Impl rule__Classifier__Group__2
+            // InternalPClassifier.g:433:1: ( rule__Classifier__Group__1__Impl rule__Classifier__Group__2 )
+            // InternalPClassifier.g:434:2: rule__Classifier__Group__1__Impl rule__Classifier__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Classifier__Group__1__Impl();
@@ -1258,21 +1387,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__1__Impl"
-    // InternalPClassifier.g:404:1: rule__Classifier__Group__1__Impl : ( ( rule__Classifier__NameAssignment_1 ) ) ;
+    // InternalPClassifier.g:441:1: rule__Classifier__Group__1__Impl : ( ( rule__Classifier__NameAssignment_1 ) ) ;
     public final void rule__Classifier__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:408:1: ( ( ( rule__Classifier__NameAssignment_1 ) ) )
-            // InternalPClassifier.g:409:1: ( ( rule__Classifier__NameAssignment_1 ) )
+            // InternalPClassifier.g:445:1: ( ( ( rule__Classifier__NameAssignment_1 ) ) )
+            // InternalPClassifier.g:446:1: ( ( rule__Classifier__NameAssignment_1 ) )
             {
-            // InternalPClassifier.g:409:1: ( ( rule__Classifier__NameAssignment_1 ) )
-            // InternalPClassifier.g:410:2: ( rule__Classifier__NameAssignment_1 )
+            // InternalPClassifier.g:446:1: ( ( rule__Classifier__NameAssignment_1 ) )
+            // InternalPClassifier.g:447:2: ( rule__Classifier__NameAssignment_1 )
             {
              before(grammarAccess.getClassifierAccess().getNameAssignment_1()); 
-            // InternalPClassifier.g:411:2: ( rule__Classifier__NameAssignment_1 )
-            // InternalPClassifier.g:411:3: rule__Classifier__NameAssignment_1
+            // InternalPClassifier.g:448:2: ( rule__Classifier__NameAssignment_1 )
+            // InternalPClassifier.g:448:3: rule__Classifier__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Classifier__NameAssignment_1();
@@ -1305,14 +1434,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__2"
-    // InternalPClassifier.g:419:1: rule__Classifier__Group__2 : rule__Classifier__Group__2__Impl rule__Classifier__Group__3 ;
+    // InternalPClassifier.g:456:1: rule__Classifier__Group__2 : rule__Classifier__Group__2__Impl rule__Classifier__Group__3 ;
     public final void rule__Classifier__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:423:1: ( rule__Classifier__Group__2__Impl rule__Classifier__Group__3 )
-            // InternalPClassifier.g:424:2: rule__Classifier__Group__2__Impl rule__Classifier__Group__3
+            // InternalPClassifier.g:460:1: ( rule__Classifier__Group__2__Impl rule__Classifier__Group__3 )
+            // InternalPClassifier.g:461:2: rule__Classifier__Group__2__Impl rule__Classifier__Group__3
             {
             pushFollow(FOLLOW_6);
             rule__Classifier__Group__2__Impl();
@@ -1343,20 +1472,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__2__Impl"
-    // InternalPClassifier.g:431:1: rule__Classifier__Group__2__Impl : ( '){' ) ;
+    // InternalPClassifier.g:468:1: rule__Classifier__Group__2__Impl : ( '){' ) ;
     public final void rule__Classifier__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:435:1: ( ( '){' ) )
-            // InternalPClassifier.g:436:1: ( '){' )
+            // InternalPClassifier.g:472:1: ( ( '){' ) )
+            // InternalPClassifier.g:473:1: ( '){' )
             {
-            // InternalPClassifier.g:436:1: ( '){' )
-            // InternalPClassifier.g:437:2: '){'
+            // InternalPClassifier.g:473:1: ( '){' )
+            // InternalPClassifier.g:474:2: '){'
             {
              before(grammarAccess.getClassifierAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
 
             }
@@ -1380,14 +1509,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__3"
-    // InternalPClassifier.g:446:1: rule__Classifier__Group__3 : rule__Classifier__Group__3__Impl rule__Classifier__Group__4 ;
+    // InternalPClassifier.g:483:1: rule__Classifier__Group__3 : rule__Classifier__Group__3__Impl rule__Classifier__Group__4 ;
     public final void rule__Classifier__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:450:1: ( rule__Classifier__Group__3__Impl rule__Classifier__Group__4 )
-            // InternalPClassifier.g:451:2: rule__Classifier__Group__3__Impl rule__Classifier__Group__4
+            // InternalPClassifier.g:487:1: ( rule__Classifier__Group__3__Impl rule__Classifier__Group__4 )
+            // InternalPClassifier.g:488:2: rule__Classifier__Group__3__Impl rule__Classifier__Group__4
             {
             pushFollow(FOLLOW_7);
             rule__Classifier__Group__3__Impl();
@@ -1418,20 +1547,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__3__Impl"
-    // InternalPClassifier.g:458:1: rule__Classifier__Group__3__Impl : ( 'features' ) ;
+    // InternalPClassifier.g:495:1: rule__Classifier__Group__3__Impl : ( 'features' ) ;
     public final void rule__Classifier__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:462:1: ( ( 'features' ) )
-            // InternalPClassifier.g:463:1: ( 'features' )
+            // InternalPClassifier.g:499:1: ( ( 'features' ) )
+            // InternalPClassifier.g:500:1: ( 'features' )
             {
-            // InternalPClassifier.g:463:1: ( 'features' )
-            // InternalPClassifier.g:464:2: 'features'
+            // InternalPClassifier.g:500:1: ( 'features' )
+            // InternalPClassifier.g:501:2: 'features'
             {
              before(grammarAccess.getClassifierAccess().getFeaturesKeyword_3()); 
-            match(input,19,FOLLOW_2); 
+            match(input,20,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getFeaturesKeyword_3()); 
 
             }
@@ -1455,14 +1584,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__4"
-    // InternalPClassifier.g:473:1: rule__Classifier__Group__4 : rule__Classifier__Group__4__Impl rule__Classifier__Group__5 ;
+    // InternalPClassifier.g:510:1: rule__Classifier__Group__4 : rule__Classifier__Group__4__Impl rule__Classifier__Group__5 ;
     public final void rule__Classifier__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:477:1: ( rule__Classifier__Group__4__Impl rule__Classifier__Group__5 )
-            // InternalPClassifier.g:478:2: rule__Classifier__Group__4__Impl rule__Classifier__Group__5
+            // InternalPClassifier.g:514:1: ( rule__Classifier__Group__4__Impl rule__Classifier__Group__5 )
+            // InternalPClassifier.g:515:2: rule__Classifier__Group__4__Impl rule__Classifier__Group__5
             {
             pushFollow(FOLLOW_8);
             rule__Classifier__Group__4__Impl();
@@ -1493,20 +1622,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__4__Impl"
-    // InternalPClassifier.g:485:1: rule__Classifier__Group__4__Impl : ( ':' ) ;
+    // InternalPClassifier.g:522:1: rule__Classifier__Group__4__Impl : ( ':' ) ;
     public final void rule__Classifier__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:489:1: ( ( ':' ) )
-            // InternalPClassifier.g:490:1: ( ':' )
+            // InternalPClassifier.g:526:1: ( ( ':' ) )
+            // InternalPClassifier.g:527:1: ( ':' )
             {
-            // InternalPClassifier.g:490:1: ( ':' )
-            // InternalPClassifier.g:491:2: ':'
+            // InternalPClassifier.g:527:1: ( ':' )
+            // InternalPClassifier.g:528:2: ':'
             {
              before(grammarAccess.getClassifierAccess().getColonKeyword_4()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getColonKeyword_4()); 
 
             }
@@ -1530,14 +1659,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__5"
-    // InternalPClassifier.g:500:1: rule__Classifier__Group__5 : rule__Classifier__Group__5__Impl rule__Classifier__Group__6 ;
+    // InternalPClassifier.g:537:1: rule__Classifier__Group__5 : rule__Classifier__Group__5__Impl rule__Classifier__Group__6 ;
     public final void rule__Classifier__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:504:1: ( rule__Classifier__Group__5__Impl rule__Classifier__Group__6 )
-            // InternalPClassifier.g:505:2: rule__Classifier__Group__5__Impl rule__Classifier__Group__6
+            // InternalPClassifier.g:541:1: ( rule__Classifier__Group__5__Impl rule__Classifier__Group__6 )
+            // InternalPClassifier.g:542:2: rule__Classifier__Group__5__Impl rule__Classifier__Group__6
             {
             pushFollow(FOLLOW_9);
             rule__Classifier__Group__5__Impl();
@@ -1568,21 +1697,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__5__Impl"
-    // InternalPClassifier.g:512:1: rule__Classifier__Group__5__Impl : ( ( rule__Classifier__FeaturesAssignment_5 ) ) ;
+    // InternalPClassifier.g:549:1: rule__Classifier__Group__5__Impl : ( ( rule__Classifier__FeaturesAssignment_5 ) ) ;
     public final void rule__Classifier__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:516:1: ( ( ( rule__Classifier__FeaturesAssignment_5 ) ) )
-            // InternalPClassifier.g:517:1: ( ( rule__Classifier__FeaturesAssignment_5 ) )
+            // InternalPClassifier.g:553:1: ( ( ( rule__Classifier__FeaturesAssignment_5 ) ) )
+            // InternalPClassifier.g:554:1: ( ( rule__Classifier__FeaturesAssignment_5 ) )
             {
-            // InternalPClassifier.g:517:1: ( ( rule__Classifier__FeaturesAssignment_5 ) )
-            // InternalPClassifier.g:518:2: ( rule__Classifier__FeaturesAssignment_5 )
+            // InternalPClassifier.g:554:1: ( ( rule__Classifier__FeaturesAssignment_5 ) )
+            // InternalPClassifier.g:555:2: ( rule__Classifier__FeaturesAssignment_5 )
             {
              before(grammarAccess.getClassifierAccess().getFeaturesAssignment_5()); 
-            // InternalPClassifier.g:519:2: ( rule__Classifier__FeaturesAssignment_5 )
-            // InternalPClassifier.g:519:3: rule__Classifier__FeaturesAssignment_5
+            // InternalPClassifier.g:556:2: ( rule__Classifier__FeaturesAssignment_5 )
+            // InternalPClassifier.g:556:3: rule__Classifier__FeaturesAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__Classifier__FeaturesAssignment_5();
@@ -1615,14 +1744,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__6"
-    // InternalPClassifier.g:527:1: rule__Classifier__Group__6 : rule__Classifier__Group__6__Impl rule__Classifier__Group__7 ;
+    // InternalPClassifier.g:564:1: rule__Classifier__Group__6 : rule__Classifier__Group__6__Impl rule__Classifier__Group__7 ;
     public final void rule__Classifier__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:531:1: ( rule__Classifier__Group__6__Impl rule__Classifier__Group__7 )
-            // InternalPClassifier.g:532:2: rule__Classifier__Group__6__Impl rule__Classifier__Group__7
+            // InternalPClassifier.g:568:1: ( rule__Classifier__Group__6__Impl rule__Classifier__Group__7 )
+            // InternalPClassifier.g:569:2: rule__Classifier__Group__6__Impl rule__Classifier__Group__7
             {
             pushFollow(FOLLOW_7);
             rule__Classifier__Group__6__Impl();
@@ -1653,20 +1782,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__6__Impl"
-    // InternalPClassifier.g:539:1: rule__Classifier__Group__6__Impl : ( 'target' ) ;
+    // InternalPClassifier.g:576:1: rule__Classifier__Group__6__Impl : ( 'target' ) ;
     public final void rule__Classifier__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:543:1: ( ( 'target' ) )
-            // InternalPClassifier.g:544:1: ( 'target' )
+            // InternalPClassifier.g:580:1: ( ( 'target' ) )
+            // InternalPClassifier.g:581:1: ( 'target' )
             {
-            // InternalPClassifier.g:544:1: ( 'target' )
-            // InternalPClassifier.g:545:2: 'target'
+            // InternalPClassifier.g:581:1: ( 'target' )
+            // InternalPClassifier.g:582:2: 'target'
             {
              before(grammarAccess.getClassifierAccess().getTargetKeyword_6()); 
-            match(input,21,FOLLOW_2); 
+            match(input,22,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getTargetKeyword_6()); 
 
             }
@@ -1690,14 +1819,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__7"
-    // InternalPClassifier.g:554:1: rule__Classifier__Group__7 : rule__Classifier__Group__7__Impl rule__Classifier__Group__8 ;
+    // InternalPClassifier.g:591:1: rule__Classifier__Group__7 : rule__Classifier__Group__7__Impl rule__Classifier__Group__8 ;
     public final void rule__Classifier__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:558:1: ( rule__Classifier__Group__7__Impl rule__Classifier__Group__8 )
-            // InternalPClassifier.g:559:2: rule__Classifier__Group__7__Impl rule__Classifier__Group__8
+            // InternalPClassifier.g:595:1: ( rule__Classifier__Group__7__Impl rule__Classifier__Group__8 )
+            // InternalPClassifier.g:596:2: rule__Classifier__Group__7__Impl rule__Classifier__Group__8
             {
             pushFollow(FOLLOW_10);
             rule__Classifier__Group__7__Impl();
@@ -1728,20 +1857,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__7__Impl"
-    // InternalPClassifier.g:566:1: rule__Classifier__Group__7__Impl : ( ':' ) ;
+    // InternalPClassifier.g:603:1: rule__Classifier__Group__7__Impl : ( ':' ) ;
     public final void rule__Classifier__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:570:1: ( ( ':' ) )
-            // InternalPClassifier.g:571:1: ( ':' )
+            // InternalPClassifier.g:607:1: ( ( ':' ) )
+            // InternalPClassifier.g:608:1: ( ':' )
             {
-            // InternalPClassifier.g:571:1: ( ':' )
-            // InternalPClassifier.g:572:2: ':'
+            // InternalPClassifier.g:608:1: ( ':' )
+            // InternalPClassifier.g:609:2: ':'
             {
              before(grammarAccess.getClassifierAccess().getColonKeyword_7()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getColonKeyword_7()); 
 
             }
@@ -1765,14 +1894,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__8"
-    // InternalPClassifier.g:581:1: rule__Classifier__Group__8 : rule__Classifier__Group__8__Impl rule__Classifier__Group__9 ;
+    // InternalPClassifier.g:618:1: rule__Classifier__Group__8 : rule__Classifier__Group__8__Impl rule__Classifier__Group__9 ;
     public final void rule__Classifier__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:585:1: ( rule__Classifier__Group__8__Impl rule__Classifier__Group__9 )
-            // InternalPClassifier.g:586:2: rule__Classifier__Group__8__Impl rule__Classifier__Group__9
+            // InternalPClassifier.g:622:1: ( rule__Classifier__Group__8__Impl rule__Classifier__Group__9 )
+            // InternalPClassifier.g:623:2: rule__Classifier__Group__8__Impl rule__Classifier__Group__9
             {
             pushFollow(FOLLOW_11);
             rule__Classifier__Group__8__Impl();
@@ -1803,21 +1932,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__8__Impl"
-    // InternalPClassifier.g:593:1: rule__Classifier__Group__8__Impl : ( ( rule__Classifier__TargetAssignment_8 ) ) ;
+    // InternalPClassifier.g:630:1: rule__Classifier__Group__8__Impl : ( ( rule__Classifier__TargetAssignment_8 ) ) ;
     public final void rule__Classifier__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:597:1: ( ( ( rule__Classifier__TargetAssignment_8 ) ) )
-            // InternalPClassifier.g:598:1: ( ( rule__Classifier__TargetAssignment_8 ) )
+            // InternalPClassifier.g:634:1: ( ( ( rule__Classifier__TargetAssignment_8 ) ) )
+            // InternalPClassifier.g:635:1: ( ( rule__Classifier__TargetAssignment_8 ) )
             {
-            // InternalPClassifier.g:598:1: ( ( rule__Classifier__TargetAssignment_8 ) )
-            // InternalPClassifier.g:599:2: ( rule__Classifier__TargetAssignment_8 )
+            // InternalPClassifier.g:635:1: ( ( rule__Classifier__TargetAssignment_8 ) )
+            // InternalPClassifier.g:636:2: ( rule__Classifier__TargetAssignment_8 )
             {
              before(grammarAccess.getClassifierAccess().getTargetAssignment_8()); 
-            // InternalPClassifier.g:600:2: ( rule__Classifier__TargetAssignment_8 )
-            // InternalPClassifier.g:600:3: rule__Classifier__TargetAssignment_8
+            // InternalPClassifier.g:637:2: ( rule__Classifier__TargetAssignment_8 )
+            // InternalPClassifier.g:637:3: rule__Classifier__TargetAssignment_8
             {
             pushFollow(FOLLOW_2);
             rule__Classifier__TargetAssignment_8();
@@ -1850,14 +1979,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__9"
-    // InternalPClassifier.g:608:1: rule__Classifier__Group__9 : rule__Classifier__Group__9__Impl rule__Classifier__Group__10 ;
+    // InternalPClassifier.g:645:1: rule__Classifier__Group__9 : rule__Classifier__Group__9__Impl rule__Classifier__Group__10 ;
     public final void rule__Classifier__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:612:1: ( rule__Classifier__Group__9__Impl rule__Classifier__Group__10 )
-            // InternalPClassifier.g:613:2: rule__Classifier__Group__9__Impl rule__Classifier__Group__10
+            // InternalPClassifier.g:649:1: ( rule__Classifier__Group__9__Impl rule__Classifier__Group__10 )
+            // InternalPClassifier.g:650:2: rule__Classifier__Group__9__Impl rule__Classifier__Group__10
             {
             pushFollow(FOLLOW_7);
             rule__Classifier__Group__9__Impl();
@@ -1888,20 +2017,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__9__Impl"
-    // InternalPClassifier.g:620:1: rule__Classifier__Group__9__Impl : ( 'model' ) ;
+    // InternalPClassifier.g:657:1: rule__Classifier__Group__9__Impl : ( 'model' ) ;
     public final void rule__Classifier__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:624:1: ( ( 'model' ) )
-            // InternalPClassifier.g:625:1: ( 'model' )
+            // InternalPClassifier.g:661:1: ( ( 'model' ) )
+            // InternalPClassifier.g:662:1: ( 'model' )
             {
-            // InternalPClassifier.g:625:1: ( 'model' )
-            // InternalPClassifier.g:626:2: 'model'
+            // InternalPClassifier.g:662:1: ( 'model' )
+            // InternalPClassifier.g:663:2: 'model'
             {
              before(grammarAccess.getClassifierAccess().getModelKeyword_9()); 
-            match(input,22,FOLLOW_2); 
+            match(input,23,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getModelKeyword_9()); 
 
             }
@@ -1925,14 +2054,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__10"
-    // InternalPClassifier.g:635:1: rule__Classifier__Group__10 : rule__Classifier__Group__10__Impl rule__Classifier__Group__11 ;
+    // InternalPClassifier.g:672:1: rule__Classifier__Group__10 : rule__Classifier__Group__10__Impl rule__Classifier__Group__11 ;
     public final void rule__Classifier__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:639:1: ( rule__Classifier__Group__10__Impl rule__Classifier__Group__11 )
-            // InternalPClassifier.g:640:2: rule__Classifier__Group__10__Impl rule__Classifier__Group__11
+            // InternalPClassifier.g:676:1: ( rule__Classifier__Group__10__Impl rule__Classifier__Group__11 )
+            // InternalPClassifier.g:677:2: rule__Classifier__Group__10__Impl rule__Classifier__Group__11
             {
             pushFollow(FOLLOW_12);
             rule__Classifier__Group__10__Impl();
@@ -1963,20 +2092,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__10__Impl"
-    // InternalPClassifier.g:647:1: rule__Classifier__Group__10__Impl : ( ':' ) ;
+    // InternalPClassifier.g:684:1: rule__Classifier__Group__10__Impl : ( ':' ) ;
     public final void rule__Classifier__Group__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:651:1: ( ( ':' ) )
-            // InternalPClassifier.g:652:1: ( ':' )
+            // InternalPClassifier.g:688:1: ( ( ':' ) )
+            // InternalPClassifier.g:689:1: ( ':' )
             {
-            // InternalPClassifier.g:652:1: ( ':' )
-            // InternalPClassifier.g:653:2: ':'
+            // InternalPClassifier.g:689:1: ( ':' )
+            // InternalPClassifier.g:690:2: ':'
             {
              before(grammarAccess.getClassifierAccess().getColonKeyword_10()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getColonKeyword_10()); 
 
             }
@@ -2000,14 +2129,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__11"
-    // InternalPClassifier.g:662:1: rule__Classifier__Group__11 : rule__Classifier__Group__11__Impl rule__Classifier__Group__12 ;
+    // InternalPClassifier.g:699:1: rule__Classifier__Group__11 : rule__Classifier__Group__11__Impl rule__Classifier__Group__12 ;
     public final void rule__Classifier__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:666:1: ( rule__Classifier__Group__11__Impl rule__Classifier__Group__12 )
-            // InternalPClassifier.g:667:2: rule__Classifier__Group__11__Impl rule__Classifier__Group__12
+            // InternalPClassifier.g:703:1: ( rule__Classifier__Group__11__Impl rule__Classifier__Group__12 )
+            // InternalPClassifier.g:704:2: rule__Classifier__Group__11__Impl rule__Classifier__Group__12
             {
             pushFollow(FOLLOW_13);
             rule__Classifier__Group__11__Impl();
@@ -2038,21 +2167,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__11__Impl"
-    // InternalPClassifier.g:674:1: rule__Classifier__Group__11__Impl : ( ( rule__Classifier__ModelAssignment_11 ) ) ;
+    // InternalPClassifier.g:711:1: rule__Classifier__Group__11__Impl : ( ( rule__Classifier__ModelAssignment_11 ) ) ;
     public final void rule__Classifier__Group__11__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:678:1: ( ( ( rule__Classifier__ModelAssignment_11 ) ) )
-            // InternalPClassifier.g:679:1: ( ( rule__Classifier__ModelAssignment_11 ) )
+            // InternalPClassifier.g:715:1: ( ( ( rule__Classifier__ModelAssignment_11 ) ) )
+            // InternalPClassifier.g:716:1: ( ( rule__Classifier__ModelAssignment_11 ) )
             {
-            // InternalPClassifier.g:679:1: ( ( rule__Classifier__ModelAssignment_11 ) )
-            // InternalPClassifier.g:680:2: ( rule__Classifier__ModelAssignment_11 )
+            // InternalPClassifier.g:716:1: ( ( rule__Classifier__ModelAssignment_11 ) )
+            // InternalPClassifier.g:717:2: ( rule__Classifier__ModelAssignment_11 )
             {
              before(grammarAccess.getClassifierAccess().getModelAssignment_11()); 
-            // InternalPClassifier.g:681:2: ( rule__Classifier__ModelAssignment_11 )
-            // InternalPClassifier.g:681:3: rule__Classifier__ModelAssignment_11
+            // InternalPClassifier.g:718:2: ( rule__Classifier__ModelAssignment_11 )
+            // InternalPClassifier.g:718:3: rule__Classifier__ModelAssignment_11
             {
             pushFollow(FOLLOW_2);
             rule__Classifier__ModelAssignment_11();
@@ -2085,14 +2214,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__12"
-    // InternalPClassifier.g:689:1: rule__Classifier__Group__12 : rule__Classifier__Group__12__Impl ;
+    // InternalPClassifier.g:726:1: rule__Classifier__Group__12 : rule__Classifier__Group__12__Impl ;
     public final void rule__Classifier__Group__12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:693:1: ( rule__Classifier__Group__12__Impl )
-            // InternalPClassifier.g:694:2: rule__Classifier__Group__12__Impl
+            // InternalPClassifier.g:730:1: ( rule__Classifier__Group__12__Impl )
+            // InternalPClassifier.g:731:2: rule__Classifier__Group__12__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Classifier__Group__12__Impl();
@@ -2118,20 +2247,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__Group__12__Impl"
-    // InternalPClassifier.g:700:1: rule__Classifier__Group__12__Impl : ( '}' ) ;
+    // InternalPClassifier.g:737:1: rule__Classifier__Group__12__Impl : ( '}' ) ;
     public final void rule__Classifier__Group__12__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:704:1: ( ( '}' ) )
-            // InternalPClassifier.g:705:1: ( '}' )
+            // InternalPClassifier.g:741:1: ( ( '}' ) )
+            // InternalPClassifier.g:742:1: ( '}' )
             {
-            // InternalPClassifier.g:705:1: ( '}' )
-            // InternalPClassifier.g:706:2: '}'
+            // InternalPClassifier.g:742:1: ( '}' )
+            // InternalPClassifier.g:743:2: '}'
             {
              before(grammarAccess.getClassifierAccess().getRightCurlyBracketKeyword_12()); 
-            match(input,23,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getClassifierAccess().getRightCurlyBracketKeyword_12()); 
 
             }
@@ -2154,23 +2283,23 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Classifier__Group__12__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__0"
-    // InternalPClassifier.g:716:1: rule__Run__Group__0 : rule__Run__Group__0__Impl rule__Run__Group__1 ;
-    public final void rule__Run__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__0"
+    // InternalPClassifier.g:753:1: rule__Train__Group__0 : rule__Train__Group__0__Impl rule__Train__Group__1 ;
+    public final void rule__Train__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:720:1: ( rule__Run__Group__0__Impl rule__Run__Group__1 )
-            // InternalPClassifier.g:721:2: rule__Run__Group__0__Impl rule__Run__Group__1
+            // InternalPClassifier.g:757:1: ( rule__Train__Group__0__Impl rule__Train__Group__1 )
+            // InternalPClassifier.g:758:2: rule__Train__Group__0__Impl rule__Train__Group__1
             {
             pushFollow(FOLLOW_4);
-            rule__Run__Group__0__Impl();
+            rule__Train__Group__0__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__1();
+            rule__Train__Group__1();
 
             state._fsp--;
 
@@ -2189,25 +2318,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__0"
+    // $ANTLR end "rule__Train__Group__0"
 
 
-    // $ANTLR start "rule__Run__Group__0__Impl"
-    // InternalPClassifier.g:728:1: rule__Run__Group__0__Impl : ( 'Run(' ) ;
-    public final void rule__Run__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__0__Impl"
+    // InternalPClassifier.g:765:1: rule__Train__Group__0__Impl : ( 'Train(' ) ;
+    public final void rule__Train__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:732:1: ( ( 'Run(' ) )
-            // InternalPClassifier.g:733:1: ( 'Run(' )
+            // InternalPClassifier.g:769:1: ( ( 'Train(' ) )
+            // InternalPClassifier.g:770:1: ( 'Train(' )
             {
-            // InternalPClassifier.g:733:1: ( 'Run(' )
-            // InternalPClassifier.g:734:2: 'Run('
+            // InternalPClassifier.g:770:1: ( 'Train(' )
+            // InternalPClassifier.g:771:2: 'Train('
             {
-             before(grammarAccess.getRunAccess().getRunKeyword_0()); 
-            match(input,24,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getRunKeyword_0()); 
+             before(grammarAccess.getTrainAccess().getTrainKeyword_0()); 
+            match(input,25,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getTrainKeyword_0()); 
 
             }
 
@@ -2226,26 +2355,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__0__Impl"
+    // $ANTLR end "rule__Train__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__1"
-    // InternalPClassifier.g:743:1: rule__Run__Group__1 : rule__Run__Group__1__Impl rule__Run__Group__2 ;
-    public final void rule__Run__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__1"
+    // InternalPClassifier.g:780:1: rule__Train__Group__1 : rule__Train__Group__1__Impl rule__Train__Group__2 ;
+    public final void rule__Train__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:747:1: ( rule__Run__Group__1__Impl rule__Run__Group__2 )
-            // InternalPClassifier.g:748:2: rule__Run__Group__1__Impl rule__Run__Group__2
+            // InternalPClassifier.g:784:1: ( rule__Train__Group__1__Impl rule__Train__Group__2 )
+            // InternalPClassifier.g:785:2: rule__Train__Group__1__Impl rule__Train__Group__2
             {
             pushFollow(FOLLOW_5);
-            rule__Run__Group__1__Impl();
+            rule__Train__Group__1__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__2();
+            rule__Train__Group__2();
 
             state._fsp--;
 
@@ -2264,35 +2393,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__1"
+    // $ANTLR end "rule__Train__Group__1"
 
 
-    // $ANTLR start "rule__Run__Group__1__Impl"
-    // InternalPClassifier.g:755:1: rule__Run__Group__1__Impl : ( ( rule__Run__NameAssignment_1 ) ) ;
-    public final void rule__Run__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__1__Impl"
+    // InternalPClassifier.g:792:1: rule__Train__Group__1__Impl : ( ( rule__Train__NameAssignment_1 ) ) ;
+    public final void rule__Train__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:759:1: ( ( ( rule__Run__NameAssignment_1 ) ) )
-            // InternalPClassifier.g:760:1: ( ( rule__Run__NameAssignment_1 ) )
+            // InternalPClassifier.g:796:1: ( ( ( rule__Train__NameAssignment_1 ) ) )
+            // InternalPClassifier.g:797:1: ( ( rule__Train__NameAssignment_1 ) )
             {
-            // InternalPClassifier.g:760:1: ( ( rule__Run__NameAssignment_1 ) )
-            // InternalPClassifier.g:761:2: ( rule__Run__NameAssignment_1 )
+            // InternalPClassifier.g:797:1: ( ( rule__Train__NameAssignment_1 ) )
+            // InternalPClassifier.g:798:2: ( rule__Train__NameAssignment_1 )
             {
-             before(grammarAccess.getRunAccess().getNameAssignment_1()); 
-            // InternalPClassifier.g:762:2: ( rule__Run__NameAssignment_1 )
-            // InternalPClassifier.g:762:3: rule__Run__NameAssignment_1
+             before(grammarAccess.getTrainAccess().getNameAssignment_1()); 
+            // InternalPClassifier.g:799:2: ( rule__Train__NameAssignment_1 )
+            // InternalPClassifier.g:799:3: rule__Train__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__Run__NameAssignment_1();
+            rule__Train__NameAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getRunAccess().getNameAssignment_1()); 
+             after(grammarAccess.getTrainAccess().getNameAssignment_1()); 
 
             }
 
@@ -2311,26 +2440,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__1__Impl"
+    // $ANTLR end "rule__Train__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__2"
-    // InternalPClassifier.g:770:1: rule__Run__Group__2 : rule__Run__Group__2__Impl rule__Run__Group__3 ;
-    public final void rule__Run__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__2"
+    // InternalPClassifier.g:807:1: rule__Train__Group__2 : rule__Train__Group__2__Impl rule__Train__Group__3 ;
+    public final void rule__Train__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:774:1: ( rule__Run__Group__2__Impl rule__Run__Group__3 )
-            // InternalPClassifier.g:775:2: rule__Run__Group__2__Impl rule__Run__Group__3
+            // InternalPClassifier.g:811:1: ( rule__Train__Group__2__Impl rule__Train__Group__3 )
+            // InternalPClassifier.g:812:2: rule__Train__Group__2__Impl rule__Train__Group__3
             {
             pushFollow(FOLLOW_14);
-            rule__Run__Group__2__Impl();
+            rule__Train__Group__2__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__3();
+            rule__Train__Group__3();
 
             state._fsp--;
 
@@ -2349,25 +2478,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__2"
+    // $ANTLR end "rule__Train__Group__2"
 
 
-    // $ANTLR start "rule__Run__Group__2__Impl"
-    // InternalPClassifier.g:782:1: rule__Run__Group__2__Impl : ( '){' ) ;
-    public final void rule__Run__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__2__Impl"
+    // InternalPClassifier.g:819:1: rule__Train__Group__2__Impl : ( '){' ) ;
+    public final void rule__Train__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:786:1: ( ( '){' ) )
-            // InternalPClassifier.g:787:1: ( '){' )
+            // InternalPClassifier.g:823:1: ( ( '){' ) )
+            // InternalPClassifier.g:824:1: ( '){' )
             {
-            // InternalPClassifier.g:787:1: ( '){' )
-            // InternalPClassifier.g:788:2: '){'
+            // InternalPClassifier.g:824:1: ( '){' )
+            // InternalPClassifier.g:825:2: '){'
             {
-             before(grammarAccess.getRunAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
-            match(input,18,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
+             before(grammarAccess.getTrainAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
+            match(input,19,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
 
             }
 
@@ -2386,26 +2515,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__2__Impl"
+    // $ANTLR end "rule__Train__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__3"
-    // InternalPClassifier.g:797:1: rule__Run__Group__3 : rule__Run__Group__3__Impl rule__Run__Group__4 ;
-    public final void rule__Run__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__3"
+    // InternalPClassifier.g:834:1: rule__Train__Group__3 : rule__Train__Group__3__Impl rule__Train__Group__4 ;
+    public final void rule__Train__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:801:1: ( rule__Run__Group__3__Impl rule__Run__Group__4 )
-            // InternalPClassifier.g:802:2: rule__Run__Group__3__Impl rule__Run__Group__4
+            // InternalPClassifier.g:838:1: ( rule__Train__Group__3__Impl rule__Train__Group__4 )
+            // InternalPClassifier.g:839:2: rule__Train__Group__3__Impl rule__Train__Group__4
             {
             pushFollow(FOLLOW_7);
-            rule__Run__Group__3__Impl();
+            rule__Train__Group__3__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__4();
+            rule__Train__Group__4();
 
             state._fsp--;
 
@@ -2424,25 +2553,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__3"
+    // $ANTLR end "rule__Train__Group__3"
 
 
-    // $ANTLR start "rule__Run__Group__3__Impl"
-    // InternalPClassifier.g:809:1: rule__Run__Group__3__Impl : ( 'dataset' ) ;
-    public final void rule__Run__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__3__Impl"
+    // InternalPClassifier.g:846:1: rule__Train__Group__3__Impl : ( 'dataset' ) ;
+    public final void rule__Train__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:813:1: ( ( 'dataset' ) )
-            // InternalPClassifier.g:814:1: ( 'dataset' )
+            // InternalPClassifier.g:850:1: ( ( 'dataset' ) )
+            // InternalPClassifier.g:851:1: ( 'dataset' )
             {
-            // InternalPClassifier.g:814:1: ( 'dataset' )
-            // InternalPClassifier.g:815:2: 'dataset'
+            // InternalPClassifier.g:851:1: ( 'dataset' )
+            // InternalPClassifier.g:852:2: 'dataset'
             {
-             before(grammarAccess.getRunAccess().getDatasetKeyword_3()); 
-            match(input,25,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getDatasetKeyword_3()); 
+             before(grammarAccess.getTrainAccess().getDatasetKeyword_3()); 
+            match(input,26,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getDatasetKeyword_3()); 
 
             }
 
@@ -2461,26 +2590,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__3__Impl"
+    // $ANTLR end "rule__Train__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__4"
-    // InternalPClassifier.g:824:1: rule__Run__Group__4 : rule__Run__Group__4__Impl rule__Run__Group__5 ;
-    public final void rule__Run__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__4"
+    // InternalPClassifier.g:861:1: rule__Train__Group__4 : rule__Train__Group__4__Impl rule__Train__Group__5 ;
+    public final void rule__Train__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:828:1: ( rule__Run__Group__4__Impl rule__Run__Group__5 )
-            // InternalPClassifier.g:829:2: rule__Run__Group__4__Impl rule__Run__Group__5
+            // InternalPClassifier.g:865:1: ( rule__Train__Group__4__Impl rule__Train__Group__5 )
+            // InternalPClassifier.g:866:2: rule__Train__Group__4__Impl rule__Train__Group__5
             {
             pushFollow(FOLLOW_10);
-            rule__Run__Group__4__Impl();
+            rule__Train__Group__4__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__5();
+            rule__Train__Group__5();
 
             state._fsp--;
 
@@ -2499,25 +2628,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__4"
+    // $ANTLR end "rule__Train__Group__4"
 
 
-    // $ANTLR start "rule__Run__Group__4__Impl"
-    // InternalPClassifier.g:836:1: rule__Run__Group__4__Impl : ( ':' ) ;
-    public final void rule__Run__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__4__Impl"
+    // InternalPClassifier.g:873:1: rule__Train__Group__4__Impl : ( ':' ) ;
+    public final void rule__Train__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:840:1: ( ( ':' ) )
-            // InternalPClassifier.g:841:1: ( ':' )
+            // InternalPClassifier.g:877:1: ( ( ':' ) )
+            // InternalPClassifier.g:878:1: ( ':' )
             {
-            // InternalPClassifier.g:841:1: ( ':' )
-            // InternalPClassifier.g:842:2: ':'
+            // InternalPClassifier.g:878:1: ( ':' )
+            // InternalPClassifier.g:879:2: ':'
             {
-             before(grammarAccess.getRunAccess().getColonKeyword_4()); 
-            match(input,20,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getColonKeyword_4()); 
+             before(grammarAccess.getTrainAccess().getColonKeyword_4()); 
+            match(input,21,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getColonKeyword_4()); 
 
             }
 
@@ -2536,26 +2665,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__4__Impl"
+    // $ANTLR end "rule__Train__Group__4__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__5"
-    // InternalPClassifier.g:851:1: rule__Run__Group__5 : rule__Run__Group__5__Impl rule__Run__Group__6 ;
-    public final void rule__Run__Group__5() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__5"
+    // InternalPClassifier.g:888:1: rule__Train__Group__5 : rule__Train__Group__5__Impl rule__Train__Group__6 ;
+    public final void rule__Train__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:855:1: ( rule__Run__Group__5__Impl rule__Run__Group__6 )
-            // InternalPClassifier.g:856:2: rule__Run__Group__5__Impl rule__Run__Group__6
+            // InternalPClassifier.g:892:1: ( rule__Train__Group__5__Impl rule__Train__Group__6 )
+            // InternalPClassifier.g:893:2: rule__Train__Group__5__Impl rule__Train__Group__6
             {
             pushFollow(FOLLOW_15);
-            rule__Run__Group__5__Impl();
+            rule__Train__Group__5__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__6();
+            rule__Train__Group__6();
 
             state._fsp--;
 
@@ -2574,35 +2703,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__5"
+    // $ANTLR end "rule__Train__Group__5"
 
 
-    // $ANTLR start "rule__Run__Group__5__Impl"
-    // InternalPClassifier.g:863:1: rule__Run__Group__5__Impl : ( ( rule__Run__DatasetAssignment_5 ) ) ;
-    public final void rule__Run__Group__5__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__5__Impl"
+    // InternalPClassifier.g:900:1: rule__Train__Group__5__Impl : ( ( rule__Train__DatasetAssignment_5 ) ) ;
+    public final void rule__Train__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:867:1: ( ( ( rule__Run__DatasetAssignment_5 ) ) )
-            // InternalPClassifier.g:868:1: ( ( rule__Run__DatasetAssignment_5 ) )
+            // InternalPClassifier.g:904:1: ( ( ( rule__Train__DatasetAssignment_5 ) ) )
+            // InternalPClassifier.g:905:1: ( ( rule__Train__DatasetAssignment_5 ) )
             {
-            // InternalPClassifier.g:868:1: ( ( rule__Run__DatasetAssignment_5 ) )
-            // InternalPClassifier.g:869:2: ( rule__Run__DatasetAssignment_5 )
+            // InternalPClassifier.g:905:1: ( ( rule__Train__DatasetAssignment_5 ) )
+            // InternalPClassifier.g:906:2: ( rule__Train__DatasetAssignment_5 )
             {
-             before(grammarAccess.getRunAccess().getDatasetAssignment_5()); 
-            // InternalPClassifier.g:870:2: ( rule__Run__DatasetAssignment_5 )
-            // InternalPClassifier.g:870:3: rule__Run__DatasetAssignment_5
+             before(grammarAccess.getTrainAccess().getDatasetAssignment_5()); 
+            // InternalPClassifier.g:907:2: ( rule__Train__DatasetAssignment_5 )
+            // InternalPClassifier.g:907:3: rule__Train__DatasetAssignment_5
             {
             pushFollow(FOLLOW_2);
-            rule__Run__DatasetAssignment_5();
+            rule__Train__DatasetAssignment_5();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getRunAccess().getDatasetAssignment_5()); 
+             after(grammarAccess.getTrainAccess().getDatasetAssignment_5()); 
 
             }
 
@@ -2621,26 +2750,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__5__Impl"
+    // $ANTLR end "rule__Train__Group__5__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__6"
-    // InternalPClassifier.g:878:1: rule__Run__Group__6 : rule__Run__Group__6__Impl rule__Run__Group__7 ;
-    public final void rule__Run__Group__6() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__6"
+    // InternalPClassifier.g:915:1: rule__Train__Group__6 : rule__Train__Group__6__Impl rule__Train__Group__7 ;
+    public final void rule__Train__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:882:1: ( rule__Run__Group__6__Impl rule__Run__Group__7 )
-            // InternalPClassifier.g:883:2: rule__Run__Group__6__Impl rule__Run__Group__7
+            // InternalPClassifier.g:919:1: ( rule__Train__Group__6__Impl rule__Train__Group__7 )
+            // InternalPClassifier.g:920:2: rule__Train__Group__6__Impl rule__Train__Group__7
             {
             pushFollow(FOLLOW_7);
-            rule__Run__Group__6__Impl();
+            rule__Train__Group__6__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__7();
+            rule__Train__Group__7();
 
             state._fsp--;
 
@@ -2659,25 +2788,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__6"
+    // $ANTLR end "rule__Train__Group__6"
 
 
-    // $ANTLR start "rule__Run__Group__6__Impl"
-    // InternalPClassifier.g:890:1: rule__Run__Group__6__Impl : ( 'split' ) ;
-    public final void rule__Run__Group__6__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__6__Impl"
+    // InternalPClassifier.g:927:1: rule__Train__Group__6__Impl : ( 'split' ) ;
+    public final void rule__Train__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:894:1: ( ( 'split' ) )
-            // InternalPClassifier.g:895:1: ( 'split' )
+            // InternalPClassifier.g:931:1: ( ( 'split' ) )
+            // InternalPClassifier.g:932:1: ( 'split' )
             {
-            // InternalPClassifier.g:895:1: ( 'split' )
-            // InternalPClassifier.g:896:2: 'split'
+            // InternalPClassifier.g:932:1: ( 'split' )
+            // InternalPClassifier.g:933:2: 'split'
             {
-             before(grammarAccess.getRunAccess().getSplitKeyword_6()); 
-            match(input,26,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getSplitKeyword_6()); 
+             before(grammarAccess.getTrainAccess().getSplitKeyword_6()); 
+            match(input,27,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getSplitKeyword_6()); 
 
             }
 
@@ -2696,26 +2825,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__6__Impl"
+    // $ANTLR end "rule__Train__Group__6__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__7"
-    // InternalPClassifier.g:905:1: rule__Run__Group__7 : rule__Run__Group__7__Impl rule__Run__Group__8 ;
-    public final void rule__Run__Group__7() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__7"
+    // InternalPClassifier.g:942:1: rule__Train__Group__7 : rule__Train__Group__7__Impl rule__Train__Group__8 ;
+    public final void rule__Train__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:909:1: ( rule__Run__Group__7__Impl rule__Run__Group__8 )
-            // InternalPClassifier.g:910:2: rule__Run__Group__7__Impl rule__Run__Group__8
+            // InternalPClassifier.g:946:1: ( rule__Train__Group__7__Impl rule__Train__Group__8 )
+            // InternalPClassifier.g:947:2: rule__Train__Group__7__Impl rule__Train__Group__8
             {
             pushFollow(FOLLOW_16);
-            rule__Run__Group__7__Impl();
+            rule__Train__Group__7__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__8();
+            rule__Train__Group__8();
 
             state._fsp--;
 
@@ -2734,25 +2863,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__7"
+    // $ANTLR end "rule__Train__Group__7"
 
 
-    // $ANTLR start "rule__Run__Group__7__Impl"
-    // InternalPClassifier.g:917:1: rule__Run__Group__7__Impl : ( ':' ) ;
-    public final void rule__Run__Group__7__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__7__Impl"
+    // InternalPClassifier.g:954:1: rule__Train__Group__7__Impl : ( ':' ) ;
+    public final void rule__Train__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:921:1: ( ( ':' ) )
-            // InternalPClassifier.g:922:1: ( ':' )
+            // InternalPClassifier.g:958:1: ( ( ':' ) )
+            // InternalPClassifier.g:959:1: ( ':' )
             {
-            // InternalPClassifier.g:922:1: ( ':' )
-            // InternalPClassifier.g:923:2: ':'
+            // InternalPClassifier.g:959:1: ( ':' )
+            // InternalPClassifier.g:960:2: ':'
             {
-             before(grammarAccess.getRunAccess().getColonKeyword_7()); 
-            match(input,20,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getColonKeyword_7()); 
+             before(grammarAccess.getTrainAccess().getColonKeyword_7()); 
+            match(input,21,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getColonKeyword_7()); 
 
             }
 
@@ -2771,261 +2900,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__7__Impl"
+    // $ANTLR end "rule__Train__Group__7__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__8"
-    // InternalPClassifier.g:932:1: rule__Run__Group__8 : rule__Run__Group__8__Impl rule__Run__Group__9 ;
-    public final void rule__Run__Group__8() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:936:1: ( rule__Run__Group__8__Impl rule__Run__Group__9 )
-            // InternalPClassifier.g:937:2: rule__Run__Group__8__Impl rule__Run__Group__9
-            {
-            pushFollow(FOLLOW_17);
-            rule__Run__Group__8__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Run__Group__9();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__8"
-
-
-    // $ANTLR start "rule__Run__Group__8__Impl"
-    // InternalPClassifier.g:944:1: rule__Run__Group__8__Impl : ( ( rule__Run__SplitAssignment_8 ) ) ;
-    public final void rule__Run__Group__8__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__8"
+    // InternalPClassifier.g:969:1: rule__Train__Group__8 : rule__Train__Group__8__Impl rule__Train__Group__9 ;
+    public final void rule__Train__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:948:1: ( ( ( rule__Run__SplitAssignment_8 ) ) )
-            // InternalPClassifier.g:949:1: ( ( rule__Run__SplitAssignment_8 ) )
-            {
-            // InternalPClassifier.g:949:1: ( ( rule__Run__SplitAssignment_8 ) )
-            // InternalPClassifier.g:950:2: ( rule__Run__SplitAssignment_8 )
-            {
-             before(grammarAccess.getRunAccess().getSplitAssignment_8()); 
-            // InternalPClassifier.g:951:2: ( rule__Run__SplitAssignment_8 )
-            // InternalPClassifier.g:951:3: rule__Run__SplitAssignment_8
-            {
-            pushFollow(FOLLOW_2);
-            rule__Run__SplitAssignment_8();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getRunAccess().getSplitAssignment_8()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__8__Impl"
-
-
-    // $ANTLR start "rule__Run__Group__9"
-    // InternalPClassifier.g:959:1: rule__Run__Group__9 : rule__Run__Group__9__Impl rule__Run__Group__10 ;
-    public final void rule__Run__Group__9() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:963:1: ( rule__Run__Group__9__Impl rule__Run__Group__10 )
-            // InternalPClassifier.g:964:2: rule__Run__Group__9__Impl rule__Run__Group__10
-            {
-            pushFollow(FOLLOW_7);
-            rule__Run__Group__9__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Run__Group__10();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__9"
-
-
-    // $ANTLR start "rule__Run__Group__9__Impl"
-    // InternalPClassifier.g:971:1: rule__Run__Group__9__Impl : ( 'evaluations' ) ;
-    public final void rule__Run__Group__9__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:975:1: ( ( 'evaluations' ) )
-            // InternalPClassifier.g:976:1: ( 'evaluations' )
-            {
-            // InternalPClassifier.g:976:1: ( 'evaluations' )
-            // InternalPClassifier.g:977:2: 'evaluations'
-            {
-             before(grammarAccess.getRunAccess().getEvaluationsKeyword_9()); 
-            match(input,27,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getEvaluationsKeyword_9()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__9__Impl"
-
-
-    // $ANTLR start "rule__Run__Group__10"
-    // InternalPClassifier.g:986:1: rule__Run__Group__10 : rule__Run__Group__10__Impl rule__Run__Group__11 ;
-    public final void rule__Run__Group__10() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:990:1: ( rule__Run__Group__10__Impl rule__Run__Group__11 )
-            // InternalPClassifier.g:991:2: rule__Run__Group__10__Impl rule__Run__Group__11
-            {
-            pushFollow(FOLLOW_18);
-            rule__Run__Group__10__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__Run__Group__11();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__10"
-
-
-    // $ANTLR start "rule__Run__Group__10__Impl"
-    // InternalPClassifier.g:998:1: rule__Run__Group__10__Impl : ( ':' ) ;
-    public final void rule__Run__Group__10__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:1002:1: ( ( ':' ) )
-            // InternalPClassifier.g:1003:1: ( ':' )
-            {
-            // InternalPClassifier.g:1003:1: ( ':' )
-            // InternalPClassifier.g:1004:2: ':'
-            {
-             before(grammarAccess.getRunAccess().getColonKeyword_10()); 
-            match(input,20,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getColonKeyword_10()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Run__Group__10__Impl"
-
-
-    // $ANTLR start "rule__Run__Group__11"
-    // InternalPClassifier.g:1013:1: rule__Run__Group__11 : rule__Run__Group__11__Impl rule__Run__Group__12 ;
-    public final void rule__Run__Group__11() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalPClassifier.g:1017:1: ( rule__Run__Group__11__Impl rule__Run__Group__12 )
-            // InternalPClassifier.g:1018:2: rule__Run__Group__11__Impl rule__Run__Group__12
+            // InternalPClassifier.g:973:1: ( rule__Train__Group__8__Impl rule__Train__Group__9 )
+            // InternalPClassifier.g:974:2: rule__Train__Group__8__Impl rule__Train__Group__9
             {
             pushFollow(FOLLOW_13);
-            rule__Run__Group__11__Impl();
+            rule__Train__Group__8__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Run__Group__12();
+            rule__Train__Group__9();
 
             state._fsp--;
 
@@ -3044,35 +2938,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__11"
+    // $ANTLR end "rule__Train__Group__8"
 
 
-    // $ANTLR start "rule__Run__Group__11__Impl"
-    // InternalPClassifier.g:1025:1: rule__Run__Group__11__Impl : ( ( rule__Run__EvaluationsAssignment_11 ) ) ;
-    public final void rule__Run__Group__11__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__8__Impl"
+    // InternalPClassifier.g:981:1: rule__Train__Group__8__Impl : ( ( rule__Train__SplitAssignment_8 ) ) ;
+    public final void rule__Train__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1029:1: ( ( ( rule__Run__EvaluationsAssignment_11 ) ) )
-            // InternalPClassifier.g:1030:1: ( ( rule__Run__EvaluationsAssignment_11 ) )
+            // InternalPClassifier.g:985:1: ( ( ( rule__Train__SplitAssignment_8 ) ) )
+            // InternalPClassifier.g:986:1: ( ( rule__Train__SplitAssignment_8 ) )
             {
-            // InternalPClassifier.g:1030:1: ( ( rule__Run__EvaluationsAssignment_11 ) )
-            // InternalPClassifier.g:1031:2: ( rule__Run__EvaluationsAssignment_11 )
+            // InternalPClassifier.g:986:1: ( ( rule__Train__SplitAssignment_8 ) )
+            // InternalPClassifier.g:987:2: ( rule__Train__SplitAssignment_8 )
             {
-             before(grammarAccess.getRunAccess().getEvaluationsAssignment_11()); 
-            // InternalPClassifier.g:1032:2: ( rule__Run__EvaluationsAssignment_11 )
-            // InternalPClassifier.g:1032:3: rule__Run__EvaluationsAssignment_11
+             before(grammarAccess.getTrainAccess().getSplitAssignment_8()); 
+            // InternalPClassifier.g:988:2: ( rule__Train__SplitAssignment_8 )
+            // InternalPClassifier.g:988:3: rule__Train__SplitAssignment_8
             {
             pushFollow(FOLLOW_2);
-            rule__Run__EvaluationsAssignment_11();
+            rule__Train__SplitAssignment_8();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getRunAccess().getEvaluationsAssignment_11()); 
+             after(grammarAccess.getTrainAccess().getSplitAssignment_8()); 
 
             }
 
@@ -3091,21 +2985,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__11__Impl"
+    // $ANTLR end "rule__Train__Group__8__Impl"
 
 
-    // $ANTLR start "rule__Run__Group__12"
-    // InternalPClassifier.g:1040:1: rule__Run__Group__12 : rule__Run__Group__12__Impl ;
-    public final void rule__Run__Group__12() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__9"
+    // InternalPClassifier.g:996:1: rule__Train__Group__9 : rule__Train__Group__9__Impl ;
+    public final void rule__Train__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1044:1: ( rule__Run__Group__12__Impl )
-            // InternalPClassifier.g:1045:2: rule__Run__Group__12__Impl
+            // InternalPClassifier.g:1000:1: ( rule__Train__Group__9__Impl )
+            // InternalPClassifier.g:1001:2: rule__Train__Group__9__Impl
             {
             pushFollow(FOLLOW_2);
-            rule__Run__Group__12__Impl();
+            rule__Train__Group__9__Impl();
 
             state._fsp--;
 
@@ -3124,25 +3018,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__12"
+    // $ANTLR end "rule__Train__Group__9"
 
 
-    // $ANTLR start "rule__Run__Group__12__Impl"
-    // InternalPClassifier.g:1051:1: rule__Run__Group__12__Impl : ( '}' ) ;
-    public final void rule__Run__Group__12__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Train__Group__9__Impl"
+    // InternalPClassifier.g:1007:1: rule__Train__Group__9__Impl : ( '}' ) ;
+    public final void rule__Train__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1055:1: ( ( '}' ) )
-            // InternalPClassifier.g:1056:1: ( '}' )
+            // InternalPClassifier.g:1011:1: ( ( '}' ) )
+            // InternalPClassifier.g:1012:1: ( '}' )
             {
-            // InternalPClassifier.g:1056:1: ( '}' )
-            // InternalPClassifier.g:1057:2: '}'
+            // InternalPClassifier.g:1012:1: ( '}' )
+            // InternalPClassifier.g:1013:2: '}'
             {
-             before(grammarAccess.getRunAccess().getRightCurlyBracketKeyword_12()); 
-            match(input,23,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getRightCurlyBracketKeyword_12()); 
+             before(grammarAccess.getTrainAccess().getRightCurlyBracketKeyword_9()); 
+            match(input,24,FOLLOW_2); 
+             after(grammarAccess.getTrainAccess().getRightCurlyBracketKeyword_9()); 
 
             }
 
@@ -3161,18 +3055,558 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__Group__12__Impl"
+    // $ANTLR end "rule__Train__Group__9__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__0"
+    // InternalPClassifier.g:1023:1: rule__Eval__Group__0 : rule__Eval__Group__0__Impl rule__Eval__Group__1 ;
+    public final void rule__Eval__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1027:1: ( rule__Eval__Group__0__Impl rule__Eval__Group__1 )
+            // InternalPClassifier.g:1028:2: rule__Eval__Group__0__Impl rule__Eval__Group__1
+            {
+            pushFollow(FOLLOW_4);
+            rule__Eval__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__0"
+
+
+    // $ANTLR start "rule__Eval__Group__0__Impl"
+    // InternalPClassifier.g:1035:1: rule__Eval__Group__0__Impl : ( 'Eval(' ) ;
+    public final void rule__Eval__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1039:1: ( ( 'Eval(' ) )
+            // InternalPClassifier.g:1040:1: ( 'Eval(' )
+            {
+            // InternalPClassifier.g:1040:1: ( 'Eval(' )
+            // InternalPClassifier.g:1041:2: 'Eval('
+            {
+             before(grammarAccess.getEvalAccess().getEvalKeyword_0()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getEvalKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__0__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__1"
+    // InternalPClassifier.g:1050:1: rule__Eval__Group__1 : rule__Eval__Group__1__Impl rule__Eval__Group__2 ;
+    public final void rule__Eval__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1054:1: ( rule__Eval__Group__1__Impl rule__Eval__Group__2 )
+            // InternalPClassifier.g:1055:2: rule__Eval__Group__1__Impl rule__Eval__Group__2
+            {
+            pushFollow(FOLLOW_5);
+            rule__Eval__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__1"
+
+
+    // $ANTLR start "rule__Eval__Group__1__Impl"
+    // InternalPClassifier.g:1062:1: rule__Eval__Group__1__Impl : ( ( rule__Eval__NameAssignment_1 ) ) ;
+    public final void rule__Eval__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1066:1: ( ( ( rule__Eval__NameAssignment_1 ) ) )
+            // InternalPClassifier.g:1067:1: ( ( rule__Eval__NameAssignment_1 ) )
+            {
+            // InternalPClassifier.g:1067:1: ( ( rule__Eval__NameAssignment_1 ) )
+            // InternalPClassifier.g:1068:2: ( rule__Eval__NameAssignment_1 )
+            {
+             before(grammarAccess.getEvalAccess().getNameAssignment_1()); 
+            // InternalPClassifier.g:1069:2: ( rule__Eval__NameAssignment_1 )
+            // InternalPClassifier.g:1069:3: rule__Eval__NameAssignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__Eval__NameAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEvalAccess().getNameAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__1__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__2"
+    // InternalPClassifier.g:1077:1: rule__Eval__Group__2 : rule__Eval__Group__2__Impl rule__Eval__Group__3 ;
+    public final void rule__Eval__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1081:1: ( rule__Eval__Group__2__Impl rule__Eval__Group__3 )
+            // InternalPClassifier.g:1082:2: rule__Eval__Group__2__Impl rule__Eval__Group__3
+            {
+            pushFollow(FOLLOW_17);
+            rule__Eval__Group__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__2"
+
+
+    // $ANTLR start "rule__Eval__Group__2__Impl"
+    // InternalPClassifier.g:1089:1: rule__Eval__Group__2__Impl : ( '){' ) ;
+    public final void rule__Eval__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1093:1: ( ( '){' ) )
+            // InternalPClassifier.g:1094:1: ( '){' )
+            {
+            // InternalPClassifier.g:1094:1: ( '){' )
+            // InternalPClassifier.g:1095:2: '){'
+            {
+             before(grammarAccess.getEvalAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
+            match(input,19,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__2__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__3"
+    // InternalPClassifier.g:1104:1: rule__Eval__Group__3 : rule__Eval__Group__3__Impl rule__Eval__Group__4 ;
+    public final void rule__Eval__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1108:1: ( rule__Eval__Group__3__Impl rule__Eval__Group__4 )
+            // InternalPClassifier.g:1109:2: rule__Eval__Group__3__Impl rule__Eval__Group__4
+            {
+            pushFollow(FOLLOW_7);
+            rule__Eval__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__4();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__3"
+
+
+    // $ANTLR start "rule__Eval__Group__3__Impl"
+    // InternalPClassifier.g:1116:1: rule__Eval__Group__3__Impl : ( 'evaluations' ) ;
+    public final void rule__Eval__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1120:1: ( ( 'evaluations' ) )
+            // InternalPClassifier.g:1121:1: ( 'evaluations' )
+            {
+            // InternalPClassifier.g:1121:1: ( 'evaluations' )
+            // InternalPClassifier.g:1122:2: 'evaluations'
+            {
+             before(grammarAccess.getEvalAccess().getEvaluationsKeyword_3()); 
+            match(input,29,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getEvaluationsKeyword_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__3__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__4"
+    // InternalPClassifier.g:1131:1: rule__Eval__Group__4 : rule__Eval__Group__4__Impl rule__Eval__Group__5 ;
+    public final void rule__Eval__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1135:1: ( rule__Eval__Group__4__Impl rule__Eval__Group__5 )
+            // InternalPClassifier.g:1136:2: rule__Eval__Group__4__Impl rule__Eval__Group__5
+            {
+            pushFollow(FOLLOW_18);
+            rule__Eval__Group__4__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__5();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__4"
+
+
+    // $ANTLR start "rule__Eval__Group__4__Impl"
+    // InternalPClassifier.g:1143:1: rule__Eval__Group__4__Impl : ( ':' ) ;
+    public final void rule__Eval__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1147:1: ( ( ':' ) )
+            // InternalPClassifier.g:1148:1: ( ':' )
+            {
+            // InternalPClassifier.g:1148:1: ( ':' )
+            // InternalPClassifier.g:1149:2: ':'
+            {
+             before(grammarAccess.getEvalAccess().getColonKeyword_4()); 
+            match(input,21,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getColonKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__4__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__5"
+    // InternalPClassifier.g:1158:1: rule__Eval__Group__5 : rule__Eval__Group__5__Impl rule__Eval__Group__6 ;
+    public final void rule__Eval__Group__5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1162:1: ( rule__Eval__Group__5__Impl rule__Eval__Group__6 )
+            // InternalPClassifier.g:1163:2: rule__Eval__Group__5__Impl rule__Eval__Group__6
+            {
+            pushFollow(FOLLOW_13);
+            rule__Eval__Group__5__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__6();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__5"
+
+
+    // $ANTLR start "rule__Eval__Group__5__Impl"
+    // InternalPClassifier.g:1170:1: rule__Eval__Group__5__Impl : ( ( rule__Eval__EvaluationsAssignment_5 ) ) ;
+    public final void rule__Eval__Group__5__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1174:1: ( ( ( rule__Eval__EvaluationsAssignment_5 ) ) )
+            // InternalPClassifier.g:1175:1: ( ( rule__Eval__EvaluationsAssignment_5 ) )
+            {
+            // InternalPClassifier.g:1175:1: ( ( rule__Eval__EvaluationsAssignment_5 ) )
+            // InternalPClassifier.g:1176:2: ( rule__Eval__EvaluationsAssignment_5 )
+            {
+             before(grammarAccess.getEvalAccess().getEvaluationsAssignment_5()); 
+            // InternalPClassifier.g:1177:2: ( rule__Eval__EvaluationsAssignment_5 )
+            // InternalPClassifier.g:1177:3: rule__Eval__EvaluationsAssignment_5
+            {
+            pushFollow(FOLLOW_2);
+            rule__Eval__EvaluationsAssignment_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEvalAccess().getEvaluationsAssignment_5()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__5__Impl"
+
+
+    // $ANTLR start "rule__Eval__Group__6"
+    // InternalPClassifier.g:1185:1: rule__Eval__Group__6 : rule__Eval__Group__6__Impl ;
+    public final void rule__Eval__Group__6() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1189:1: ( rule__Eval__Group__6__Impl )
+            // InternalPClassifier.g:1190:2: rule__Eval__Group__6__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Eval__Group__6__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__6"
+
+
+    // $ANTLR start "rule__Eval__Group__6__Impl"
+    // InternalPClassifier.g:1196:1: rule__Eval__Group__6__Impl : ( '}' ) ;
+    public final void rule__Eval__Group__6__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:1200:1: ( ( '}' ) )
+            // InternalPClassifier.g:1201:1: ( '}' )
+            {
+            // InternalPClassifier.g:1201:1: ( '}' )
+            // InternalPClassifier.g:1202:2: '}'
+            {
+             before(grammarAccess.getEvalAccess().getRightCurlyBracketKeyword_6()); 
+            match(input,24,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getRightCurlyBracketKeyword_6()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__Group__6__Impl"
 
 
     // $ANTLR start "rule__Load__Group__0"
-    // InternalPClassifier.g:1067:1: rule__Load__Group__0 : rule__Load__Group__0__Impl rule__Load__Group__1 ;
+    // InternalPClassifier.g:1212:1: rule__Load__Group__0 : rule__Load__Group__0__Impl rule__Load__Group__1 ;
     public final void rule__Load__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1071:1: ( rule__Load__Group__0__Impl rule__Load__Group__1 )
-            // InternalPClassifier.g:1072:2: rule__Load__Group__0__Impl rule__Load__Group__1
+            // InternalPClassifier.g:1216:1: ( rule__Load__Group__0__Impl rule__Load__Group__1 )
+            // InternalPClassifier.g:1217:2: rule__Load__Group__0__Impl rule__Load__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Load__Group__0__Impl();
@@ -3203,20 +3637,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__0__Impl"
-    // InternalPClassifier.g:1079:1: rule__Load__Group__0__Impl : ( 'Load(' ) ;
+    // InternalPClassifier.g:1224:1: rule__Load__Group__0__Impl : ( 'Load(' ) ;
     public final void rule__Load__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1083:1: ( ( 'Load(' ) )
-            // InternalPClassifier.g:1084:1: ( 'Load(' )
+            // InternalPClassifier.g:1228:1: ( ( 'Load(' ) )
+            // InternalPClassifier.g:1229:1: ( 'Load(' )
             {
-            // InternalPClassifier.g:1084:1: ( 'Load(' )
-            // InternalPClassifier.g:1085:2: 'Load('
+            // InternalPClassifier.g:1229:1: ( 'Load(' )
+            // InternalPClassifier.g:1230:2: 'Load('
             {
              before(grammarAccess.getLoadAccess().getLoadKeyword_0()); 
-            match(input,28,FOLLOW_2); 
+            match(input,30,FOLLOW_2); 
              after(grammarAccess.getLoadAccess().getLoadKeyword_0()); 
 
             }
@@ -3240,14 +3674,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__1"
-    // InternalPClassifier.g:1094:1: rule__Load__Group__1 : rule__Load__Group__1__Impl rule__Load__Group__2 ;
+    // InternalPClassifier.g:1239:1: rule__Load__Group__1 : rule__Load__Group__1__Impl rule__Load__Group__2 ;
     public final void rule__Load__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1098:1: ( rule__Load__Group__1__Impl rule__Load__Group__2 )
-            // InternalPClassifier.g:1099:2: rule__Load__Group__1__Impl rule__Load__Group__2
+            // InternalPClassifier.g:1243:1: ( rule__Load__Group__1__Impl rule__Load__Group__2 )
+            // InternalPClassifier.g:1244:2: rule__Load__Group__1__Impl rule__Load__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Load__Group__1__Impl();
@@ -3278,21 +3712,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__1__Impl"
-    // InternalPClassifier.g:1106:1: rule__Load__Group__1__Impl : ( ( rule__Load__NameAssignment_1 ) ) ;
+    // InternalPClassifier.g:1251:1: rule__Load__Group__1__Impl : ( ( rule__Load__NameAssignment_1 ) ) ;
     public final void rule__Load__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1110:1: ( ( ( rule__Load__NameAssignment_1 ) ) )
-            // InternalPClassifier.g:1111:1: ( ( rule__Load__NameAssignment_1 ) )
+            // InternalPClassifier.g:1255:1: ( ( ( rule__Load__NameAssignment_1 ) ) )
+            // InternalPClassifier.g:1256:1: ( ( rule__Load__NameAssignment_1 ) )
             {
-            // InternalPClassifier.g:1111:1: ( ( rule__Load__NameAssignment_1 ) )
-            // InternalPClassifier.g:1112:2: ( rule__Load__NameAssignment_1 )
+            // InternalPClassifier.g:1256:1: ( ( rule__Load__NameAssignment_1 ) )
+            // InternalPClassifier.g:1257:2: ( rule__Load__NameAssignment_1 )
             {
              before(grammarAccess.getLoadAccess().getNameAssignment_1()); 
-            // InternalPClassifier.g:1113:2: ( rule__Load__NameAssignment_1 )
-            // InternalPClassifier.g:1113:3: rule__Load__NameAssignment_1
+            // InternalPClassifier.g:1258:2: ( rule__Load__NameAssignment_1 )
+            // InternalPClassifier.g:1258:3: rule__Load__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Load__NameAssignment_1();
@@ -3325,14 +3759,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__2"
-    // InternalPClassifier.g:1121:1: rule__Load__Group__2 : rule__Load__Group__2__Impl rule__Load__Group__3 ;
+    // InternalPClassifier.g:1266:1: rule__Load__Group__2 : rule__Load__Group__2__Impl rule__Load__Group__3 ;
     public final void rule__Load__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1125:1: ( rule__Load__Group__2__Impl rule__Load__Group__3 )
-            // InternalPClassifier.g:1126:2: rule__Load__Group__2__Impl rule__Load__Group__3
+            // InternalPClassifier.g:1270:1: ( rule__Load__Group__2__Impl rule__Load__Group__3 )
+            // InternalPClassifier.g:1271:2: rule__Load__Group__2__Impl rule__Load__Group__3
             {
             pushFollow(FOLLOW_19);
             rule__Load__Group__2__Impl();
@@ -3363,20 +3797,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__2__Impl"
-    // InternalPClassifier.g:1133:1: rule__Load__Group__2__Impl : ( '){' ) ;
+    // InternalPClassifier.g:1278:1: rule__Load__Group__2__Impl : ( '){' ) ;
     public final void rule__Load__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1137:1: ( ( '){' ) )
-            // InternalPClassifier.g:1138:1: ( '){' )
+            // InternalPClassifier.g:1282:1: ( ( '){' ) )
+            // InternalPClassifier.g:1283:1: ( '){' )
             {
-            // InternalPClassifier.g:1138:1: ( '){' )
-            // InternalPClassifier.g:1139:2: '){'
+            // InternalPClassifier.g:1283:1: ( '){' )
+            // InternalPClassifier.g:1284:2: '){'
             {
              before(grammarAccess.getLoadAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getLoadAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
 
             }
@@ -3400,14 +3834,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__3"
-    // InternalPClassifier.g:1148:1: rule__Load__Group__3 : rule__Load__Group__3__Impl rule__Load__Group__4 ;
+    // InternalPClassifier.g:1293:1: rule__Load__Group__3 : rule__Load__Group__3__Impl rule__Load__Group__4 ;
     public final void rule__Load__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1152:1: ( rule__Load__Group__3__Impl rule__Load__Group__4 )
-            // InternalPClassifier.g:1153:2: rule__Load__Group__3__Impl rule__Load__Group__4
+            // InternalPClassifier.g:1297:1: ( rule__Load__Group__3__Impl rule__Load__Group__4 )
+            // InternalPClassifier.g:1298:2: rule__Load__Group__3__Impl rule__Load__Group__4
             {
             pushFollow(FOLLOW_7);
             rule__Load__Group__3__Impl();
@@ -3438,20 +3872,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__3__Impl"
-    // InternalPClassifier.g:1160:1: rule__Load__Group__3__Impl : ( 'file' ) ;
+    // InternalPClassifier.g:1305:1: rule__Load__Group__3__Impl : ( 'file' ) ;
     public final void rule__Load__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1164:1: ( ( 'file' ) )
-            // InternalPClassifier.g:1165:1: ( 'file' )
+            // InternalPClassifier.g:1309:1: ( ( 'file' ) )
+            // InternalPClassifier.g:1310:1: ( 'file' )
             {
-            // InternalPClassifier.g:1165:1: ( 'file' )
-            // InternalPClassifier.g:1166:2: 'file'
+            // InternalPClassifier.g:1310:1: ( 'file' )
+            // InternalPClassifier.g:1311:2: 'file'
             {
              before(grammarAccess.getLoadAccess().getFileKeyword_3()); 
-            match(input,29,FOLLOW_2); 
+            match(input,31,FOLLOW_2); 
              after(grammarAccess.getLoadAccess().getFileKeyword_3()); 
 
             }
@@ -3475,14 +3909,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__4"
-    // InternalPClassifier.g:1175:1: rule__Load__Group__4 : rule__Load__Group__4__Impl rule__Load__Group__5 ;
+    // InternalPClassifier.g:1320:1: rule__Load__Group__4 : rule__Load__Group__4__Impl rule__Load__Group__5 ;
     public final void rule__Load__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1179:1: ( rule__Load__Group__4__Impl rule__Load__Group__5 )
-            // InternalPClassifier.g:1180:2: rule__Load__Group__4__Impl rule__Load__Group__5
+            // InternalPClassifier.g:1324:1: ( rule__Load__Group__4__Impl rule__Load__Group__5 )
+            // InternalPClassifier.g:1325:2: rule__Load__Group__4__Impl rule__Load__Group__5
             {
             pushFollow(FOLLOW_10);
             rule__Load__Group__4__Impl();
@@ -3513,20 +3947,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__4__Impl"
-    // InternalPClassifier.g:1187:1: rule__Load__Group__4__Impl : ( ':' ) ;
+    // InternalPClassifier.g:1332:1: rule__Load__Group__4__Impl : ( ':' ) ;
     public final void rule__Load__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1191:1: ( ( ':' ) )
-            // InternalPClassifier.g:1192:1: ( ':' )
+            // InternalPClassifier.g:1336:1: ( ( ':' ) )
+            // InternalPClassifier.g:1337:1: ( ':' )
             {
-            // InternalPClassifier.g:1192:1: ( ':' )
-            // InternalPClassifier.g:1193:2: ':'
+            // InternalPClassifier.g:1337:1: ( ':' )
+            // InternalPClassifier.g:1338:2: ':'
             {
              before(grammarAccess.getLoadAccess().getColonKeyword_4()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getLoadAccess().getColonKeyword_4()); 
 
             }
@@ -3550,14 +3984,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__5"
-    // InternalPClassifier.g:1202:1: rule__Load__Group__5 : rule__Load__Group__5__Impl rule__Load__Group__6 ;
+    // InternalPClassifier.g:1347:1: rule__Load__Group__5 : rule__Load__Group__5__Impl rule__Load__Group__6 ;
     public final void rule__Load__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1206:1: ( rule__Load__Group__5__Impl rule__Load__Group__6 )
-            // InternalPClassifier.g:1207:2: rule__Load__Group__5__Impl rule__Load__Group__6
+            // InternalPClassifier.g:1351:1: ( rule__Load__Group__5__Impl rule__Load__Group__6 )
+            // InternalPClassifier.g:1352:2: rule__Load__Group__5__Impl rule__Load__Group__6
             {
             pushFollow(FOLLOW_13);
             rule__Load__Group__5__Impl();
@@ -3588,21 +4022,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__5__Impl"
-    // InternalPClassifier.g:1214:1: rule__Load__Group__5__Impl : ( ( rule__Load__FileAssignment_5 ) ) ;
+    // InternalPClassifier.g:1359:1: rule__Load__Group__5__Impl : ( ( rule__Load__FileAssignment_5 ) ) ;
     public final void rule__Load__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1218:1: ( ( ( rule__Load__FileAssignment_5 ) ) )
-            // InternalPClassifier.g:1219:1: ( ( rule__Load__FileAssignment_5 ) )
+            // InternalPClassifier.g:1363:1: ( ( ( rule__Load__FileAssignment_5 ) ) )
+            // InternalPClassifier.g:1364:1: ( ( rule__Load__FileAssignment_5 ) )
             {
-            // InternalPClassifier.g:1219:1: ( ( rule__Load__FileAssignment_5 ) )
-            // InternalPClassifier.g:1220:2: ( rule__Load__FileAssignment_5 )
+            // InternalPClassifier.g:1364:1: ( ( rule__Load__FileAssignment_5 ) )
+            // InternalPClassifier.g:1365:2: ( rule__Load__FileAssignment_5 )
             {
              before(grammarAccess.getLoadAccess().getFileAssignment_5()); 
-            // InternalPClassifier.g:1221:2: ( rule__Load__FileAssignment_5 )
-            // InternalPClassifier.g:1221:3: rule__Load__FileAssignment_5
+            // InternalPClassifier.g:1366:2: ( rule__Load__FileAssignment_5 )
+            // InternalPClassifier.g:1366:3: rule__Load__FileAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__Load__FileAssignment_5();
@@ -3635,14 +4069,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__6"
-    // InternalPClassifier.g:1229:1: rule__Load__Group__6 : rule__Load__Group__6__Impl ;
+    // InternalPClassifier.g:1374:1: rule__Load__Group__6 : rule__Load__Group__6__Impl ;
     public final void rule__Load__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1233:1: ( rule__Load__Group__6__Impl )
-            // InternalPClassifier.g:1234:2: rule__Load__Group__6__Impl
+            // InternalPClassifier.g:1378:1: ( rule__Load__Group__6__Impl )
+            // InternalPClassifier.g:1379:2: rule__Load__Group__6__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Load__Group__6__Impl();
@@ -3668,20 +4102,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__Group__6__Impl"
-    // InternalPClassifier.g:1240:1: rule__Load__Group__6__Impl : ( '}' ) ;
+    // InternalPClassifier.g:1385:1: rule__Load__Group__6__Impl : ( '}' ) ;
     public final void rule__Load__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1244:1: ( ( '}' ) )
-            // InternalPClassifier.g:1245:1: ( '}' )
+            // InternalPClassifier.g:1389:1: ( ( '}' ) )
+            // InternalPClassifier.g:1390:1: ( '}' )
             {
-            // InternalPClassifier.g:1245:1: ( '}' )
-            // InternalPClassifier.g:1246:2: '}'
+            // InternalPClassifier.g:1390:1: ( '}' )
+            // InternalPClassifier.g:1391:2: '}'
             {
              before(grammarAccess.getLoadAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,23,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getLoadAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -3705,14 +4139,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__0"
-    // InternalPClassifier.g:1256:1: rule__Save__Group__0 : rule__Save__Group__0__Impl rule__Save__Group__1 ;
+    // InternalPClassifier.g:1401:1: rule__Save__Group__0 : rule__Save__Group__0__Impl rule__Save__Group__1 ;
     public final void rule__Save__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1260:1: ( rule__Save__Group__0__Impl rule__Save__Group__1 )
-            // InternalPClassifier.g:1261:2: rule__Save__Group__0__Impl rule__Save__Group__1
+            // InternalPClassifier.g:1405:1: ( rule__Save__Group__0__Impl rule__Save__Group__1 )
+            // InternalPClassifier.g:1406:2: rule__Save__Group__0__Impl rule__Save__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Save__Group__0__Impl();
@@ -3743,20 +4177,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__0__Impl"
-    // InternalPClassifier.g:1268:1: rule__Save__Group__0__Impl : ( 'Save(' ) ;
+    // InternalPClassifier.g:1413:1: rule__Save__Group__0__Impl : ( 'Save(' ) ;
     public final void rule__Save__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1272:1: ( ( 'Save(' ) )
-            // InternalPClassifier.g:1273:1: ( 'Save(' )
+            // InternalPClassifier.g:1417:1: ( ( 'Save(' ) )
+            // InternalPClassifier.g:1418:1: ( 'Save(' )
             {
-            // InternalPClassifier.g:1273:1: ( 'Save(' )
-            // InternalPClassifier.g:1274:2: 'Save('
+            // InternalPClassifier.g:1418:1: ( 'Save(' )
+            // InternalPClassifier.g:1419:2: 'Save('
             {
              before(grammarAccess.getSaveAccess().getSaveKeyword_0()); 
-            match(input,30,FOLLOW_2); 
+            match(input,32,FOLLOW_2); 
              after(grammarAccess.getSaveAccess().getSaveKeyword_0()); 
 
             }
@@ -3780,14 +4214,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__1"
-    // InternalPClassifier.g:1283:1: rule__Save__Group__1 : rule__Save__Group__1__Impl rule__Save__Group__2 ;
+    // InternalPClassifier.g:1428:1: rule__Save__Group__1 : rule__Save__Group__1__Impl rule__Save__Group__2 ;
     public final void rule__Save__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1287:1: ( rule__Save__Group__1__Impl rule__Save__Group__2 )
-            // InternalPClassifier.g:1288:2: rule__Save__Group__1__Impl rule__Save__Group__2
+            // InternalPClassifier.g:1432:1: ( rule__Save__Group__1__Impl rule__Save__Group__2 )
+            // InternalPClassifier.g:1433:2: rule__Save__Group__1__Impl rule__Save__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Save__Group__1__Impl();
@@ -3818,21 +4252,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__1__Impl"
-    // InternalPClassifier.g:1295:1: rule__Save__Group__1__Impl : ( ( rule__Save__NameAssignment_1 ) ) ;
+    // InternalPClassifier.g:1440:1: rule__Save__Group__1__Impl : ( ( rule__Save__NameAssignment_1 ) ) ;
     public final void rule__Save__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1299:1: ( ( ( rule__Save__NameAssignment_1 ) ) )
-            // InternalPClassifier.g:1300:1: ( ( rule__Save__NameAssignment_1 ) )
+            // InternalPClassifier.g:1444:1: ( ( ( rule__Save__NameAssignment_1 ) ) )
+            // InternalPClassifier.g:1445:1: ( ( rule__Save__NameAssignment_1 ) )
             {
-            // InternalPClassifier.g:1300:1: ( ( rule__Save__NameAssignment_1 ) )
-            // InternalPClassifier.g:1301:2: ( rule__Save__NameAssignment_1 )
+            // InternalPClassifier.g:1445:1: ( ( rule__Save__NameAssignment_1 ) )
+            // InternalPClassifier.g:1446:2: ( rule__Save__NameAssignment_1 )
             {
              before(grammarAccess.getSaveAccess().getNameAssignment_1()); 
-            // InternalPClassifier.g:1302:2: ( rule__Save__NameAssignment_1 )
-            // InternalPClassifier.g:1302:3: rule__Save__NameAssignment_1
+            // InternalPClassifier.g:1447:2: ( rule__Save__NameAssignment_1 )
+            // InternalPClassifier.g:1447:3: rule__Save__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Save__NameAssignment_1();
@@ -3865,14 +4299,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__2"
-    // InternalPClassifier.g:1310:1: rule__Save__Group__2 : rule__Save__Group__2__Impl rule__Save__Group__3 ;
+    // InternalPClassifier.g:1455:1: rule__Save__Group__2 : rule__Save__Group__2__Impl rule__Save__Group__3 ;
     public final void rule__Save__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1314:1: ( rule__Save__Group__2__Impl rule__Save__Group__3 )
-            // InternalPClassifier.g:1315:2: rule__Save__Group__2__Impl rule__Save__Group__3
+            // InternalPClassifier.g:1459:1: ( rule__Save__Group__2__Impl rule__Save__Group__3 )
+            // InternalPClassifier.g:1460:2: rule__Save__Group__2__Impl rule__Save__Group__3
             {
             pushFollow(FOLLOW_19);
             rule__Save__Group__2__Impl();
@@ -3903,20 +4337,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__2__Impl"
-    // InternalPClassifier.g:1322:1: rule__Save__Group__2__Impl : ( '){' ) ;
+    // InternalPClassifier.g:1467:1: rule__Save__Group__2__Impl : ( '){' ) ;
     public final void rule__Save__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1326:1: ( ( '){' ) )
-            // InternalPClassifier.g:1327:1: ( '){' )
+            // InternalPClassifier.g:1471:1: ( ( '){' ) )
+            // InternalPClassifier.g:1472:1: ( '){' )
             {
-            // InternalPClassifier.g:1327:1: ( '){' )
-            // InternalPClassifier.g:1328:2: '){'
+            // InternalPClassifier.g:1472:1: ( '){' )
+            // InternalPClassifier.g:1473:2: '){'
             {
              before(grammarAccess.getSaveAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getSaveAccess().getRightParenthesisLeftCurlyBracketKeyword_2()); 
 
             }
@@ -3940,14 +4374,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__3"
-    // InternalPClassifier.g:1337:1: rule__Save__Group__3 : rule__Save__Group__3__Impl rule__Save__Group__4 ;
+    // InternalPClassifier.g:1482:1: rule__Save__Group__3 : rule__Save__Group__3__Impl rule__Save__Group__4 ;
     public final void rule__Save__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1341:1: ( rule__Save__Group__3__Impl rule__Save__Group__4 )
-            // InternalPClassifier.g:1342:2: rule__Save__Group__3__Impl rule__Save__Group__4
+            // InternalPClassifier.g:1486:1: ( rule__Save__Group__3__Impl rule__Save__Group__4 )
+            // InternalPClassifier.g:1487:2: rule__Save__Group__3__Impl rule__Save__Group__4
             {
             pushFollow(FOLLOW_7);
             rule__Save__Group__3__Impl();
@@ -3978,20 +4412,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__3__Impl"
-    // InternalPClassifier.g:1349:1: rule__Save__Group__3__Impl : ( 'file' ) ;
+    // InternalPClassifier.g:1494:1: rule__Save__Group__3__Impl : ( 'file' ) ;
     public final void rule__Save__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1353:1: ( ( 'file' ) )
-            // InternalPClassifier.g:1354:1: ( 'file' )
+            // InternalPClassifier.g:1498:1: ( ( 'file' ) )
+            // InternalPClassifier.g:1499:1: ( 'file' )
             {
-            // InternalPClassifier.g:1354:1: ( 'file' )
-            // InternalPClassifier.g:1355:2: 'file'
+            // InternalPClassifier.g:1499:1: ( 'file' )
+            // InternalPClassifier.g:1500:2: 'file'
             {
              before(grammarAccess.getSaveAccess().getFileKeyword_3()); 
-            match(input,29,FOLLOW_2); 
+            match(input,31,FOLLOW_2); 
              after(grammarAccess.getSaveAccess().getFileKeyword_3()); 
 
             }
@@ -4015,14 +4449,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__4"
-    // InternalPClassifier.g:1364:1: rule__Save__Group__4 : rule__Save__Group__4__Impl rule__Save__Group__5 ;
+    // InternalPClassifier.g:1509:1: rule__Save__Group__4 : rule__Save__Group__4__Impl rule__Save__Group__5 ;
     public final void rule__Save__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1368:1: ( rule__Save__Group__4__Impl rule__Save__Group__5 )
-            // InternalPClassifier.g:1369:2: rule__Save__Group__4__Impl rule__Save__Group__5
+            // InternalPClassifier.g:1513:1: ( rule__Save__Group__4__Impl rule__Save__Group__5 )
+            // InternalPClassifier.g:1514:2: rule__Save__Group__4__Impl rule__Save__Group__5
             {
             pushFollow(FOLLOW_10);
             rule__Save__Group__4__Impl();
@@ -4053,20 +4487,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__4__Impl"
-    // InternalPClassifier.g:1376:1: rule__Save__Group__4__Impl : ( ':' ) ;
+    // InternalPClassifier.g:1521:1: rule__Save__Group__4__Impl : ( ':' ) ;
     public final void rule__Save__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1380:1: ( ( ':' ) )
-            // InternalPClassifier.g:1381:1: ( ':' )
+            // InternalPClassifier.g:1525:1: ( ( ':' ) )
+            // InternalPClassifier.g:1526:1: ( ':' )
             {
-            // InternalPClassifier.g:1381:1: ( ':' )
-            // InternalPClassifier.g:1382:2: ':'
+            // InternalPClassifier.g:1526:1: ( ':' )
+            // InternalPClassifier.g:1527:2: ':'
             {
              before(grammarAccess.getSaveAccess().getColonKeyword_4()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getSaveAccess().getColonKeyword_4()); 
 
             }
@@ -4090,14 +4524,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__5"
-    // InternalPClassifier.g:1391:1: rule__Save__Group__5 : rule__Save__Group__5__Impl rule__Save__Group__6 ;
+    // InternalPClassifier.g:1536:1: rule__Save__Group__5 : rule__Save__Group__5__Impl rule__Save__Group__6 ;
     public final void rule__Save__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1395:1: ( rule__Save__Group__5__Impl rule__Save__Group__6 )
-            // InternalPClassifier.g:1396:2: rule__Save__Group__5__Impl rule__Save__Group__6
+            // InternalPClassifier.g:1540:1: ( rule__Save__Group__5__Impl rule__Save__Group__6 )
+            // InternalPClassifier.g:1541:2: rule__Save__Group__5__Impl rule__Save__Group__6
             {
             pushFollow(FOLLOW_13);
             rule__Save__Group__5__Impl();
@@ -4128,21 +4562,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__5__Impl"
-    // InternalPClassifier.g:1403:1: rule__Save__Group__5__Impl : ( ( rule__Save__FileAssignment_5 ) ) ;
+    // InternalPClassifier.g:1548:1: rule__Save__Group__5__Impl : ( ( rule__Save__FileAssignment_5 ) ) ;
     public final void rule__Save__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1407:1: ( ( ( rule__Save__FileAssignment_5 ) ) )
-            // InternalPClassifier.g:1408:1: ( ( rule__Save__FileAssignment_5 ) )
+            // InternalPClassifier.g:1552:1: ( ( ( rule__Save__FileAssignment_5 ) ) )
+            // InternalPClassifier.g:1553:1: ( ( rule__Save__FileAssignment_5 ) )
             {
-            // InternalPClassifier.g:1408:1: ( ( rule__Save__FileAssignment_5 ) )
-            // InternalPClassifier.g:1409:2: ( rule__Save__FileAssignment_5 )
+            // InternalPClassifier.g:1553:1: ( ( rule__Save__FileAssignment_5 ) )
+            // InternalPClassifier.g:1554:2: ( rule__Save__FileAssignment_5 )
             {
              before(grammarAccess.getSaveAccess().getFileAssignment_5()); 
-            // InternalPClassifier.g:1410:2: ( rule__Save__FileAssignment_5 )
-            // InternalPClassifier.g:1410:3: rule__Save__FileAssignment_5
+            // InternalPClassifier.g:1555:2: ( rule__Save__FileAssignment_5 )
+            // InternalPClassifier.g:1555:3: rule__Save__FileAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__Save__FileAssignment_5();
@@ -4175,14 +4609,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__6"
-    // InternalPClassifier.g:1418:1: rule__Save__Group__6 : rule__Save__Group__6__Impl ;
+    // InternalPClassifier.g:1563:1: rule__Save__Group__6 : rule__Save__Group__6__Impl ;
     public final void rule__Save__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1422:1: ( rule__Save__Group__6__Impl )
-            // InternalPClassifier.g:1423:2: rule__Save__Group__6__Impl
+            // InternalPClassifier.g:1567:1: ( rule__Save__Group__6__Impl )
+            // InternalPClassifier.g:1568:2: rule__Save__Group__6__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Save__Group__6__Impl();
@@ -4208,20 +4642,20 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__Group__6__Impl"
-    // InternalPClassifier.g:1429:1: rule__Save__Group__6__Impl : ( '}' ) ;
+    // InternalPClassifier.g:1574:1: rule__Save__Group__6__Impl : ( '}' ) ;
     public final void rule__Save__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1433:1: ( ( '}' ) )
-            // InternalPClassifier.g:1434:1: ( '}' )
+            // InternalPClassifier.g:1578:1: ( ( '}' ) )
+            // InternalPClassifier.g:1579:1: ( '}' )
             {
-            // InternalPClassifier.g:1434:1: ( '}' )
-            // InternalPClassifier.g:1435:2: '}'
+            // InternalPClassifier.g:1579:1: ( '}' )
+            // InternalPClassifier.g:1580:2: '}'
             {
              before(grammarAccess.getSaveAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,23,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getSaveAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -4245,14 +4679,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__0"
-    // InternalPClassifier.g:1445:1: rule__FeatureList__Group__0 : rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1 ;
+    // InternalPClassifier.g:1590:1: rule__FeatureList__Group__0 : rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1 ;
     public final void rule__FeatureList__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1449:1: ( rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1 )
-            // InternalPClassifier.g:1450:2: rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1
+            // InternalPClassifier.g:1594:1: ( rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1 )
+            // InternalPClassifier.g:1595:2: rule__FeatureList__Group__0__Impl rule__FeatureList__Group__1
             {
             pushFollow(FOLLOW_8);
             rule__FeatureList__Group__0__Impl();
@@ -4283,35 +4717,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__0__Impl"
-    // InternalPClassifier.g:1457:1: rule__FeatureList__Group__0__Impl : ( ( ',' )* ) ;
+    // InternalPClassifier.g:1602:1: rule__FeatureList__Group__0__Impl : ( ( ',' )* ) ;
     public final void rule__FeatureList__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1461:1: ( ( ( ',' )* ) )
-            // InternalPClassifier.g:1462:1: ( ( ',' )* )
+            // InternalPClassifier.g:1606:1: ( ( ( ',' )* ) )
+            // InternalPClassifier.g:1607:1: ( ( ',' )* )
             {
-            // InternalPClassifier.g:1462:1: ( ( ',' )* )
-            // InternalPClassifier.g:1463:2: ( ',' )*
+            // InternalPClassifier.g:1607:1: ( ( ',' )* )
+            // InternalPClassifier.g:1608:2: ( ',' )*
             {
              before(grammarAccess.getFeatureListAccess().getCommaKeyword_0()); 
-            // InternalPClassifier.g:1464:2: ( ',' )*
+            // InternalPClassifier.g:1609:2: ( ',' )*
             loop5:
             do {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==31) ) {
+                if ( (LA5_0==33) ) {
                     alt5=1;
                 }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalPClassifier.g:1464:3: ','
+            	    // InternalPClassifier.g:1609:3: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -4344,14 +4778,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__1"
-    // InternalPClassifier.g:1472:1: rule__FeatureList__Group__1 : rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2 ;
+    // InternalPClassifier.g:1617:1: rule__FeatureList__Group__1 : rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2 ;
     public final void rule__FeatureList__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1476:1: ( rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2 )
-            // InternalPClassifier.g:1477:2: rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2
+            // InternalPClassifier.g:1621:1: ( rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2 )
+            // InternalPClassifier.g:1622:2: rule__FeatureList__Group__1__Impl rule__FeatureList__Group__2
             {
             pushFollow(FOLLOW_21);
             rule__FeatureList__Group__1__Impl();
@@ -4382,21 +4816,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__1__Impl"
-    // InternalPClassifier.g:1484:1: rule__FeatureList__Group__1__Impl : ( ( rule__FeatureList__ValsAssignment_1 ) ) ;
+    // InternalPClassifier.g:1629:1: rule__FeatureList__Group__1__Impl : ( ( rule__FeatureList__ValsAssignment_1 ) ) ;
     public final void rule__FeatureList__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1488:1: ( ( ( rule__FeatureList__ValsAssignment_1 ) ) )
-            // InternalPClassifier.g:1489:1: ( ( rule__FeatureList__ValsAssignment_1 ) )
+            // InternalPClassifier.g:1633:1: ( ( ( rule__FeatureList__ValsAssignment_1 ) ) )
+            // InternalPClassifier.g:1634:1: ( ( rule__FeatureList__ValsAssignment_1 ) )
             {
-            // InternalPClassifier.g:1489:1: ( ( rule__FeatureList__ValsAssignment_1 ) )
-            // InternalPClassifier.g:1490:2: ( rule__FeatureList__ValsAssignment_1 )
+            // InternalPClassifier.g:1634:1: ( ( rule__FeatureList__ValsAssignment_1 ) )
+            // InternalPClassifier.g:1635:2: ( rule__FeatureList__ValsAssignment_1 )
             {
              before(grammarAccess.getFeatureListAccess().getValsAssignment_1()); 
-            // InternalPClassifier.g:1491:2: ( rule__FeatureList__ValsAssignment_1 )
-            // InternalPClassifier.g:1491:3: rule__FeatureList__ValsAssignment_1
+            // InternalPClassifier.g:1636:2: ( rule__FeatureList__ValsAssignment_1 )
+            // InternalPClassifier.g:1636:3: rule__FeatureList__ValsAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__FeatureList__ValsAssignment_1();
@@ -4429,14 +4863,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__2"
-    // InternalPClassifier.g:1499:1: rule__FeatureList__Group__2 : rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3 ;
+    // InternalPClassifier.g:1644:1: rule__FeatureList__Group__2 : rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3 ;
     public final void rule__FeatureList__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1503:1: ( rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3 )
-            // InternalPClassifier.g:1504:2: rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3
+            // InternalPClassifier.g:1648:1: ( rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3 )
+            // InternalPClassifier.g:1649:2: rule__FeatureList__Group__2__Impl rule__FeatureList__Group__3
             {
             pushFollow(FOLLOW_21);
             rule__FeatureList__Group__2__Impl();
@@ -4467,27 +4901,27 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__2__Impl"
-    // InternalPClassifier.g:1511:1: rule__FeatureList__Group__2__Impl : ( ( rule__FeatureList__Group_2__0 )* ) ;
+    // InternalPClassifier.g:1656:1: rule__FeatureList__Group__2__Impl : ( ( rule__FeatureList__Group_2__0 )* ) ;
     public final void rule__FeatureList__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1515:1: ( ( ( rule__FeatureList__Group_2__0 )* ) )
-            // InternalPClassifier.g:1516:1: ( ( rule__FeatureList__Group_2__0 )* )
+            // InternalPClassifier.g:1660:1: ( ( ( rule__FeatureList__Group_2__0 )* ) )
+            // InternalPClassifier.g:1661:1: ( ( rule__FeatureList__Group_2__0 )* )
             {
-            // InternalPClassifier.g:1516:1: ( ( rule__FeatureList__Group_2__0 )* )
-            // InternalPClassifier.g:1517:2: ( rule__FeatureList__Group_2__0 )*
+            // InternalPClassifier.g:1661:1: ( ( rule__FeatureList__Group_2__0 )* )
+            // InternalPClassifier.g:1662:2: ( rule__FeatureList__Group_2__0 )*
             {
              before(grammarAccess.getFeatureListAccess().getGroup_2()); 
-            // InternalPClassifier.g:1518:2: ( rule__FeatureList__Group_2__0 )*
+            // InternalPClassifier.g:1663:2: ( rule__FeatureList__Group_2__0 )*
             loop6:
             do {
                 int alt6=2;
                 alt6 = dfa6.predict(input);
                 switch (alt6) {
             	case 1 :
-            	    // InternalPClassifier.g:1518:3: rule__FeatureList__Group_2__0
+            	    // InternalPClassifier.g:1663:3: rule__FeatureList__Group_2__0
             	    {
             	    pushFollow(FOLLOW_20);
             	    rule__FeatureList__Group_2__0();
@@ -4526,14 +4960,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__3"
-    // InternalPClassifier.g:1526:1: rule__FeatureList__Group__3 : rule__FeatureList__Group__3__Impl ;
+    // InternalPClassifier.g:1671:1: rule__FeatureList__Group__3 : rule__FeatureList__Group__3__Impl ;
     public final void rule__FeatureList__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1530:1: ( rule__FeatureList__Group__3__Impl )
-            // InternalPClassifier.g:1531:2: rule__FeatureList__Group__3__Impl
+            // InternalPClassifier.g:1675:1: ( rule__FeatureList__Group__3__Impl )
+            // InternalPClassifier.g:1676:2: rule__FeatureList__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__FeatureList__Group__3__Impl();
@@ -4559,35 +4993,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group__3__Impl"
-    // InternalPClassifier.g:1537:1: rule__FeatureList__Group__3__Impl : ( ( ',' )* ) ;
+    // InternalPClassifier.g:1682:1: rule__FeatureList__Group__3__Impl : ( ( ',' )* ) ;
     public final void rule__FeatureList__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1541:1: ( ( ( ',' )* ) )
-            // InternalPClassifier.g:1542:1: ( ( ',' )* )
+            // InternalPClassifier.g:1686:1: ( ( ( ',' )* ) )
+            // InternalPClassifier.g:1687:1: ( ( ',' )* )
             {
-            // InternalPClassifier.g:1542:1: ( ( ',' )* )
-            // InternalPClassifier.g:1543:2: ( ',' )*
+            // InternalPClassifier.g:1687:1: ( ( ',' )* )
+            // InternalPClassifier.g:1688:2: ( ',' )*
             {
              before(grammarAccess.getFeatureListAccess().getCommaKeyword_3()); 
-            // InternalPClassifier.g:1544:2: ( ',' )*
+            // InternalPClassifier.g:1689:2: ( ',' )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==31) ) {
+                if ( (LA7_0==33) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalPClassifier.g:1544:3: ','
+            	    // InternalPClassifier.g:1689:3: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -4620,14 +5054,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group_2__0"
-    // InternalPClassifier.g:1553:1: rule__FeatureList__Group_2__0 : rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1 ;
+    // InternalPClassifier.g:1698:1: rule__FeatureList__Group_2__0 : rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1 ;
     public final void rule__FeatureList__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1557:1: ( rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1 )
-            // InternalPClassifier.g:1558:2: rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1
+            // InternalPClassifier.g:1702:1: ( rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1 )
+            // InternalPClassifier.g:1703:2: rule__FeatureList__Group_2__0__Impl rule__FeatureList__Group_2__1
             {
             pushFollow(FOLLOW_10);
             rule__FeatureList__Group_2__0__Impl();
@@ -4658,26 +5092,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group_2__0__Impl"
-    // InternalPClassifier.g:1565:1: rule__FeatureList__Group_2__0__Impl : ( ( ( ',' ) ) ( ( ',' )* ) ) ;
+    // InternalPClassifier.g:1710:1: rule__FeatureList__Group_2__0__Impl : ( ( ( ',' ) ) ( ( ',' )* ) ) ;
     public final void rule__FeatureList__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1569:1: ( ( ( ( ',' ) ) ( ( ',' )* ) ) )
-            // InternalPClassifier.g:1570:1: ( ( ( ',' ) ) ( ( ',' )* ) )
+            // InternalPClassifier.g:1714:1: ( ( ( ( ',' ) ) ( ( ',' )* ) ) )
+            // InternalPClassifier.g:1715:1: ( ( ( ',' ) ) ( ( ',' )* ) )
             {
-            // InternalPClassifier.g:1570:1: ( ( ( ',' ) ) ( ( ',' )* ) )
-            // InternalPClassifier.g:1571:2: ( ( ',' ) ) ( ( ',' )* )
+            // InternalPClassifier.g:1715:1: ( ( ( ',' ) ) ( ( ',' )* ) )
+            // InternalPClassifier.g:1716:2: ( ( ',' ) ) ( ( ',' )* )
             {
-            // InternalPClassifier.g:1571:2: ( ( ',' ) )
-            // InternalPClassifier.g:1572:3: ( ',' )
+            // InternalPClassifier.g:1716:2: ( ( ',' ) )
+            // InternalPClassifier.g:1717:3: ( ',' )
             {
              before(grammarAccess.getFeatureListAccess().getCommaKeyword_2_0()); 
-            // InternalPClassifier.g:1573:3: ( ',' )
-            // InternalPClassifier.g:1573:4: ','
+            // InternalPClassifier.g:1718:3: ( ',' )
+            // InternalPClassifier.g:1718:4: ','
             {
-            match(input,31,FOLLOW_20); 
+            match(input,33,FOLLOW_20); 
 
             }
 
@@ -4685,26 +5119,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
             }
 
-            // InternalPClassifier.g:1576:2: ( ( ',' )* )
-            // InternalPClassifier.g:1577:3: ( ',' )*
+            // InternalPClassifier.g:1721:2: ( ( ',' )* )
+            // InternalPClassifier.g:1722:3: ( ',' )*
             {
              before(grammarAccess.getFeatureListAccess().getCommaKeyword_2_0()); 
-            // InternalPClassifier.g:1578:3: ( ',' )*
+            // InternalPClassifier.g:1723:3: ( ',' )*
             loop8:
             do {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( (LA8_0==31) ) {
+                if ( (LA8_0==33) ) {
                     alt8=1;
                 }
 
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalPClassifier.g:1578:4: ','
+            	    // InternalPClassifier.g:1723:4: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -4740,14 +5174,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group_2__1"
-    // InternalPClassifier.g:1587:1: rule__FeatureList__Group_2__1 : rule__FeatureList__Group_2__1__Impl ;
+    // InternalPClassifier.g:1732:1: rule__FeatureList__Group_2__1 : rule__FeatureList__Group_2__1__Impl ;
     public final void rule__FeatureList__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1591:1: ( rule__FeatureList__Group_2__1__Impl )
-            // InternalPClassifier.g:1592:2: rule__FeatureList__Group_2__1__Impl
+            // InternalPClassifier.g:1736:1: ( rule__FeatureList__Group_2__1__Impl )
+            // InternalPClassifier.g:1737:2: rule__FeatureList__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__FeatureList__Group_2__1__Impl();
@@ -4773,21 +5207,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__Group_2__1__Impl"
-    // InternalPClassifier.g:1598:1: rule__FeatureList__Group_2__1__Impl : ( ( rule__FeatureList__ValsAssignment_2_1 ) ) ;
+    // InternalPClassifier.g:1743:1: rule__FeatureList__Group_2__1__Impl : ( ( rule__FeatureList__ValsAssignment_2_1 ) ) ;
     public final void rule__FeatureList__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1602:1: ( ( ( rule__FeatureList__ValsAssignment_2_1 ) ) )
-            // InternalPClassifier.g:1603:1: ( ( rule__FeatureList__ValsAssignment_2_1 ) )
+            // InternalPClassifier.g:1747:1: ( ( ( rule__FeatureList__ValsAssignment_2_1 ) ) )
+            // InternalPClassifier.g:1748:1: ( ( rule__FeatureList__ValsAssignment_2_1 ) )
             {
-            // InternalPClassifier.g:1603:1: ( ( rule__FeatureList__ValsAssignment_2_1 ) )
-            // InternalPClassifier.g:1604:2: ( rule__FeatureList__ValsAssignment_2_1 )
+            // InternalPClassifier.g:1748:1: ( ( rule__FeatureList__ValsAssignment_2_1 ) )
+            // InternalPClassifier.g:1749:2: ( rule__FeatureList__ValsAssignment_2_1 )
             {
              before(grammarAccess.getFeatureListAccess().getValsAssignment_2_1()); 
-            // InternalPClassifier.g:1605:2: ( rule__FeatureList__ValsAssignment_2_1 )
-            // InternalPClassifier.g:1605:3: rule__FeatureList__ValsAssignment_2_1
+            // InternalPClassifier.g:1750:2: ( rule__FeatureList__ValsAssignment_2_1 )
+            // InternalPClassifier.g:1750:3: rule__FeatureList__ValsAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__FeatureList__ValsAssignment_2_1();
@@ -4820,14 +5254,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__0"
-    // InternalPClassifier.g:1614:1: rule__EvaluationList__Group__0 : rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1 ;
+    // InternalPClassifier.g:1759:1: rule__EvaluationList__Group__0 : rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1 ;
     public final void rule__EvaluationList__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1618:1: ( rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1 )
-            // InternalPClassifier.g:1619:2: rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1
+            // InternalPClassifier.g:1763:1: ( rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1 )
+            // InternalPClassifier.g:1764:2: rule__EvaluationList__Group__0__Impl rule__EvaluationList__Group__1
             {
             pushFollow(FOLLOW_18);
             rule__EvaluationList__Group__0__Impl();
@@ -4858,35 +5292,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__0__Impl"
-    // InternalPClassifier.g:1626:1: rule__EvaluationList__Group__0__Impl : ( ( ',' )* ) ;
+    // InternalPClassifier.g:1771:1: rule__EvaluationList__Group__0__Impl : ( ( ',' )* ) ;
     public final void rule__EvaluationList__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1630:1: ( ( ( ',' )* ) )
-            // InternalPClassifier.g:1631:1: ( ( ',' )* )
+            // InternalPClassifier.g:1775:1: ( ( ( ',' )* ) )
+            // InternalPClassifier.g:1776:1: ( ( ',' )* )
             {
-            // InternalPClassifier.g:1631:1: ( ( ',' )* )
-            // InternalPClassifier.g:1632:2: ( ',' )*
+            // InternalPClassifier.g:1776:1: ( ( ',' )* )
+            // InternalPClassifier.g:1777:2: ( ',' )*
             {
              before(grammarAccess.getEvaluationListAccess().getCommaKeyword_0()); 
-            // InternalPClassifier.g:1633:2: ( ',' )*
+            // InternalPClassifier.g:1778:2: ( ',' )*
             loop9:
             do {
                 int alt9=2;
                 int LA9_0 = input.LA(1);
 
-                if ( (LA9_0==31) ) {
+                if ( (LA9_0==33) ) {
                     alt9=1;
                 }
 
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalPClassifier.g:1633:3: ','
+            	    // InternalPClassifier.g:1778:3: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -4919,14 +5353,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__1"
-    // InternalPClassifier.g:1641:1: rule__EvaluationList__Group__1 : rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2 ;
+    // InternalPClassifier.g:1786:1: rule__EvaluationList__Group__1 : rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2 ;
     public final void rule__EvaluationList__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1645:1: ( rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2 )
-            // InternalPClassifier.g:1646:2: rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2
+            // InternalPClassifier.g:1790:1: ( rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2 )
+            // InternalPClassifier.g:1791:2: rule__EvaluationList__Group__1__Impl rule__EvaluationList__Group__2
             {
             pushFollow(FOLLOW_21);
             rule__EvaluationList__Group__1__Impl();
@@ -4957,21 +5391,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__1__Impl"
-    // InternalPClassifier.g:1653:1: rule__EvaluationList__Group__1__Impl : ( ( rule__EvaluationList__ValsAssignment_1 ) ) ;
+    // InternalPClassifier.g:1798:1: rule__EvaluationList__Group__1__Impl : ( ( rule__EvaluationList__ValsAssignment_1 ) ) ;
     public final void rule__EvaluationList__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1657:1: ( ( ( rule__EvaluationList__ValsAssignment_1 ) ) )
-            // InternalPClassifier.g:1658:1: ( ( rule__EvaluationList__ValsAssignment_1 ) )
+            // InternalPClassifier.g:1802:1: ( ( ( rule__EvaluationList__ValsAssignment_1 ) ) )
+            // InternalPClassifier.g:1803:1: ( ( rule__EvaluationList__ValsAssignment_1 ) )
             {
-            // InternalPClassifier.g:1658:1: ( ( rule__EvaluationList__ValsAssignment_1 ) )
-            // InternalPClassifier.g:1659:2: ( rule__EvaluationList__ValsAssignment_1 )
+            // InternalPClassifier.g:1803:1: ( ( rule__EvaluationList__ValsAssignment_1 ) )
+            // InternalPClassifier.g:1804:2: ( rule__EvaluationList__ValsAssignment_1 )
             {
              before(grammarAccess.getEvaluationListAccess().getValsAssignment_1()); 
-            // InternalPClassifier.g:1660:2: ( rule__EvaluationList__ValsAssignment_1 )
-            // InternalPClassifier.g:1660:3: rule__EvaluationList__ValsAssignment_1
+            // InternalPClassifier.g:1805:2: ( rule__EvaluationList__ValsAssignment_1 )
+            // InternalPClassifier.g:1805:3: rule__EvaluationList__ValsAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__EvaluationList__ValsAssignment_1();
@@ -5004,14 +5438,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__2"
-    // InternalPClassifier.g:1668:1: rule__EvaluationList__Group__2 : rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3 ;
+    // InternalPClassifier.g:1813:1: rule__EvaluationList__Group__2 : rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3 ;
     public final void rule__EvaluationList__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1672:1: ( rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3 )
-            // InternalPClassifier.g:1673:2: rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3
+            // InternalPClassifier.g:1817:1: ( rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3 )
+            // InternalPClassifier.g:1818:2: rule__EvaluationList__Group__2__Impl rule__EvaluationList__Group__3
             {
             pushFollow(FOLLOW_21);
             rule__EvaluationList__Group__2__Impl();
@@ -5042,27 +5476,27 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__2__Impl"
-    // InternalPClassifier.g:1680:1: rule__EvaluationList__Group__2__Impl : ( ( rule__EvaluationList__Group_2__0 )* ) ;
+    // InternalPClassifier.g:1825:1: rule__EvaluationList__Group__2__Impl : ( ( rule__EvaluationList__Group_2__0 )* ) ;
     public final void rule__EvaluationList__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1684:1: ( ( ( rule__EvaluationList__Group_2__0 )* ) )
-            // InternalPClassifier.g:1685:1: ( ( rule__EvaluationList__Group_2__0 )* )
+            // InternalPClassifier.g:1829:1: ( ( ( rule__EvaluationList__Group_2__0 )* ) )
+            // InternalPClassifier.g:1830:1: ( ( rule__EvaluationList__Group_2__0 )* )
             {
-            // InternalPClassifier.g:1685:1: ( ( rule__EvaluationList__Group_2__0 )* )
-            // InternalPClassifier.g:1686:2: ( rule__EvaluationList__Group_2__0 )*
+            // InternalPClassifier.g:1830:1: ( ( rule__EvaluationList__Group_2__0 )* )
+            // InternalPClassifier.g:1831:2: ( rule__EvaluationList__Group_2__0 )*
             {
              before(grammarAccess.getEvaluationListAccess().getGroup_2()); 
-            // InternalPClassifier.g:1687:2: ( rule__EvaluationList__Group_2__0 )*
+            // InternalPClassifier.g:1832:2: ( rule__EvaluationList__Group_2__0 )*
             loop10:
             do {
                 int alt10=2;
                 alt10 = dfa10.predict(input);
                 switch (alt10) {
             	case 1 :
-            	    // InternalPClassifier.g:1687:3: rule__EvaluationList__Group_2__0
+            	    // InternalPClassifier.g:1832:3: rule__EvaluationList__Group_2__0
             	    {
             	    pushFollow(FOLLOW_20);
             	    rule__EvaluationList__Group_2__0();
@@ -5101,14 +5535,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__3"
-    // InternalPClassifier.g:1695:1: rule__EvaluationList__Group__3 : rule__EvaluationList__Group__3__Impl ;
+    // InternalPClassifier.g:1840:1: rule__EvaluationList__Group__3 : rule__EvaluationList__Group__3__Impl ;
     public final void rule__EvaluationList__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1699:1: ( rule__EvaluationList__Group__3__Impl )
-            // InternalPClassifier.g:1700:2: rule__EvaluationList__Group__3__Impl
+            // InternalPClassifier.g:1844:1: ( rule__EvaluationList__Group__3__Impl )
+            // InternalPClassifier.g:1845:2: rule__EvaluationList__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EvaluationList__Group__3__Impl();
@@ -5134,35 +5568,35 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group__3__Impl"
-    // InternalPClassifier.g:1706:1: rule__EvaluationList__Group__3__Impl : ( ( ',' )* ) ;
+    // InternalPClassifier.g:1851:1: rule__EvaluationList__Group__3__Impl : ( ( ',' )* ) ;
     public final void rule__EvaluationList__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1710:1: ( ( ( ',' )* ) )
-            // InternalPClassifier.g:1711:1: ( ( ',' )* )
+            // InternalPClassifier.g:1855:1: ( ( ( ',' )* ) )
+            // InternalPClassifier.g:1856:1: ( ( ',' )* )
             {
-            // InternalPClassifier.g:1711:1: ( ( ',' )* )
-            // InternalPClassifier.g:1712:2: ( ',' )*
+            // InternalPClassifier.g:1856:1: ( ( ',' )* )
+            // InternalPClassifier.g:1857:2: ( ',' )*
             {
              before(grammarAccess.getEvaluationListAccess().getCommaKeyword_3()); 
-            // InternalPClassifier.g:1713:2: ( ',' )*
+            // InternalPClassifier.g:1858:2: ( ',' )*
             loop11:
             do {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==31) ) {
+                if ( (LA11_0==33) ) {
                     alt11=1;
                 }
 
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalPClassifier.g:1713:3: ','
+            	    // InternalPClassifier.g:1858:3: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -5195,14 +5629,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group_2__0"
-    // InternalPClassifier.g:1722:1: rule__EvaluationList__Group_2__0 : rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1 ;
+    // InternalPClassifier.g:1867:1: rule__EvaluationList__Group_2__0 : rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1 ;
     public final void rule__EvaluationList__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1726:1: ( rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1 )
-            // InternalPClassifier.g:1727:2: rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1
+            // InternalPClassifier.g:1871:1: ( rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1 )
+            // InternalPClassifier.g:1872:2: rule__EvaluationList__Group_2__0__Impl rule__EvaluationList__Group_2__1
             {
             pushFollow(FOLLOW_18);
             rule__EvaluationList__Group_2__0__Impl();
@@ -5233,26 +5667,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group_2__0__Impl"
-    // InternalPClassifier.g:1734:1: rule__EvaluationList__Group_2__0__Impl : ( ( ( ',' ) ) ( ( ',' )* ) ) ;
+    // InternalPClassifier.g:1879:1: rule__EvaluationList__Group_2__0__Impl : ( ( ( ',' ) ) ( ( ',' )* ) ) ;
     public final void rule__EvaluationList__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1738:1: ( ( ( ( ',' ) ) ( ( ',' )* ) ) )
-            // InternalPClassifier.g:1739:1: ( ( ( ',' ) ) ( ( ',' )* ) )
+            // InternalPClassifier.g:1883:1: ( ( ( ( ',' ) ) ( ( ',' )* ) ) )
+            // InternalPClassifier.g:1884:1: ( ( ( ',' ) ) ( ( ',' )* ) )
             {
-            // InternalPClassifier.g:1739:1: ( ( ( ',' ) ) ( ( ',' )* ) )
-            // InternalPClassifier.g:1740:2: ( ( ',' ) ) ( ( ',' )* )
+            // InternalPClassifier.g:1884:1: ( ( ( ',' ) ) ( ( ',' )* ) )
+            // InternalPClassifier.g:1885:2: ( ( ',' ) ) ( ( ',' )* )
             {
-            // InternalPClassifier.g:1740:2: ( ( ',' ) )
-            // InternalPClassifier.g:1741:3: ( ',' )
+            // InternalPClassifier.g:1885:2: ( ( ',' ) )
+            // InternalPClassifier.g:1886:3: ( ',' )
             {
              before(grammarAccess.getEvaluationListAccess().getCommaKeyword_2_0()); 
-            // InternalPClassifier.g:1742:3: ( ',' )
-            // InternalPClassifier.g:1742:4: ','
+            // InternalPClassifier.g:1887:3: ( ',' )
+            // InternalPClassifier.g:1887:4: ','
             {
-            match(input,31,FOLLOW_20); 
+            match(input,33,FOLLOW_20); 
 
             }
 
@@ -5260,26 +5694,26 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
             }
 
-            // InternalPClassifier.g:1745:2: ( ( ',' )* )
-            // InternalPClassifier.g:1746:3: ( ',' )*
+            // InternalPClassifier.g:1890:2: ( ( ',' )* )
+            // InternalPClassifier.g:1891:3: ( ',' )*
             {
              before(grammarAccess.getEvaluationListAccess().getCommaKeyword_2_0()); 
-            // InternalPClassifier.g:1747:3: ( ',' )*
+            // InternalPClassifier.g:1892:3: ( ',' )*
             loop12:
             do {
                 int alt12=2;
                 int LA12_0 = input.LA(1);
 
-                if ( (LA12_0==31) ) {
+                if ( (LA12_0==33) ) {
                     alt12=1;
                 }
 
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalPClassifier.g:1747:4: ','
+            	    // InternalPClassifier.g:1892:4: ','
             	    {
-            	    match(input,31,FOLLOW_20); 
+            	    match(input,33,FOLLOW_20); 
 
             	    }
             	    break;
@@ -5315,14 +5749,14 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group_2__1"
-    // InternalPClassifier.g:1756:1: rule__EvaluationList__Group_2__1 : rule__EvaluationList__Group_2__1__Impl ;
+    // InternalPClassifier.g:1901:1: rule__EvaluationList__Group_2__1 : rule__EvaluationList__Group_2__1__Impl ;
     public final void rule__EvaluationList__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1760:1: ( rule__EvaluationList__Group_2__1__Impl )
-            // InternalPClassifier.g:1761:2: rule__EvaluationList__Group_2__1__Impl
+            // InternalPClassifier.g:1905:1: ( rule__EvaluationList__Group_2__1__Impl )
+            // InternalPClassifier.g:1906:2: rule__EvaluationList__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EvaluationList__Group_2__1__Impl();
@@ -5348,21 +5782,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__Group_2__1__Impl"
-    // InternalPClassifier.g:1767:1: rule__EvaluationList__Group_2__1__Impl : ( ( rule__EvaluationList__ValsAssignment_2_1 ) ) ;
+    // InternalPClassifier.g:1912:1: rule__EvaluationList__Group_2__1__Impl : ( ( rule__EvaluationList__ValsAssignment_2_1 ) ) ;
     public final void rule__EvaluationList__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1771:1: ( ( ( rule__EvaluationList__ValsAssignment_2_1 ) ) )
-            // InternalPClassifier.g:1772:1: ( ( rule__EvaluationList__ValsAssignment_2_1 ) )
+            // InternalPClassifier.g:1916:1: ( ( ( rule__EvaluationList__ValsAssignment_2_1 ) ) )
+            // InternalPClassifier.g:1917:1: ( ( rule__EvaluationList__ValsAssignment_2_1 ) )
             {
-            // InternalPClassifier.g:1772:1: ( ( rule__EvaluationList__ValsAssignment_2_1 ) )
-            // InternalPClassifier.g:1773:2: ( rule__EvaluationList__ValsAssignment_2_1 )
+            // InternalPClassifier.g:1917:1: ( ( rule__EvaluationList__ValsAssignment_2_1 ) )
+            // InternalPClassifier.g:1918:2: ( rule__EvaluationList__ValsAssignment_2_1 )
             {
              before(grammarAccess.getEvaluationListAccess().getValsAssignment_2_1()); 
-            // InternalPClassifier.g:1774:2: ( rule__EvaluationList__ValsAssignment_2_1 )
-            // InternalPClassifier.g:1774:3: rule__EvaluationList__ValsAssignment_2_1
+            // InternalPClassifier.g:1919:2: ( rule__EvaluationList__ValsAssignment_2_1 )
+            // InternalPClassifier.g:1919:3: rule__EvaluationList__ValsAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__EvaluationList__ValsAssignment_2_1();
@@ -5395,17 +5829,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PClassfier__ElementsAssignment"
-    // InternalPClassifier.g:1783:1: rule__PClassfier__ElementsAssignment : ( ruleStatement ) ;
+    // InternalPClassifier.g:1928:1: rule__PClassfier__ElementsAssignment : ( ruleStatement ) ;
     public final void rule__PClassfier__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1787:1: ( ( ruleStatement ) )
-            // InternalPClassifier.g:1788:2: ( ruleStatement )
+            // InternalPClassifier.g:1932:1: ( ( ruleStatement ) )
+            // InternalPClassifier.g:1933:2: ( ruleStatement )
             {
-            // InternalPClassifier.g:1788:2: ( ruleStatement )
-            // InternalPClassifier.g:1789:3: ruleStatement
+            // InternalPClassifier.g:1933:2: ( ruleStatement )
+            // InternalPClassifier.g:1934:3: ruleStatement
             {
              before(grammarAccess.getPClassfierAccess().getElementsStatementParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -5436,17 +5870,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__NameAssignment_1"
-    // InternalPClassifier.g:1798:1: rule__Classifier__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalPClassifier.g:1943:1: rule__Classifier__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Classifier__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1802:1: ( ( RULE_ID ) )
-            // InternalPClassifier.g:1803:2: ( RULE_ID )
+            // InternalPClassifier.g:1947:1: ( ( RULE_ID ) )
+            // InternalPClassifier.g:1948:2: ( RULE_ID )
             {
-            // InternalPClassifier.g:1803:2: ( RULE_ID )
-            // InternalPClassifier.g:1804:3: RULE_ID
+            // InternalPClassifier.g:1948:2: ( RULE_ID )
+            // InternalPClassifier.g:1949:3: RULE_ID
             {
              before(grammarAccess.getClassifierAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5473,17 +5907,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__FeaturesAssignment_5"
-    // InternalPClassifier.g:1813:1: rule__Classifier__FeaturesAssignment_5 : ( ruleFeatureList ) ;
+    // InternalPClassifier.g:1958:1: rule__Classifier__FeaturesAssignment_5 : ( ruleFeatureList ) ;
     public final void rule__Classifier__FeaturesAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1817:1: ( ( ruleFeatureList ) )
-            // InternalPClassifier.g:1818:2: ( ruleFeatureList )
+            // InternalPClassifier.g:1962:1: ( ( ruleFeatureList ) )
+            // InternalPClassifier.g:1963:2: ( ruleFeatureList )
             {
-            // InternalPClassifier.g:1818:2: ( ruleFeatureList )
-            // InternalPClassifier.g:1819:3: ruleFeatureList
+            // InternalPClassifier.g:1963:2: ( ruleFeatureList )
+            // InternalPClassifier.g:1964:3: ruleFeatureList
             {
              before(grammarAccess.getClassifierAccess().getFeaturesFeatureListParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -5514,17 +5948,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__TargetAssignment_8"
-    // InternalPClassifier.g:1828:1: rule__Classifier__TargetAssignment_8 : ( RULE_STRING ) ;
+    // InternalPClassifier.g:1973:1: rule__Classifier__TargetAssignment_8 : ( RULE_STRING ) ;
     public final void rule__Classifier__TargetAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1832:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1833:2: ( RULE_STRING )
+            // InternalPClassifier.g:1977:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:1978:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1833:2: ( RULE_STRING )
-            // InternalPClassifier.g:1834:3: RULE_STRING
+            // InternalPClassifier.g:1978:2: ( RULE_STRING )
+            // InternalPClassifier.g:1979:3: RULE_STRING
             {
              before(grammarAccess.getClassifierAccess().getTargetSTRINGTerminalRuleCall_8_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5551,17 +5985,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Classifier__ModelAssignment_11"
-    // InternalPClassifier.g:1843:1: rule__Classifier__ModelAssignment_11 : ( ruleMLModel ) ;
+    // InternalPClassifier.g:1988:1: rule__Classifier__ModelAssignment_11 : ( ruleMLModel ) ;
     public final void rule__Classifier__ModelAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1847:1: ( ( ruleMLModel ) )
-            // InternalPClassifier.g:1848:2: ( ruleMLModel )
+            // InternalPClassifier.g:1992:1: ( ( ruleMLModel ) )
+            // InternalPClassifier.g:1993:2: ( ruleMLModel )
             {
-            // InternalPClassifier.g:1848:2: ( ruleMLModel )
-            // InternalPClassifier.g:1849:3: ruleMLModel
+            // InternalPClassifier.g:1993:2: ( ruleMLModel )
+            // InternalPClassifier.g:1994:3: ruleMLModel
             {
              before(grammarAccess.getClassifierAccess().getModelMLModelEnumRuleCall_11_0()); 
             pushFollow(FOLLOW_2);
@@ -5591,22 +6025,22 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Classifier__ModelAssignment_11"
 
 
-    // $ANTLR start "rule__Run__NameAssignment_1"
-    // InternalPClassifier.g:1858:1: rule__Run__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__Run__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__Train__NameAssignment_1"
+    // InternalPClassifier.g:2003:1: rule__Train__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__Train__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1862:1: ( ( RULE_ID ) )
-            // InternalPClassifier.g:1863:2: ( RULE_ID )
+            // InternalPClassifier.g:2007:1: ( ( RULE_ID ) )
+            // InternalPClassifier.g:2008:2: ( RULE_ID )
             {
-            // InternalPClassifier.g:1863:2: ( RULE_ID )
-            // InternalPClassifier.g:1864:3: RULE_ID
+            // InternalPClassifier.g:2008:2: ( RULE_ID )
+            // InternalPClassifier.g:2009:3: RULE_ID
             {
-             before(grammarAccess.getRunAccess().getNameIDTerminalRuleCall_1_0()); 
+             before(grammarAccess.getTrainAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getNameIDTerminalRuleCall_1_0()); 
+             after(grammarAccess.getTrainAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
 
@@ -5625,25 +6059,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__NameAssignment_1"
+    // $ANTLR end "rule__Train__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Run__DatasetAssignment_5"
-    // InternalPClassifier.g:1873:1: rule__Run__DatasetAssignment_5 : ( RULE_STRING ) ;
-    public final void rule__Run__DatasetAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__Train__DatasetAssignment_5"
+    // InternalPClassifier.g:2018:1: rule__Train__DatasetAssignment_5 : ( RULE_STRING ) ;
+    public final void rule__Train__DatasetAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1877:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1878:2: ( RULE_STRING )
+            // InternalPClassifier.g:2022:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:2023:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1878:2: ( RULE_STRING )
-            // InternalPClassifier.g:1879:3: RULE_STRING
+            // InternalPClassifier.g:2023:2: ( RULE_STRING )
+            // InternalPClassifier.g:2024:3: RULE_STRING
             {
-             before(grammarAccess.getRunAccess().getDatasetSTRINGTerminalRuleCall_5_0()); 
+             before(grammarAccess.getTrainAccess().getDatasetSTRINGTerminalRuleCall_5_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getDatasetSTRINGTerminalRuleCall_5_0()); 
+             after(grammarAccess.getTrainAccess().getDatasetSTRINGTerminalRuleCall_5_0()); 
 
             }
 
@@ -5662,25 +6096,25 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__DatasetAssignment_5"
+    // $ANTLR end "rule__Train__DatasetAssignment_5"
 
 
-    // $ANTLR start "rule__Run__SplitAssignment_8"
-    // InternalPClassifier.g:1888:1: rule__Run__SplitAssignment_8 : ( RULE_FLOAT ) ;
-    public final void rule__Run__SplitAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__Train__SplitAssignment_8"
+    // InternalPClassifier.g:2033:1: rule__Train__SplitAssignment_8 : ( RULE_FLOAT ) ;
+    public final void rule__Train__SplitAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1892:1: ( ( RULE_FLOAT ) )
-            // InternalPClassifier.g:1893:2: ( RULE_FLOAT )
+            // InternalPClassifier.g:2037:1: ( ( RULE_FLOAT ) )
+            // InternalPClassifier.g:2038:2: ( RULE_FLOAT )
             {
-            // InternalPClassifier.g:1893:2: ( RULE_FLOAT )
-            // InternalPClassifier.g:1894:3: RULE_FLOAT
+            // InternalPClassifier.g:2038:2: ( RULE_FLOAT )
+            // InternalPClassifier.g:2039:3: RULE_FLOAT
             {
-             before(grammarAccess.getRunAccess().getSplitFLOATTerminalRuleCall_8_0()); 
+             before(grammarAccess.getTrainAccess().getSplitFLOATTerminalRuleCall_8_0()); 
             match(input,RULE_FLOAT,FOLLOW_2); 
-             after(grammarAccess.getRunAccess().getSplitFLOATTerminalRuleCall_8_0()); 
+             after(grammarAccess.getTrainAccess().getSplitFLOATTerminalRuleCall_8_0()); 
 
             }
 
@@ -5699,29 +6133,66 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__SplitAssignment_8"
+    // $ANTLR end "rule__Train__SplitAssignment_8"
 
 
-    // $ANTLR start "rule__Run__EvaluationsAssignment_11"
-    // InternalPClassifier.g:1903:1: rule__Run__EvaluationsAssignment_11 : ( ruleEvaluationList ) ;
-    public final void rule__Run__EvaluationsAssignment_11() throws RecognitionException {
+    // $ANTLR start "rule__Eval__NameAssignment_1"
+    // InternalPClassifier.g:2048:1: rule__Eval__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__Eval__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1907:1: ( ( ruleEvaluationList ) )
-            // InternalPClassifier.g:1908:2: ( ruleEvaluationList )
+            // InternalPClassifier.g:2052:1: ( ( RULE_ID ) )
+            // InternalPClassifier.g:2053:2: ( RULE_ID )
             {
-            // InternalPClassifier.g:1908:2: ( ruleEvaluationList )
-            // InternalPClassifier.g:1909:3: ruleEvaluationList
+            // InternalPClassifier.g:2053:2: ( RULE_ID )
+            // InternalPClassifier.g:2054:3: RULE_ID
             {
-             before(grammarAccess.getRunAccess().getEvaluationsEvaluationListParserRuleCall_11_0()); 
+             before(grammarAccess.getEvalAccess().getNameIDTerminalRuleCall_1_0()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getEvalAccess().getNameIDTerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Eval__NameAssignment_1"
+
+
+    // $ANTLR start "rule__Eval__EvaluationsAssignment_5"
+    // InternalPClassifier.g:2063:1: rule__Eval__EvaluationsAssignment_5 : ( ruleEvaluationList ) ;
+    public final void rule__Eval__EvaluationsAssignment_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalPClassifier.g:2067:1: ( ( ruleEvaluationList ) )
+            // InternalPClassifier.g:2068:2: ( ruleEvaluationList )
+            {
+            // InternalPClassifier.g:2068:2: ( ruleEvaluationList )
+            // InternalPClassifier.g:2069:3: ruleEvaluationList
+            {
+             before(grammarAccess.getEvalAccess().getEvaluationsEvaluationListParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
             ruleEvaluationList();
 
             state._fsp--;
 
-             after(grammarAccess.getRunAccess().getEvaluationsEvaluationListParserRuleCall_11_0()); 
+             after(grammarAccess.getEvalAccess().getEvaluationsEvaluationListParserRuleCall_5_0()); 
 
             }
 
@@ -5740,21 +6211,21 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__Run__EvaluationsAssignment_11"
+    // $ANTLR end "rule__Eval__EvaluationsAssignment_5"
 
 
     // $ANTLR start "rule__Load__NameAssignment_1"
-    // InternalPClassifier.g:1918:1: rule__Load__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalPClassifier.g:2078:1: rule__Load__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Load__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1922:1: ( ( RULE_ID ) )
-            // InternalPClassifier.g:1923:2: ( RULE_ID )
+            // InternalPClassifier.g:2082:1: ( ( RULE_ID ) )
+            // InternalPClassifier.g:2083:2: ( RULE_ID )
             {
-            // InternalPClassifier.g:1923:2: ( RULE_ID )
-            // InternalPClassifier.g:1924:3: RULE_ID
+            // InternalPClassifier.g:2083:2: ( RULE_ID )
+            // InternalPClassifier.g:2084:3: RULE_ID
             {
              before(grammarAccess.getLoadAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5781,17 +6252,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Load__FileAssignment_5"
-    // InternalPClassifier.g:1933:1: rule__Load__FileAssignment_5 : ( RULE_STRING ) ;
+    // InternalPClassifier.g:2093:1: rule__Load__FileAssignment_5 : ( RULE_STRING ) ;
     public final void rule__Load__FileAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1937:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1938:2: ( RULE_STRING )
+            // InternalPClassifier.g:2097:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:2098:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1938:2: ( RULE_STRING )
-            // InternalPClassifier.g:1939:3: RULE_STRING
+            // InternalPClassifier.g:2098:2: ( RULE_STRING )
+            // InternalPClassifier.g:2099:3: RULE_STRING
             {
              before(grammarAccess.getLoadAccess().getFileSTRINGTerminalRuleCall_5_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5818,17 +6289,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__NameAssignment_1"
-    // InternalPClassifier.g:1948:1: rule__Save__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalPClassifier.g:2108:1: rule__Save__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Save__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1952:1: ( ( RULE_ID ) )
-            // InternalPClassifier.g:1953:2: ( RULE_ID )
+            // InternalPClassifier.g:2112:1: ( ( RULE_ID ) )
+            // InternalPClassifier.g:2113:2: ( RULE_ID )
             {
-            // InternalPClassifier.g:1953:2: ( RULE_ID )
-            // InternalPClassifier.g:1954:3: RULE_ID
+            // InternalPClassifier.g:2113:2: ( RULE_ID )
+            // InternalPClassifier.g:2114:3: RULE_ID
             {
              before(grammarAccess.getSaveAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5855,17 +6326,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Save__FileAssignment_5"
-    // InternalPClassifier.g:1963:1: rule__Save__FileAssignment_5 : ( RULE_STRING ) ;
+    // InternalPClassifier.g:2123:1: rule__Save__FileAssignment_5 : ( RULE_STRING ) ;
     public final void rule__Save__FileAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1967:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1968:2: ( RULE_STRING )
+            // InternalPClassifier.g:2127:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:2128:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1968:2: ( RULE_STRING )
-            // InternalPClassifier.g:1969:3: RULE_STRING
+            // InternalPClassifier.g:2128:2: ( RULE_STRING )
+            // InternalPClassifier.g:2129:3: RULE_STRING
             {
              before(grammarAccess.getSaveAccess().getFileSTRINGTerminalRuleCall_5_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5892,17 +6363,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__ValsAssignment_1"
-    // InternalPClassifier.g:1978:1: rule__FeatureList__ValsAssignment_1 : ( RULE_STRING ) ;
+    // InternalPClassifier.g:2138:1: rule__FeatureList__ValsAssignment_1 : ( RULE_STRING ) ;
     public final void rule__FeatureList__ValsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1982:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1983:2: ( RULE_STRING )
+            // InternalPClassifier.g:2142:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:2143:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1983:2: ( RULE_STRING )
-            // InternalPClassifier.g:1984:3: RULE_STRING
+            // InternalPClassifier.g:2143:2: ( RULE_STRING )
+            // InternalPClassifier.g:2144:3: RULE_STRING
             {
              before(grammarAccess.getFeatureListAccess().getValsSTRINGTerminalRuleCall_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5929,17 +6400,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FeatureList__ValsAssignment_2_1"
-    // InternalPClassifier.g:1993:1: rule__FeatureList__ValsAssignment_2_1 : ( RULE_STRING ) ;
+    // InternalPClassifier.g:2153:1: rule__FeatureList__ValsAssignment_2_1 : ( RULE_STRING ) ;
     public final void rule__FeatureList__ValsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:1997:1: ( ( RULE_STRING ) )
-            // InternalPClassifier.g:1998:2: ( RULE_STRING )
+            // InternalPClassifier.g:2157:1: ( ( RULE_STRING ) )
+            // InternalPClassifier.g:2158:2: ( RULE_STRING )
             {
-            // InternalPClassifier.g:1998:2: ( RULE_STRING )
-            // InternalPClassifier.g:1999:3: RULE_STRING
+            // InternalPClassifier.g:2158:2: ( RULE_STRING )
+            // InternalPClassifier.g:2159:3: RULE_STRING
             {
              before(grammarAccess.getFeatureListAccess().getValsSTRINGTerminalRuleCall_2_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5966,17 +6437,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__ValsAssignment_1"
-    // InternalPClassifier.g:2008:1: rule__EvaluationList__ValsAssignment_1 : ( ruleEvaluation ) ;
+    // InternalPClassifier.g:2168:1: rule__EvaluationList__ValsAssignment_1 : ( ruleEvaluation ) ;
     public final void rule__EvaluationList__ValsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:2012:1: ( ( ruleEvaluation ) )
-            // InternalPClassifier.g:2013:2: ( ruleEvaluation )
+            // InternalPClassifier.g:2172:1: ( ( ruleEvaluation ) )
+            // InternalPClassifier.g:2173:2: ( ruleEvaluation )
             {
-            // InternalPClassifier.g:2013:2: ( ruleEvaluation )
-            // InternalPClassifier.g:2014:3: ruleEvaluation
+            // InternalPClassifier.g:2173:2: ( ruleEvaluation )
+            // InternalPClassifier.g:2174:3: ruleEvaluation
             {
              before(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -6007,17 +6478,17 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__EvaluationList__ValsAssignment_2_1"
-    // InternalPClassifier.g:2023:1: rule__EvaluationList__ValsAssignment_2_1 : ( ruleEvaluation ) ;
+    // InternalPClassifier.g:2183:1: rule__EvaluationList__ValsAssignment_2_1 : ( ruleEvaluation ) ;
     public final void rule__EvaluationList__ValsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPClassifier.g:2027:1: ( ( ruleEvaluation ) )
-            // InternalPClassifier.g:2028:2: ( ruleEvaluation )
+            // InternalPClassifier.g:2187:1: ( ( ruleEvaluation ) )
+            // InternalPClassifier.g:2188:2: ( ruleEvaluation )
             {
-            // InternalPClassifier.g:2028:2: ( ruleEvaluation )
-            // InternalPClassifier.g:2029:3: ruleEvaluation
+            // InternalPClassifier.g:2188:2: ( ruleEvaluation )
+            // InternalPClassifier.g:2189:3: ruleEvaluation
             {
              before(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -6053,15 +6524,15 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
     protected DFA10 dfa10 = new DFA10(this);
     static final String dfa_1s = "\5\uffff";
     static final String dfa_2s = "\2\2\1\uffff\1\2\1\uffff";
-    static final String dfa_3s = "\1\25\1\5\1\uffff\1\5\1\uffff";
-    static final String dfa_4s = "\2\37\1\uffff\1\37\1\uffff";
+    static final String dfa_3s = "\1\26\1\5\1\uffff\1\5\1\uffff";
+    static final String dfa_4s = "\2\41\1\uffff\1\41\1\uffff";
     static final String dfa_5s = "\2\uffff\1\2\1\uffff\1\1";
     static final String dfa_6s = "\5\uffff}>";
     static final String[] dfa_7s = {
-            "\1\2\11\uffff\1\1",
-            "\1\4\17\uffff\1\2\11\uffff\1\3",
+            "\1\2\12\uffff\1\1",
+            "\1\4\20\uffff\1\2\12\uffff\1\3",
             "",
-            "\1\4\17\uffff\1\2\11\uffff\1\3",
+            "\1\4\20\uffff\1\2\12\uffff\1\3",
             ""
     };
 
@@ -6087,15 +6558,15 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "()* loopback of 1518:2: ( rule__FeatureList__Group_2__0 )*";
+            return "()* loopback of 1663:2: ( rule__FeatureList__Group_2__0 )*";
         }
     }
-    static final String dfa_8s = "\1\27\1\16\1\uffff\1\16\1\uffff";
+    static final String dfa_8s = "\1\30\1\16\1\uffff\1\16\1\uffff";
     static final String[] dfa_9s = {
-            "\1\2\7\uffff\1\1",
-            "\3\4\6\uffff\1\2\7\uffff\1\3",
+            "\1\2\10\uffff\1\1",
+            "\4\4\6\uffff\1\2\10\uffff\1\3",
             "",
-            "\3\4\6\uffff\1\2\7\uffff\1\3",
+            "\4\4\6\uffff\1\2\10\uffff\1\3",
             ""
     };
     static final char[] dfa_8 = DFA.unpackEncodedStringToUnsignedChars(dfa_8s);
@@ -6115,31 +6586,31 @@ public class InternalPClassifierParser extends AbstractInternalContentAssistPars
             this.transition = dfa_9;
         }
         public String getDescription() {
-            return "()* loopback of 1687:2: ( rule__EvaluationList__Group_2__0 )*";
+            return "()* loopback of 1832:2: ( rule__EvaluationList__Group_2__0 )*";
         }
     }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000051020002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000152040002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000080000020L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000200000020L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000800000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000003000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000000008001C000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000000020003C000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000200000000L});
 
 }

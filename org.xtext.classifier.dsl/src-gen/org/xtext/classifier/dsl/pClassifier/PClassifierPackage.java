@@ -170,14 +170,14 @@ public interface PClassifierPackage extends EPackage
   int CLASSIFIER_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl <em>Run</em>}' class.
+   * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.TrainImpl <em>Train</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.classifier.dsl.pClassifier.impl.RunImpl
-   * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getRun()
+   * @see org.xtext.classifier.dsl.pClassifier.impl.TrainImpl
+   * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getTrain()
    * @generated
    */
-  int RUN = 3;
+  int TRAIN = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -186,7 +186,7 @@ public interface PClassifierPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RUN__NAME = STATEMENT__NAME;
+  int TRAIN__NAME = STATEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Dataset</b></em>' attribute.
@@ -195,7 +195,7 @@ public interface PClassifierPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RUN__DATASET = STATEMENT_FEATURE_COUNT + 0;
+  int TRAIN__DATASET = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Split</b></em>' attribute.
@@ -204,7 +204,35 @@ public interface PClassifierPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RUN__SPLIT = STATEMENT_FEATURE_COUNT + 1;
+  int TRAIN__SPLIT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Train</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAIN_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.EvalImpl <em>Eval</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.classifier.dsl.pClassifier.impl.EvalImpl
+   * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEval()
+   * @generated
+   */
+  int EVAL = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVAL__NAME = STATEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Evaluations</b></em>' containment reference.
@@ -213,16 +241,16 @@ public interface PClassifierPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RUN__EVALUATIONS = STATEMENT_FEATURE_COUNT + 2;
+  int EVAL__EVALUATIONS = STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Run</em>' class.
+   * The number of structural features of the '<em>Eval</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RUN_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+  int EVAL_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.LoadImpl <em>Load</em>}' class.
@@ -232,7 +260,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getLoad()
    * @generated
    */
-  int LOAD = 4;
+  int LOAD = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -269,7 +297,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getSave()
    * @generated
    */
-  int SAVE = 5;
+  int SAVE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -306,7 +334,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getFeatureList()
    * @generated
    */
-  int FEATURE_LIST = 6;
+  int FEATURE_LIST = 7;
 
   /**
    * The feature id for the '<em><b>Vals</b></em>' attribute list.
@@ -334,7 +362,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEvaluationList()
    * @generated
    */
-  int EVALUATION_LIST = 7;
+  int EVALUATION_LIST = 8;
 
   /**
    * The feature id for the '<em><b>Vals</b></em>' attribute list.
@@ -362,7 +390,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getMLModel()
    * @generated
    */
-  int ML_MODEL = 8;
+  int ML_MODEL = 9;
 
   /**
    * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.Evaluation <em>Evaluation</em>}' enum.
@@ -372,7 +400,7 @@ public interface PClassifierPackage extends EPackage
    * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEvaluation()
    * @generated
    */
-  int EVALUATION = 9;
+  int EVALUATION = 10;
 
 
   /**
@@ -461,47 +489,57 @@ public interface PClassifierPackage extends EPackage
   EAttribute getClassifier_Model();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Run <em>Run</em>}'.
+   * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Train <em>Train</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Run</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Run
+   * @return the meta object for class '<em>Train</em>'.
+   * @see org.xtext.classifier.dsl.pClassifier.Train
    * @generated
    */
-  EClass getRun();
+  EClass getTrain();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Run#getDataset <em>Dataset</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Train#getDataset <em>Dataset</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Dataset</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Run#getDataset()
-   * @see #getRun()
+   * @see org.xtext.classifier.dsl.pClassifier.Train#getDataset()
+   * @see #getTrain()
    * @generated
    */
-  EAttribute getRun_Dataset();
+  EAttribute getTrain_Dataset();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Run#getSplit <em>Split</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Train#getSplit <em>Split</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Split</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Run#getSplit()
-   * @see #getRun()
+   * @see org.xtext.classifier.dsl.pClassifier.Train#getSplit()
+   * @see #getTrain()
    * @generated
    */
-  EAttribute getRun_Split();
+  EAttribute getTrain_Split();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.classifier.dsl.pClassifier.Run#getEvaluations <em>Evaluations</em>}'.
+   * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Eval <em>Eval</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Eval</em>'.
+   * @see org.xtext.classifier.dsl.pClassifier.Eval
+   * @generated
+   */
+  EClass getEval();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.classifier.dsl.pClassifier.Eval#getEvaluations <em>Evaluations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Evaluations</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Run#getEvaluations()
-   * @see #getRun()
+   * @see org.xtext.classifier.dsl.pClassifier.Eval#getEvaluations()
+   * @see #getEval()
    * @generated
    */
-  EReference getRun_Evaluations();
+  EReference getEval_Evaluations();
 
   /**
    * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Load <em>Load</em>}'.
@@ -701,14 +739,14 @@ public interface PClassifierPackage extends EPackage
     EAttribute CLASSIFIER__MODEL = eINSTANCE.getClassifier_Model();
 
     /**
-     * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.RunImpl <em>Run</em>}' class.
+     * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.TrainImpl <em>Train</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.classifier.dsl.pClassifier.impl.RunImpl
-     * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getRun()
+     * @see org.xtext.classifier.dsl.pClassifier.impl.TrainImpl
+     * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getTrain()
      * @generated
      */
-    EClass RUN = eINSTANCE.getRun();
+    EClass TRAIN = eINSTANCE.getTrain();
 
     /**
      * The meta object literal for the '<em><b>Dataset</b></em>' attribute feature.
@@ -716,7 +754,7 @@ public interface PClassifierPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RUN__DATASET = eINSTANCE.getRun_Dataset();
+    EAttribute TRAIN__DATASET = eINSTANCE.getTrain_Dataset();
 
     /**
      * The meta object literal for the '<em><b>Split</b></em>' attribute feature.
@@ -724,7 +762,17 @@ public interface PClassifierPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RUN__SPLIT = eINSTANCE.getRun_Split();
+    EAttribute TRAIN__SPLIT = eINSTANCE.getTrain_Split();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.EvalImpl <em>Eval</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.classifier.dsl.pClassifier.impl.EvalImpl
+     * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEval()
+     * @generated
+     */
+    EClass EVAL = eINSTANCE.getEval();
 
     /**
      * The meta object literal for the '<em><b>Evaluations</b></em>' containment reference feature.
@@ -732,7 +780,7 @@ public interface PClassifierPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RUN__EVALUATIONS = eINSTANCE.getRun_Evaluations();
+    EReference EVAL__EVALUATIONS = eINSTANCE.getEval_Evaluations();
 
     /**
      * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.LoadImpl <em>Load</em>}' class.

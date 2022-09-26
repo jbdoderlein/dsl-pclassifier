@@ -95,11 +95,19 @@ public class PClassifierSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case PClassifierPackage.RUN:
+      case PClassifierPackage.TRAIN:
       {
-        Run run = (Run)theEObject;
-        T result = caseRun(run);
-        if (result == null) result = caseStatement(run);
+        Train train = (Train)theEObject;
+        T result = caseTrain(train);
+        if (result == null) result = caseStatement(train);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PClassifierPackage.EVAL:
+      {
+        Eval eval = (Eval)theEObject;
+        T result = caseEval(eval);
+        if (result == null) result = caseStatement(eval);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -186,17 +194,33 @@ public class PClassifierSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Run</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Train</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Run</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Train</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRun(Run object)
+  public T caseTrain(Train object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEval(Eval object)
   {
     return null;
   }

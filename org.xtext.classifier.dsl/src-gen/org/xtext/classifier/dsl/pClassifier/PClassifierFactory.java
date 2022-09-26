@@ -51,13 +51,22 @@ public interface PClassifierFactory extends EFactory
   Classifier createClassifier();
 
   /**
-   * Returns a new object of class '<em>Run</em>'.
+   * Returns a new object of class '<em>Train</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Run</em>'.
+   * @return a new object of class '<em>Train</em>'.
    * @generated
    */
-  Run createRun();
+  Train createTrain();
+
+  /**
+   * Returns a new object of class '<em>Eval</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Eval</em>'.
+   * @generated
+   */
+  Eval createEval();
 
   /**
    * Returns a new object of class '<em>Load</em>'.

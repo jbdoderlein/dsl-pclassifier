@@ -12,17 +12,20 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
+import org.xtext.classifier.dsl.pClassifier.Eval;
 import org.xtext.classifier.dsl.pClassifier.Evaluation;
 import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
+import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.MLModel;
-import org.xtext.classifier.dsl.pClassifier.Run;
+import org.xtext.classifier.dsl.pClassifier.Save;
+import org.xtext.classifier.dsl.pClassifier.Train;
 
 @SuppressWarnings("all")
 public class PClassifierGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    String result = "";
+    String result = "import pandas as pd\nimport pickles\nimport sklearn\n\n";
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(resource.getAllContents());
     for (final EObject e : _iterable) {
       boolean _matched = false;
@@ -35,13 +38,43 @@ public class PClassifierGenerator extends AbstractGenerator {
         result = (_result_1 + "\n");
       }
       if (!_matched) {
-        if ((e instanceof Run)) {
+        if ((e instanceof Train)) {
           _matched=true;
           String _result_2 = result;
-          CharSequence _generateRun = this.generateRun(((Run) e));
-          result = (_result_2 + _generateRun);
+          CharSequence _generateTrain = this.generateTrain(((Train) e));
+          result = (_result_2 + _generateTrain);
           String _result_3 = result;
           result = (_result_3 + "\n");
+        }
+      }
+      if (!_matched) {
+        if ((e instanceof Eval)) {
+          _matched=true;
+          String _result_4 = result;
+          CharSequence _generateEval = this.generateEval(((Eval) e));
+          result = (_result_4 + _generateEval);
+          String _result_5 = result;
+          result = (_result_5 + "\n");
+        }
+      }
+      if (!_matched) {
+        if ((e instanceof Load)) {
+          _matched=true;
+          String _result_6 = result;
+          CharSequence _generateLoad = this.generateLoad(((Load) e));
+          result = (_result_6 + _generateLoad);
+          String _result_7 = result;
+          result = (_result_7 + "\n");
+        }
+      }
+      if (!_matched) {
+        if ((e instanceof Save)) {
+          _matched=true;
+          String _result_8 = result;
+          CharSequence _generateSave = this.generateSave(((Save) e));
+          result = (_result_8 + _generateSave);
+          String _result_9 = result;
+          result = (_result_9 + "\n");
         }
       }
     }
@@ -87,27 +120,65 @@ public class PClassifierGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  private CharSequence generateRun(final Run run) {
+  private CharSequence generateTrain(final Train train) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("df = pd.read_csv(\"");
-    String _dataset = run.getDataset();
+    String _dataset = train.getDataset();
     _builder.append(_dataset);
     _builder.append("\")");
     _builder.newLineIfNotEmpty();
     _builder.append("classifier = ");
-    String _name = run.getName();
+    String _name = train.getName();
     _builder.append(_name);
     _builder.append("(df, ");
-    double _split = run.getSplit();
+    double _split = train.getSplit();
     _builder.append(_split);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
     _builder.append("classifier.train()");
     _builder.newLine();
-    _builder.append("classifier.report([");
-    String _handleEvaluationList = this.handleEvaluationList(run.getEvaluations());
+    return _builder;
+  }
+  
+  private CharSequence generateEval(final Eval eval) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = eval.getName();
+    _builder.append(_name);
+    _builder.append(".eval(");
+    String _handleEvaluationList = this.handleEvaluationList(eval.getEvaluations());
     _builder.append(_handleEvaluationList);
-    _builder.append("])");
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private CharSequence generateLoad(final Load load) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("with open(\"");
+    String _file = load.getFile();
+    _builder.append(_file);
+    _builder.append("\", \"r\") as f:");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    String _name = load.getName();
+    _builder.append(_name, "\t");
+    _builder.append(" = pickle.load(f)");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private CharSequence generateSave(final Save save) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("with open(\"");
+    String _file = save.getFile();
+    _builder.append(_file);
+    _builder.append("\", \"r\") as f:");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("pickle.save (");
+    String _name = save.getName();
+    _builder.append(_name, "\t");
+    _builder.append(", f)");
     _builder.newLineIfNotEmpty();
     return _builder;
   }

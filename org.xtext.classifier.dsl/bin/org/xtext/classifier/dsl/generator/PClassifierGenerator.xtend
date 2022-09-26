@@ -9,7 +9,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
 import org.xtext.classifier.dsl.pClassifier.Classifier
-import org.xtext.classifier.dsl.pClassifier.Run
+import org.xtext.classifier.dsl.pClassifier.Train
+import org.xtext.classifier.dsl.pClassifier.Eval
+import org.xtext.classifier.dsl.pClassifier.Load
+import org.xtext.classifier.dsl.pClassifier.Save
 import org.xtext.classifier.dsl.pClassifier.FeatureList
 import org.xtext.classifier.dsl.pClassifier.MLModel
 import org.xtext.classifier.dsl.pClassifier.Evaluation
@@ -18,18 +21,29 @@ import org.xtext.classifier.dsl.pClassifier.EvaluationList
 class PClassifierGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var result = ""
+		var result = "import pandas as pd\nimport pickles\nimport sklearn\n\n"
 		for(e : resource.allContents.toIterable()) {
 			switch (e) {
 				case (e instanceof Classifier): {
 					result += generateClassifier(e as Classifier)
 					result += "\n"
 				}
-				case (e instanceof Run): {
-					result += generateRun(e as Run)
+				case (e instanceof Train): {
+					result += generateTrain(e as Train)
 					result += "\n"
 				}
-				
+				case (e instanceof Eval): {
+					result += generateEval(e as Eval)
+					result += "\n"
+				}
+				case (e instanceof Load): {
+					result += generateLoad(e as Load)
+					result += "\n"
+				}
+				case (e instanceof Save): {
+					result += generateSave(e as Save)
+					result += "\n"
+				}
 			}
 		}
 		fsa.generateFile('test.py',  
@@ -49,11 +63,24 @@ class PClassifierGenerator extends AbstractGenerator {
 				print("«handleMLModel(classifier.model)»")
     '''
     
-    private def generateRun(Run run) '''
-    	df = pd.read_csv("«run.dataset»")
-    	classifier = «run.name»(df, «run.split»)
+    private def generateTrain(Train train) '''
+    	df = pd.read_csv("«train.dataset»")
+    	classifier = «train.name»(df, «train.split»)
     	classifier.train()
-    	classifier.report([«handleEvaluationList(run.evaluations)»])
+    '''
+    
+    private def generateEval(Eval eval) '''
+		«eval.name».eval(«handleEvaluationList(eval.evaluations)»)
+    '''
+    
+    private def generateLoad(Load load) '''
+    	with open("«load.file»", "r") as f:
+    		«load.name» = pickle.load(f)
+    '''
+    
+    private def generateSave(Save save) '''
+    	with open("«save.file»", "r") as f:
+    		pickle.save («save.name», f)
     '''
 	
 	def handleFeatures(FeatureList features){

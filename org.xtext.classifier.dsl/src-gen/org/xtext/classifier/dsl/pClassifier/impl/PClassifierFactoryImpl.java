@@ -69,7 +69,8 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
       case PClassifierPackage.PCLASSFIER: return createPClassfier();
       case PClassifierPackage.STATEMENT: return createStatement();
       case PClassifierPackage.CLASSIFIER: return createClassifier();
-      case PClassifierPackage.RUN: return createRun();
+      case PClassifierPackage.TRAIN: return createTrain();
+      case PClassifierPackage.EVAL: return createEval();
       case PClassifierPackage.LOAD: return createLoad();
       case PClassifierPackage.SAVE: return createSave();
       case PClassifierPackage.FEATURE_LIST: return createFeatureList();
@@ -159,10 +160,22 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
    * @generated
    */
   @Override
-  public Run createRun()
+  public Train createTrain()
   {
-    RunImpl run = new RunImpl();
-    return run;
+    TrainImpl train = new TrainImpl();
+    return train;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Eval createEval()
+  {
+    EvalImpl eval = new EvalImpl();
+    return eval;
   }
 
   /**

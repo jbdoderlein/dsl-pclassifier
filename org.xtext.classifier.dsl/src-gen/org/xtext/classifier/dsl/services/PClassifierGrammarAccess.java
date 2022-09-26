@@ -43,28 +43,32 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Statement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cClassifierParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cRunParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cLoadParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cSaveParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cTrainParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cEvalParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cLoadParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cSaveParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Statement:
-		//    Classifier | Run | Load | Save;
+		//    Classifier | Train | Eval | Load | Save;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Classifier | Run | Load | Save
+		//Classifier | Train | Eval | Load | Save
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Classifier
 		public RuleCall getClassifierParserRuleCall_0() { return cClassifierParserRuleCall_0; }
 		
-		//Run
-		public RuleCall getRunParserRuleCall_1() { return cRunParserRuleCall_1; }
+		//Train
+		public RuleCall getTrainParserRuleCall_1() { return cTrainParserRuleCall_1; }
+		
+		//Eval
+		public RuleCall getEvalParserRuleCall_2() { return cEvalParserRuleCall_2; }
 		
 		//Load
-		public RuleCall getLoadParserRuleCall_2() { return cLoadParserRuleCall_2; }
+		public RuleCall getLoadParserRuleCall_3() { return cLoadParserRuleCall_3; }
 		
 		//Save
-		public RuleCall getSaveParserRuleCall_3() { return cSaveParserRuleCall_3; }
+		public RuleCall getSaveParserRuleCall_4() { return cSaveParserRuleCall_4; }
 	}
 	public class ClassifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Classifier");
@@ -153,10 +157,10 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
-	public class RunElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Run");
+	public class TrainElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Train");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRunKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cTrainKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -168,29 +172,23 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cSplitAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cSplitFLOATTerminalRuleCall_8_0 = (RuleCall)cSplitAssignment_8.eContents().get(0);
-		private final Keyword cEvaluationsKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cEvaluationsAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cEvaluationsEvaluationListParserRuleCall_11_0 = (RuleCall)cEvaluationsAssignment_11.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
-		//Run:
-		//    'Run(' name=ID '){'
+		//Train:
+		//    'Train(' name=ID '){'
 		//        'dataset' ':' dataset=STRING
 		//        'split' ':' split=FLOAT
-		//        'evaluations' ':' evaluations=EvaluationList
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Run(' name=ID '){'
+		//'Train(' name=ID '){'
 		//    'dataset' ':' dataset=STRING
 		//    'split' ':' split=FLOAT
-		//    'evaluations' ':' evaluations=EvaluationList
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'Run('
-		public Keyword getRunKeyword_0() { return cRunKeyword_0; }
+		//'Train('
+		public Keyword getTrainKeyword_0() { return cTrainKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -225,20 +223,59 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//FLOAT
 		public RuleCall getSplitFLOATTerminalRuleCall_8_0() { return cSplitFLOATTerminalRuleCall_8_0; }
 		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+	}
+	public class EvalElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Eval");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cEvalKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEvaluationsKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEvaluationsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEvaluationsEvaluationListParserRuleCall_5_0 = (RuleCall)cEvaluationsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//Eval:
+		//    'Eval(' name=ID '){'
+		//        'evaluations' ':' evaluations=EvaluationList
+		//    '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Eval(' name=ID '){'
+		//    'evaluations' ':' evaluations=EvaluationList
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'Eval('
+		public Keyword getEvalKeyword_0() { return cEvalKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_2() { return cRightParenthesisLeftCurlyBracketKeyword_2; }
+		
 		//'evaluations'
-		public Keyword getEvaluationsKeyword_9() { return cEvaluationsKeyword_9; }
+		public Keyword getEvaluationsKeyword_3() { return cEvaluationsKeyword_3; }
 		
 		//':'
-		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
 		
 		//evaluations=EvaluationList
-		public Assignment getEvaluationsAssignment_11() { return cEvaluationsAssignment_11; }
+		public Assignment getEvaluationsAssignment_5() { return cEvaluationsAssignment_5; }
 		
 		//EvaluationList
-		public RuleCall getEvaluationsEvaluationListParserRuleCall_11_0() { return cEvaluationsEvaluationListParserRuleCall_11_0; }
+		public RuleCall getEvaluationsEvaluationListParserRuleCall_5_0() { return cEvaluationsEvaluationListParserRuleCall_5_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class LoadElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Load");
@@ -459,16 +496,18 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cAccuracyEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cAccuracyAccuracyKeyword_0_0 = (Keyword)cAccuracyEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cF1SCOREEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cF1SCOREF1Keyword_1_0 = (Keyword)cF1SCOREEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cRECALLEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cRECALLRecallKeyword_2_0 = (Keyword)cRECALLEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cF1ScoreEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cF1ScoreF1Keyword_1_0 = (Keyword)cF1ScoreEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cRecallEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cRecallRecallKeyword_2_0 = (Keyword)cRecallEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cConfusionMatrixEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cConfusionMatrixCfmKeyword_3_0 = (Keyword)cConfusionMatrixEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum Evaluation:
-		//    Accuracy = 'accuracy' | F1SCORE = 'f1' | RECALL = 'recall';
+		//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
 		public EnumRule getRule() { return rule; }
 		
-		//Accuracy = 'accuracy' | F1SCORE = 'f1' | RECALL = 'recall'
+		//Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Accuracy = 'accuracy'
@@ -477,17 +516,23 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'accuracy'
 		public Keyword getAccuracyAccuracyKeyword_0_0() { return cAccuracyAccuracyKeyword_0_0; }
 		
-		//F1SCORE = 'f1'
-		public EnumLiteralDeclaration getF1SCOREEnumLiteralDeclaration_1() { return cF1SCOREEnumLiteralDeclaration_1; }
+		//F1Score = 'f1'
+		public EnumLiteralDeclaration getF1ScoreEnumLiteralDeclaration_1() { return cF1ScoreEnumLiteralDeclaration_1; }
 		
 		//'f1'
-		public Keyword getF1SCOREF1Keyword_1_0() { return cF1SCOREF1Keyword_1_0; }
+		public Keyword getF1ScoreF1Keyword_1_0() { return cF1ScoreF1Keyword_1_0; }
 		
-		//RECALL = 'recall'
-		public EnumLiteralDeclaration getRECALLEnumLiteralDeclaration_2() { return cRECALLEnumLiteralDeclaration_2; }
+		//Recall = 'recall'
+		public EnumLiteralDeclaration getRecallEnumLiteralDeclaration_2() { return cRecallEnumLiteralDeclaration_2; }
 		
 		//'recall'
-		public Keyword getRECALLRecallKeyword_2_0() { return cRECALLRecallKeyword_2_0; }
+		public Keyword getRecallRecallKeyword_2_0() { return cRecallRecallKeyword_2_0; }
+		
+		//ConfusionMatrix = 'cfm'
+		public EnumLiteralDeclaration getConfusionMatrixEnumLiteralDeclaration_3() { return cConfusionMatrixEnumLiteralDeclaration_3; }
+		
+		//'cfm'
+		public Keyword getConfusionMatrixCfmKeyword_3_0() { return cConfusionMatrixCfmKeyword_3_0; }
 	}
 	
 	private final PClassfierElements pPClassfier;
@@ -495,7 +540,8 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final MLModelElements eMLModel;
 	private final EvaluationElements eEvaluation;
 	private final ClassifierElements pClassifier;
-	private final RunElements pRun;
+	private final TrainElements pTrain;
+	private final EvalElements pEval;
 	private final LoadElements pLoad;
 	private final SaveElements pSave;
 	private final FeatureListElements pFeatureList;
@@ -516,7 +562,8 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.eMLModel = new MLModelElements();
 		this.eEvaluation = new EvaluationElements();
 		this.pClassifier = new ClassifierElements();
-		this.pRun = new RunElements();
+		this.pTrain = new TrainElements();
+		this.pEval = new EvalElements();
 		this.pLoad = new LoadElements();
 		this.pSave = new SaveElements();
 		this.pFeatureList = new FeatureListElements();
@@ -562,7 +609,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//Statement:
-	//    Classifier | Run | Load | Save;
+	//    Classifier | Train | Eval | Load | Save;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -582,7 +629,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//enum Evaluation:
-	//    Accuracy = 'accuracy' | F1SCORE = 'f1' | RECALL = 'recall';
+	//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
 	public EvaluationElements getEvaluationAccess() {
 		return eEvaluation;
 	}
@@ -605,18 +652,29 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getClassifierAccess().getRule();
 	}
 	
-	//Run:
-	//    'Run(' name=ID '){'
+	//Train:
+	//    'Train(' name=ID '){'
 	//        'dataset' ':' dataset=STRING
 	//        'split' ':' split=FLOAT
-	//        'evaluations' ':' evaluations=EvaluationList
 	//    '}';
-	public RunElements getRunAccess() {
-		return pRun;
+	public TrainElements getTrainAccess() {
+		return pTrain;
 	}
 	
-	public ParserRule getRunRule() {
-		return getRunAccess().getRule();
+	public ParserRule getTrainRule() {
+		return getTrainAccess().getRule();
+	}
+	
+	//Eval:
+	//    'Eval(' name=ID '){'
+	//        'evaluations' ':' evaluations=EvaluationList
+	//    '}';
+	public EvalElements getEvalAccess() {
+		return pEval;
+	}
+	
+	public ParserRule getEvalRule() {
+		return getEvalAccess().getRule();
 	}
 	
 	//Load:

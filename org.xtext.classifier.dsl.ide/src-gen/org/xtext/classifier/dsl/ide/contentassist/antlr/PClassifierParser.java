@@ -35,7 +35,8 @@ public class PClassifierParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMLModelAccess().getAlternatives(), "rule__MLModel__Alternatives");
 			builder.put(grammarAccess.getEvaluationAccess().getAlternatives(), "rule__Evaluation__Alternatives");
 			builder.put(grammarAccess.getClassifierAccess().getGroup(), "rule__Classifier__Group__0");
-			builder.put(grammarAccess.getRunAccess().getGroup(), "rule__Run__Group__0");
+			builder.put(grammarAccess.getTrainAccess().getGroup(), "rule__Train__Group__0");
+			builder.put(grammarAccess.getEvalAccess().getGroup(), "rule__Eval__Group__0");
 			builder.put(grammarAccess.getLoadAccess().getGroup(), "rule__Load__Group__0");
 			builder.put(grammarAccess.getSaveAccess().getGroup(), "rule__Save__Group__0");
 			builder.put(grammarAccess.getFeatureListAccess().getGroup(), "rule__FeatureList__Group__0");
@@ -47,10 +48,11 @@ public class PClassifierParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getClassifierAccess().getFeaturesAssignment_5(), "rule__Classifier__FeaturesAssignment_5");
 			builder.put(grammarAccess.getClassifierAccess().getTargetAssignment_8(), "rule__Classifier__TargetAssignment_8");
 			builder.put(grammarAccess.getClassifierAccess().getModelAssignment_11(), "rule__Classifier__ModelAssignment_11");
-			builder.put(grammarAccess.getRunAccess().getNameAssignment_1(), "rule__Run__NameAssignment_1");
-			builder.put(grammarAccess.getRunAccess().getDatasetAssignment_5(), "rule__Run__DatasetAssignment_5");
-			builder.put(grammarAccess.getRunAccess().getSplitAssignment_8(), "rule__Run__SplitAssignment_8");
-			builder.put(grammarAccess.getRunAccess().getEvaluationsAssignment_11(), "rule__Run__EvaluationsAssignment_11");
+			builder.put(grammarAccess.getTrainAccess().getNameAssignment_1(), "rule__Train__NameAssignment_1");
+			builder.put(grammarAccess.getTrainAccess().getDatasetAssignment_5(), "rule__Train__DatasetAssignment_5");
+			builder.put(grammarAccess.getTrainAccess().getSplitAssignment_8(), "rule__Train__SplitAssignment_8");
+			builder.put(grammarAccess.getEvalAccess().getNameAssignment_1(), "rule__Eval__NameAssignment_1");
+			builder.put(grammarAccess.getEvalAccess().getEvaluationsAssignment_5(), "rule__Eval__EvaluationsAssignment_5");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_1(), "rule__Load__NameAssignment_1");
 			builder.put(grammarAccess.getLoadAccess().getFileAssignment_5(), "rule__Load__FileAssignment_5");
 			builder.put(grammarAccess.getSaveAccess().getNameAssignment_1(), "rule__Save__NameAssignment_1");

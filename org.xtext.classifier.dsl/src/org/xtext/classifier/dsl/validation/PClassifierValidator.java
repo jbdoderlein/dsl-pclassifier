@@ -3,6 +3,20 @@
  */
 package org.xtext.classifier.dsl.validation;
 
+import org.xtext.classifier.dsl.pClassifier.Train;
+import org.xtext.classifier.dsl.pClassifier.Classifier;
+import org.xtext.classifier.dsl.pClassifier.Eval;
+import org.xtext.classifier.dsl.pClassifier.Load;
+import org.xtext.classifier.dsl.pClassifier.Save;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
+import org.xtext.classifier.dsl.pClassifier.PClassifierPackage;
+import org.xtext.classifier.dsl.pClassifier.Statement;
+import org.xtext.classifier.dsl.pClassifier.PClassfier;
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +25,21 @@ package org.xtext.classifier.dsl.validation;
  */
 public class PClassifierValidator extends AbstractPClassifierValidator {
 	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					PClassifierPackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
+    @Check(CheckType.NORMAL)
+    public void checkModelNameExistStatement(Statement statement) {
+    	if (statement instanceof Train || statement instanceof Eval || statement instanceof Save) {
+    		List<String> models = new ArrayList<String>();
+    		PClassfier superBlock = ((PClassfier) statement.eContainer());
+    		for (Statement other : superBlock.getElements()) {
+    			if ((other instanceof Classifier || other instanceof Load) && !models.contains(other.getName())) {
+    				models.add(other.getName());
+    			}
+    		}
+    		
+    		if (!models.contains(statement.getName())) {
+    			error(statement.getName()+" classifier is not defined", PClassifierPackage.Literals.STATEMENT__NAME);
+    		}
+    	}    	
+    }
 	
 }

@@ -15,13 +15,14 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
+import org.xtext.classifier.dsl.pClassifier.Eval;
 import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.PClassfier;
 import org.xtext.classifier.dsl.pClassifier.PClassifierPackage;
-import org.xtext.classifier.dsl.pClassifier.Run;
 import org.xtext.classifier.dsl.pClassifier.Save;
+import org.xtext.classifier.dsl.pClassifier.Train;
 import org.xtext.classifier.dsl.services.PClassifierGrammarAccess;
 
 @SuppressWarnings("all")
@@ -41,6 +42,9 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case PClassifierPackage.CLASSIFIER:
 				sequence_Classifier(context, (Classifier) semanticObject); 
 				return; 
+			case PClassifierPackage.EVAL:
+				sequence_Eval(context, (Eval) semanticObject); 
+				return; 
 			case PClassifierPackage.EVALUATION_LIST:
 				sequence_EvaluationList(context, (EvaluationList) semanticObject); 
 				return; 
@@ -53,11 +57,11 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case PClassifierPackage.PCLASSFIER:
 				sequence_PClassfier(context, (PClassfier) semanticObject); 
 				return; 
-			case PClassifierPackage.RUN:
-				sequence_Run(context, (Run) semanticObject); 
-				return; 
 			case PClassifierPackage.SAVE:
 				sequence_Save(context, (Save) semanticObject); 
+				return; 
+			case PClassifierPackage.TRAIN:
+				sequence_Train(context, (Train) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -90,6 +94,30 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 		feeder.accept(grammarAccess.getClassifierAccess().getFeaturesFeatureListParserRuleCall_5_0(), semanticObject.getFeatures());
 		feeder.accept(grammarAccess.getClassifierAccess().getTargetSTRINGTerminalRuleCall_8_0(), semanticObject.getTarget());
 		feeder.accept(grammarAccess.getClassifierAccess().getModelMLModelEnumRuleCall_11_0(), semanticObject.getModel());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Statement returns Eval
+	 *     Eval returns Eval
+	 *
+	 * Constraint:
+	 *     (name=ID evaluations=EvaluationList)
+	 * </pre>
+	 */
+	protected void sequence_Eval(ISerializationContext context, Eval semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.EVAL__EVALUATIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.EVAL__EVALUATIONS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEvalAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getEvalAccess().getEvaluationsEvaluationListParserRuleCall_5_0(), semanticObject.getEvaluations());
 		feeder.finish();
 	}
 	
@@ -163,36 +191,6 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns Run
-	 *     Run returns Run
-	 *
-	 * Constraint:
-	 *     (name=ID dataset=STRING split=FLOAT evaluations=EvaluationList)
-	 * </pre>
-	 */
-	protected void sequence_Run(ISerializationContext context, Run semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__DATASET) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__DATASET));
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__SPLIT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__SPLIT));
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.RUN__EVALUATIONS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.RUN__EVALUATIONS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRunAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRunAccess().getDatasetSTRINGTerminalRuleCall_5_0(), semanticObject.getDataset());
-		feeder.accept(grammarAccess.getRunAccess().getSplitFLOATTerminalRuleCall_8_0(), semanticObject.getSplit());
-		feeder.accept(grammarAccess.getRunAccess().getEvaluationsEvaluationListParserRuleCall_11_0(), semanticObject.getEvaluations());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     Statement returns Save
 	 *     Save returns Save
 	 *
@@ -210,6 +208,33 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSaveAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getSaveAccess().getFileSTRINGTerminalRuleCall_5_0(), semanticObject.getFile());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Statement returns Train
+	 *     Train returns Train
+	 *
+	 * Constraint:
+	 *     (name=ID dataset=STRING split=FLOAT)
+	 * </pre>
+	 */
+	protected void sequence_Train(ISerializationContext context, Train semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.TRAIN__DATASET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.TRAIN__DATASET));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.TRAIN__SPLIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.TRAIN__SPLIT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTrainAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTrainAccess().getDatasetSTRINGTerminalRuleCall_5_0(), semanticObject.getDataset());
+		feeder.accept(grammarAccess.getTrainAccess().getSplitFLOATTerminalRuleCall_8_0(), semanticObject.getSplit());
 		feeder.finish();
 	}
 	

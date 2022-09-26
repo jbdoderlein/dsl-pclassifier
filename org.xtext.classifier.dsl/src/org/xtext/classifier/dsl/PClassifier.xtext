@@ -8,14 +8,14 @@ PClassfier:
     (elements+=Statement)*;
  
 Statement:
-    Classifier | Run | Load | Save;
+    Classifier | Train | Eval | Load | Save;
     
 
 enum MLModel:
     DecisonTree = 'DecisionTree' | SVM = 'SVM';
     
 enum Evaluation:
-    Accuracy = 'accuracy' | F1SCORE = 'f1' | RECALL = 'recall';
+    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
 
 Classifier:
     'Classifier(' name=ID '){'
@@ -24,10 +24,14 @@ Classifier:
         'model' ':' model=MLModel
     '}';
  
-Run:
-    'Run(' name=ID '){'
+Train:
+    'Train(' name=ID '){'
         'dataset' ':' dataset=STRING
         'split' ':' split=FLOAT
+    '}';
+    
+Eval:
+    'Eval(' name=ID '){'
         'evaluations' ':' evaluations=EvaluationList
     '}';
     

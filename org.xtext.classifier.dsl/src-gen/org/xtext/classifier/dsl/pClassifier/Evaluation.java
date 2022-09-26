@@ -31,24 +31,34 @@ public enum Evaluation implements Enumerator
   ACCURACY(0, "Accuracy", "accuracy"),
 
   /**
-   * The '<em><b>F1SCORE</b></em>' literal object.
+   * The '<em><b>F1 Score</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #F1SCORE_VALUE
+   * @see #F1_SCORE_VALUE
    * @generated
    * @ordered
    */
-  F1SCORE(1, "F1SCORE", "f1"),
+  F1_SCORE(1, "F1Score", "f1"),
 
   /**
-   * The '<em><b>RECALL</b></em>' literal object.
+   * The '<em><b>Recall</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #RECALL_VALUE
    * @generated
    * @ordered
    */
-  RECALL(2, "RECALL", "recall");
+  RECALL(2, "Recall", "recall"),
+
+  /**
+   * The '<em><b>Confusion Matrix</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #CONFUSION_MATRIX_VALUE
+   * @generated
+   * @ordered
+   */
+  CONFUSION_MATRIX(3, "ConfusionMatrix", "cfm");
 
   /**
    * The '<em><b>Accuracy</b></em>' literal value.
@@ -62,26 +72,37 @@ public enum Evaluation implements Enumerator
   public static final int ACCURACY_VALUE = 0;
 
   /**
-   * The '<em><b>F1SCORE</b></em>' literal value.
+   * The '<em><b>F1 Score</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #F1SCORE
-   * @model literal="f1"
+   * @see #F1_SCORE
+   * @model name="F1Score" literal="f1"
    * @generated
    * @ordered
    */
-  public static final int F1SCORE_VALUE = 1;
+  public static final int F1_SCORE_VALUE = 1;
 
   /**
-   * The '<em><b>RECALL</b></em>' literal value.
+   * The '<em><b>Recall</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #RECALL
-   * @model literal="recall"
+   * @model name="Recall" literal="recall"
    * @generated
    * @ordered
    */
   public static final int RECALL_VALUE = 2;
+
+  /**
+   * The '<em><b>Confusion Matrix</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #CONFUSION_MATRIX
+   * @model name="ConfusionMatrix" literal="cfm"
+   * @generated
+   * @ordered
+   */
+  public static final int CONFUSION_MATRIX_VALUE = 3;
 
   /**
    * An array of all the '<em><b>Evaluation</b></em>' enumerators.
@@ -93,8 +114,9 @@ public enum Evaluation implements Enumerator
     new Evaluation[]
     {
       ACCURACY,
-      F1SCORE,
+      F1_SCORE,
       RECALL,
+      CONFUSION_MATRIX,
     };
 
   /**
@@ -160,8 +182,9 @@ public enum Evaluation implements Enumerator
     switch (value)
     {
       case ACCURACY_VALUE: return ACCURACY;
-      case F1SCORE_VALUE: return F1SCORE;
+      case F1_SCORE_VALUE: return F1_SCORE;
       case RECALL_VALUE: return RECALL;
+      case CONFUSION_MATRIX_VALUE: return CONFUSION_MATRIX;
     }
     return null;
   }
