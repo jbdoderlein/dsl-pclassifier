@@ -70,7 +70,7 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
       case PClassifierPackage.STATEMENT: return createStatement();
       case PClassifierPackage.CLASSIFIER: return createClassifier();
       case PClassifierPackage.TRAIN: return createTrain();
-      case PClassifierPackage.EVAL: return createEval();
+      case PClassifierPackage.EXECUTE: return createExecute();
       case PClassifierPackage.LOAD: return createLoad();
       case PClassifierPackage.SAVE: return createSave();
       case PClassifierPackage.FEATURE_LIST: return createFeatureList();
@@ -172,10 +172,10 @@ public class PClassifierFactoryImpl extends EFactoryImpl implements PClassifierF
    * @generated
    */
   @Override
-  public Eval createEval()
+  public Execute createExecute()
   {
-    EvalImpl eval = new EvalImpl();
-    return eval;
+    ExecuteImpl execute = new ExecuteImpl();
+    return execute;
   }
 
   /**

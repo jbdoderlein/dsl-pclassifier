@@ -15,6 +15,7 @@ package org.xtext.classifier.dsl.pClassifier;
  * <ul>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.Train#getDataset <em>Dataset</em>}</li>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.Train#getSplit <em>Split</em>}</li>
+ *   <li>{@link org.xtext.classifier.dsl.pClassifier.Train#getEvaluations <em>Evaluations</em>}</li>
  * </ul>
  *
  * @see org.xtext.classifier.dsl.pClassifier.PClassifierPackage#getTrain()
@@ -66,5 +67,27 @@ public interface Train extends Statement
    * @generated
    */
   void setSplit(double value);
+
+  /**
+   * Returns the value of the '<em><b>Evaluations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Evaluations</em>' containment reference.
+   * @see #setEvaluations(EvaluationList)
+   * @see org.xtext.classifier.dsl.pClassifier.PClassifierPackage#getTrain_Evaluations()
+   * @model containment="true"
+   * @generated
+   */
+  EvaluationList getEvaluations();
+
+  /**
+   * Sets the value of the '{@link org.xtext.classifier.dsl.pClassifier.Train#getEvaluations <em>Evaluations</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Evaluations</em>' containment reference.
+   * @see #getEvaluations()
+   * @generated
+   */
+  void setEvaluations(EvaluationList value);
 
 } // Train

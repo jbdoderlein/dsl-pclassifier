@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xtext.classifier.dsl.pClassifier.Classifier;
-import org.xtext.classifier.dsl.pClassifier.Eval;
 import org.xtext.classifier.dsl.pClassifier.Evaluation;
 import org.xtext.classifier.dsl.pClassifier.EvaluationList;
+import org.xtext.classifier.dsl.pClassifier.Execute;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.MLModel;
@@ -66,7 +66,7 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass evalEClass = null;
+  private EClass executeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -300,9 +300,9 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * @generated
    */
   @Override
-  public EClass getEval()
+  public EReference getTrain_Evaluations()
   {
-    return evalEClass;
+    return (EReference)trainEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -311,9 +311,31 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
    * @generated
    */
   @Override
-  public EReference getEval_Evaluations()
+  public EClass getExecute()
   {
-    return (EReference)evalEClass.getEStructuralFeatures().get(0);
+    return executeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExecute_Input()
+  {
+    return (EAttribute)executeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExecute_Output()
+  {
+    return (EAttribute)executeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -471,9 +493,11 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     trainEClass = createEClass(TRAIN);
     createEAttribute(trainEClass, TRAIN__DATASET);
     createEAttribute(trainEClass, TRAIN__SPLIT);
+    createEReference(trainEClass, TRAIN__EVALUATIONS);
 
-    evalEClass = createEClass(EVAL);
-    createEReference(evalEClass, EVAL__EVALUATIONS);
+    executeEClass = createEClass(EXECUTE);
+    createEAttribute(executeEClass, EXECUTE__INPUT);
+    createEAttribute(executeEClass, EXECUTE__OUTPUT);
 
     loadEClass = createEClass(LOAD);
     createEAttribute(loadEClass, LOAD__FILE);
@@ -523,7 +547,7 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     // Add supertypes to classes
     classifierEClass.getESuperTypes().add(this.getStatement());
     trainEClass.getESuperTypes().add(this.getStatement());
-    evalEClass.getESuperTypes().add(this.getStatement());
+    executeEClass.getESuperTypes().add(this.getStatement());
     loadEClass.getESuperTypes().add(this.getStatement());
     saveEClass.getESuperTypes().add(this.getStatement());
 
@@ -542,9 +566,11 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     initEClass(trainEClass, Train.class, "Train", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTrain_Dataset(), ecorePackage.getEString(), "dataset", null, 0, 1, Train.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTrain_Split(), ecorePackage.getEDouble(), "split", null, 0, 1, Train.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrain_Evaluations(), this.getEvaluationList(), null, "evaluations", null, 0, 1, Train.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(evalEClass, Eval.class, "Eval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEval_Evaluations(), this.getEvaluationList(), null, "evaluations", null, 0, 1, Eval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(executeEClass, Execute.class, "Execute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExecute_Input(), ecorePackage.getEString(), "input", null, 0, 1, Execute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExecute_Output(), ecorePackage.getEString(), "output", null, 0, 1, Execute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loadEClass, Load.class, "Load", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLoad_File(), ecorePackage.getEString(), "file", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

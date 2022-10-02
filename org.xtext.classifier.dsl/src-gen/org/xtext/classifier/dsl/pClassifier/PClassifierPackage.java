@@ -207,23 +207,32 @@ public interface PClassifierPackage extends EPackage
   int TRAIN__SPLIT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Evaluations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAIN__EVALUATIONS = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Train</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRAIN_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+  int TRAIN_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.EvalImpl <em>Eval</em>}' class.
+   * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.ExecuteImpl <em>Execute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.classifier.dsl.pClassifier.impl.EvalImpl
-   * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEval()
+   * @see org.xtext.classifier.dsl.pClassifier.impl.ExecuteImpl
+   * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getExecute()
    * @generated
    */
-  int EVAL = 4;
+  int EXECUTE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -232,25 +241,34 @@ public interface PClassifierPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVAL__NAME = STATEMENT__NAME;
+  int EXECUTE__NAME = STATEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Evaluations</b></em>' containment reference.
+   * The feature id for the '<em><b>Input</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVAL__EVALUATIONS = STATEMENT_FEATURE_COUNT + 0;
+  int EXECUTE__INPUT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Eval</em>' class.
+   * The feature id for the '<em><b>Output</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVAL_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+  int EXECUTE__OUTPUT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Execute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXECUTE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.classifier.dsl.pClassifier.impl.LoadImpl <em>Load</em>}' class.
@@ -521,25 +539,47 @@ public interface PClassifierPackage extends EPackage
   EAttribute getTrain_Split();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Eval <em>Eval</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Eval</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Eval
-   * @generated
-   */
-  EClass getEval();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.classifier.dsl.pClassifier.Eval#getEvaluations <em>Evaluations</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.classifier.dsl.pClassifier.Train#getEvaluations <em>Evaluations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Evaluations</em>'.
-   * @see org.xtext.classifier.dsl.pClassifier.Eval#getEvaluations()
-   * @see #getEval()
+   * @see org.xtext.classifier.dsl.pClassifier.Train#getEvaluations()
+   * @see #getTrain()
    * @generated
    */
-  EReference getEval_Evaluations();
+  EReference getTrain_Evaluations();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Execute <em>Execute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Execute</em>'.
+   * @see org.xtext.classifier.dsl.pClassifier.Execute
+   * @generated
+   */
+  EClass getExecute();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Execute#getInput <em>Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Input</em>'.
+   * @see org.xtext.classifier.dsl.pClassifier.Execute#getInput()
+   * @see #getExecute()
+   * @generated
+   */
+  EAttribute getExecute_Input();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.classifier.dsl.pClassifier.Execute#getOutput <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Output</em>'.
+   * @see org.xtext.classifier.dsl.pClassifier.Execute#getOutput()
+   * @see #getExecute()
+   * @generated
+   */
+  EAttribute getExecute_Output();
 
   /**
    * Returns the meta object for class '{@link org.xtext.classifier.dsl.pClassifier.Load <em>Load</em>}'.
@@ -765,22 +805,38 @@ public interface PClassifierPackage extends EPackage
     EAttribute TRAIN__SPLIT = eINSTANCE.getTrain_Split();
 
     /**
-     * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.EvalImpl <em>Eval</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.classifier.dsl.pClassifier.impl.EvalImpl
-     * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getEval()
-     * @generated
-     */
-    EClass EVAL = eINSTANCE.getEval();
-
-    /**
      * The meta object literal for the '<em><b>Evaluations</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EVAL__EVALUATIONS = eINSTANCE.getEval_Evaluations();
+    EReference TRAIN__EVALUATIONS = eINSTANCE.getTrain_Evaluations();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.ExecuteImpl <em>Execute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.classifier.dsl.pClassifier.impl.ExecuteImpl
+     * @see org.xtext.classifier.dsl.pClassifier.impl.PClassifierPackageImpl#getExecute()
+     * @generated
+     */
+    EClass EXECUTE = eINSTANCE.getExecute();
+
+    /**
+     * The meta object literal for the '<em><b>Input</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXECUTE__INPUT = eINSTANCE.getExecute_Input();
+
+    /**
+     * The meta object literal for the '<em><b>Output</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXECUTE__OUTPUT = eINSTANCE.getExecute_Output();
 
     /**
      * The meta object literal for the '{@link org.xtext.classifier.dsl.pClassifier.impl.LoadImpl <em>Load</em>}' class.

@@ -15,8 +15,8 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
-import org.xtext.classifier.dsl.pClassifier.Eval;
 import org.xtext.classifier.dsl.pClassifier.EvaluationList;
+import org.xtext.classifier.dsl.pClassifier.Execute;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.PClassfier;
@@ -42,11 +42,11 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case PClassifierPackage.CLASSIFIER:
 				sequence_Classifier(context, (Classifier) semanticObject); 
 				return; 
-			case PClassifierPackage.EVAL:
-				sequence_Eval(context, (Eval) semanticObject); 
-				return; 
 			case PClassifierPackage.EVALUATION_LIST:
 				sequence_EvaluationList(context, (EvaluationList) semanticObject); 
+				return; 
+			case PClassifierPackage.EXECUTE:
+				sequence_Execute(context, (Execute) semanticObject); 
 				return; 
 			case PClassifierPackage.FEATURE_LIST:
 				sequence_FeatureList(context, (FeatureList) semanticObject); 
@@ -101,30 +101,6 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns Eval
-	 *     Eval returns Eval
-	 *
-	 * Constraint:
-	 *     (name=ID evaluations=EvaluationList)
-	 * </pre>
-	 */
-	protected void sequence_Eval(ISerializationContext context, Eval semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.EVAL__EVALUATIONS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.EVAL__EVALUATIONS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEvalAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getEvalAccess().getEvaluationsEvaluationListParserRuleCall_5_0(), semanticObject.getEvaluations());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     EvaluationList returns EvaluationList
 	 *
 	 * Constraint:
@@ -133,6 +109,33 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 */
 	protected void sequence_EvaluationList(ISerializationContext context, EvaluationList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Statement returns Execute
+	 *     Execute returns Execute
+	 *
+	 * Constraint:
+	 *     (name=ID input=STRING output=STRING)
+	 * </pre>
+	 */
+	protected void sequence_Execute(ISerializationContext context, Execute semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.STATEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.EXECUTE__INPUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.EXECUTE__INPUT));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.EXECUTE__OUTPUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.EXECUTE__OUTPUT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExecuteAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getExecuteAccess().getInputSTRINGTerminalRuleCall_5_0(), semanticObject.getInput());
+		feeder.accept(grammarAccess.getExecuteAccess().getOutputSTRINGTerminalRuleCall_8_0(), semanticObject.getOutput());
+		feeder.finish();
 	}
 	
 	
@@ -219,7 +222,7 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Train returns Train
 	 *
 	 * Constraint:
-	 *     (name=ID dataset=STRING split=FLOAT)
+	 *     (name=ID dataset=STRING split=FLOAT evaluations=EvaluationList)
 	 * </pre>
 	 */
 	protected void sequence_Train(ISerializationContext context, Train semanticObject) {
@@ -230,11 +233,14 @@ public class PClassifierSemanticSequencer extends AbstractDelegatingSemanticSequ
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.TRAIN__DATASET));
 			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.TRAIN__SPLIT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.TRAIN__SPLIT));
+			if (transientValues.isValueTransient(semanticObject, PClassifierPackage.Literals.TRAIN__EVALUATIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PClassifierPackage.Literals.TRAIN__EVALUATIONS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTrainAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getTrainAccess().getDatasetSTRINGTerminalRuleCall_5_0(), semanticObject.getDataset());
 		feeder.accept(grammarAccess.getTrainAccess().getSplitFLOATTerminalRuleCall_8_0(), semanticObject.getSplit());
+		feeder.accept(grammarAccess.getTrainAccess().getEvaluationsEvaluationListParserRuleCall_11_0(), semanticObject.getEvaluations());
 		feeder.finish();
 	}
 	

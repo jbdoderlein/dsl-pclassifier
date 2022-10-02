@@ -12,9 +12,9 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
-import org.xtext.classifier.dsl.pClassifier.Eval;
 import org.xtext.classifier.dsl.pClassifier.Evaluation;
 import org.xtext.classifier.dsl.pClassifier.EvaluationList;
+import org.xtext.classifier.dsl.pClassifier.Execute;
 import org.xtext.classifier.dsl.pClassifier.FeatureList;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.MLModel;
@@ -25,7 +25,24 @@ import org.xtext.classifier.dsl.pClassifier.Train;
 public class PClassifierGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    String result = "import pandas as pd\nimport pickles\nimport sklearn\n\n";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import numpy as np");
+    _builder.newLine();
+    _builder.append("import pandas as pd");
+    _builder.newLine();
+    _builder.append("import pickle");
+    _builder.newLine();
+    _builder.append("from sklearn.model_selection import train_test_split");
+    _builder.newLine();
+    _builder.append("from sklearn.tree import DecisionTreeClassifier");
+    _builder.newLine();
+    _builder.append("from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, recall_score");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("models = {}");
+    _builder.newLine();
+    _builder.newLine();
+    String result = _builder.toString();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(resource.getAllContents());
     for (final EObject e : _iterable) {
       boolean _matched = false;
@@ -48,11 +65,11 @@ public class PClassifierGenerator extends AbstractGenerator {
         }
       }
       if (!_matched) {
-        if ((e instanceof Eval)) {
+        if ((e instanceof Execute)) {
           _matched=true;
           String _result_4 = result;
-          CharSequence _generateEval = this.generateEval(((Eval) e));
-          result = (_result_4 + _generateEval);
+          CharSequence _generateExecute = this.generateExecute(((Execute) e));
+          result = (_result_4 + _generateExecute);
           String _result_5 = result;
           result = (_result_5 + "\n");
         }
@@ -78,7 +95,7 @@ public class PClassifierGenerator extends AbstractGenerator {
         }
       }
     }
-    fsa.generateFile("test.py", result);
+    fsa.generateFile("result.py", result);
   }
   
   private CharSequence generateClassifier(final Classifier classifier) {
@@ -89,14 +106,16 @@ public class PClassifierGenerator extends AbstractGenerator {
     _builder.append(":");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("features = ");
+    _builder.append("features = [");
     String _handleFeatures = this.handleFeatures(classifier.getFeatures());
     _builder.append(_handleFeatures, "\t");
+    _builder.append("]");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target = ");
+    _builder.append("target = \"");
     String _target = classifier.getTarget();
     _builder.append(_target, "\t");
+    _builder.append("\"");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -104,18 +123,92 @@ public class PClassifierGenerator extends AbstractGenerator {
     _builder.append("def __init__(self):");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("pass");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("def run(*args,**kwargs):");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("print(\"");
     String _handleMLModel = this.handleMLModel(classifier.getModel());
     _builder.append(_handleMLModel, "\t\t");
-    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def train(self, data, split, evaluations):");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("train, test = train_test_split(data, test_size=split)");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("self.model.fit(train[self.features], train[self.target])");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("self.evaluate(test, evaluations)");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def evaluate(self, test, evaluations):");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("results_eval = {}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("for evaluation in evaluations:");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("if evaluation == \'accuracy\':");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("results_eval[evaluation] = accuracy_score(test[self.target], self.model.predict(test[self.features]))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("elif evaluation == \'confusion_matrix\':");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("results_eval[evaluation] = confusion_matrix(test[self.target], self.model.predict(test[self.features]))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("elif evaluation == \'f1_score\':");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("results_eval[evaluation] = f1_score(test[self.target], self.model.predict(test[self.features]))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("elif evaluation == \'recall\':");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("results_eval[evaluation] = recall_score(test[self.target], self.model.predict(test[self.features]))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("print(");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("\'");
+    String _name_1 = classifier.getName();
+    _builder.append(_name_1, "\t\t\t");
+    _builder.append(" training results :\\n\'+ ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    _builder.append("pd.DataFrame({\'Score\':list(results_eval.keys()), \'\':list(results_eval.values())}).to_markdown(index=False)");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append(")");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def execute(self, data, output):");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("with open(output, \'w\') as f:");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("f.write(self.model.predict(data[self.features]).to_string(index=False))");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("models[\"");
+    String _name_2 = classifier.getName();
+    _builder.append(_name_2);
+    _builder.append("\"] = ");
+    String _name_3 = classifier.getName();
+    _builder.append(_name_3);
+    _builder.append("()");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -127,27 +220,34 @@ public class PClassifierGenerator extends AbstractGenerator {
     _builder.append(_dataset);
     _builder.append("\")");
     _builder.newLineIfNotEmpty();
-    _builder.append("classifier = ");
+    _builder.append("classifier = models[\"");
     String _name = train.getName();
     _builder.append(_name);
-    _builder.append("(df, ");
+    _builder.append("\"].train(data=df, split=");
     double _split = train.getSplit();
     _builder.append(_split);
-    _builder.append(")");
+    _builder.append(", evaluations=[");
+    String _handleEvaluationList = this.handleEvaluationList(train.getEvaluations());
+    _builder.append(_handleEvaluationList);
+    _builder.append("])");
     _builder.newLineIfNotEmpty();
-    _builder.append("classifier.train()");
-    _builder.newLine();
     return _builder;
   }
   
-  private CharSequence generateEval(final Eval eval) {
+  private CharSequence generateExecute(final Execute exec) {
     StringConcatenation _builder = new StringConcatenation();
-    String _name = eval.getName();
+    _builder.append("df = pd.read_csv(\"");
+    String _input = exec.getInput();
+    _builder.append(_input);
+    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    _builder.append("models[\"");
+    String _name = exec.getName();
     _builder.append(_name);
-    _builder.append(".eval(");
-    String _handleEvaluationList = this.handleEvaluationList(eval.getEvaluations());
-    _builder.append(_handleEvaluationList);
-    _builder.append(")");
+    _builder.append("\"].execute(df, \"");
+    String _output = exec.getOutput();
+    _builder.append(_output);
+    _builder.append("\")");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -160,9 +260,10 @@ public class PClassifierGenerator extends AbstractGenerator {
     _builder.append("\", \"r\") as f:");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
+    _builder.append("models[\"");
     String _name = load.getName();
     _builder.append(_name, "\t");
-    _builder.append(" = pickle.load(f)");
+    _builder.append("\"] = pickle.load(f)");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -172,13 +273,13 @@ public class PClassifierGenerator extends AbstractGenerator {
     _builder.append("with open(\"");
     String _file = save.getFile();
     _builder.append(_file);
-    _builder.append("\", \"r\") as f:");
+    _builder.append("\", \"wb\") as f:");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("pickle.save (");
+    _builder.append("pickle.dump(models[\"");
     String _name = save.getName();
     _builder.append(_name, "\t");
-    _builder.append(", f)");
+    _builder.append("\"], f)");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -196,7 +297,21 @@ public class PClassifierGenerator extends AbstractGenerator {
   }
   
   public String handleMLModel(final MLModel mlmodel) {
-    return mlmodel.getLiteral();
+    String result = "self.model = ";
+    String _literal = mlmodel.getLiteral();
+    if (_literal != null) {
+      switch (_literal) {
+        case "DecisionTree":
+          String _result = result;
+          result = (_result + "DecisionTreeClassifier(random_state=0, max_depth=5)");
+          break;
+        case "SVM":
+          String _result_1 = result;
+          result = (_result_1 + "DecisionTree(random_state=0, max_depth=5)");
+          break;
+      }
+    }
+    return result;
   }
   
   public String handleEvaluation(final Evaluation evaluation) {

@@ -8,7 +8,7 @@ PClassfier:
     (elements+=Statement)*;
  
 Statement:
-    Classifier | Train | Eval | Load | Save;
+    Classifier | Train | Execute | Load | Save;
     
 
 enum MLModel:
@@ -28,11 +28,13 @@ Train:
     'Train(' name=ID '){'
         'dataset' ':' dataset=STRING
         'split' ':' split=FLOAT
+        'evaluations' ':' evaluations=EvaluationList
     '}';
     
-Eval:
-    'Eval(' name=ID '){'
-        'evaluations' ':' evaluations=EvaluationList
+Execute:
+    'Execute(' name=ID '){'
+        'input' ':' input=STRING
+        'output' ':' output=STRING
     '}';
     
 Load:

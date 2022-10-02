@@ -5,7 +5,7 @@ package org.xtext.classifier.dsl.validation;
 
 import org.xtext.classifier.dsl.pClassifier.Train;
 import org.xtext.classifier.dsl.pClassifier.Classifier;
-import org.xtext.classifier.dsl.pClassifier.Eval;
+import org.xtext.classifier.dsl.pClassifier.Execute;
 import org.xtext.classifier.dsl.pClassifier.Load;
 import org.xtext.classifier.dsl.pClassifier.Save;
 
@@ -27,7 +27,7 @@ public class PClassifierValidator extends AbstractPClassifierValidator {
 	
     @Check(CheckType.NORMAL)
     public void checkModelNameExistStatement(Statement statement) {
-    	if (statement instanceof Train || statement instanceof Eval || statement instanceof Save) {
+    	if (statement instanceof Train || statement instanceof Execute || statement instanceof Save) {
     		List<String> models = new ArrayList<String>();
     		PClassfier superBlock = ((PClassfier) statement.eContainer());
     		for (Statement other : superBlock.getElements()) {

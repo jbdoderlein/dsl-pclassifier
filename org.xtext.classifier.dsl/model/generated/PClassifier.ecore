@@ -28,10 +28,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Train" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Eval" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="evaluations" eType="#//EvaluationList"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Execute" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Load" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

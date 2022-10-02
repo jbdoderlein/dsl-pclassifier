@@ -30,9 +30,11 @@
     <genClasses ecoreClass="PClassifier.ecore#//Train">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Train/dataset"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Train/split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//Train/evaluations"/>
     </genClasses>
-    <genClasses ecoreClass="PClassifier.ecore#//Eval">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//Eval/evaluations"/>
+    <genClasses ecoreClass="PClassifier.ecore#//Execute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Execute/input"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Execute/output"/>
     </genClasses>
     <genClasses ecoreClass="PClassifier.ecore#//Load">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PClassifier.ecore#//Load/file"/>

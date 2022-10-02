@@ -103,11 +103,11 @@ public class PClassifierSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case PClassifierPackage.EVAL:
+      case PClassifierPackage.EXECUTE:
       {
-        Eval eval = (Eval)theEObject;
-        T result = caseEval(eval);
-        if (result == null) result = caseStatement(eval);
+        Execute execute = (Execute)theEObject;
+        T result = caseExecute(execute);
+        if (result == null) result = caseStatement(execute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -210,17 +210,17 @@ public class PClassifierSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Execute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Execute</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEval(Eval object)
+  public T caseExecute(Execute object)
   {
     return null;
   }

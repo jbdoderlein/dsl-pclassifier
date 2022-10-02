@@ -4,11 +4,14 @@
 package org.xtext.classifier.dsl.pClassifier.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.xtext.classifier.dsl.pClassifier.EvaluationList;
 import org.xtext.classifier.dsl.pClassifier.PClassifierPackage;
 import org.xtext.classifier.dsl.pClassifier.Train;
 
@@ -22,6 +25,7 @@ import org.xtext.classifier.dsl.pClassifier.Train;
  * <ul>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.TrainImpl#getDataset <em>Dataset</em>}</li>
  *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.TrainImpl#getSplit <em>Split</em>}</li>
+ *   <li>{@link org.xtext.classifier.dsl.pClassifier.impl.TrainImpl#getEvaluations <em>Evaluations</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +71,16 @@ public class TrainImpl extends StatementImpl implements Train
    * @ordered
    */
   protected double split = SPLIT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getEvaluations() <em>Evaluations</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvaluations()
+   * @generated
+   * @ordered
+   */
+  protected EvaluationList evaluations;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,6 +159,72 @@ public class TrainImpl extends StatementImpl implements Train
    * @generated
    */
   @Override
+  public EvaluationList getEvaluations()
+  {
+    return evaluations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEvaluations(EvaluationList newEvaluations, NotificationChain msgs)
+  {
+    EvaluationList oldEvaluations = evaluations;
+    evaluations = newEvaluations;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PClassifierPackage.TRAIN__EVALUATIONS, oldEvaluations, newEvaluations);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setEvaluations(EvaluationList newEvaluations)
+  {
+    if (newEvaluations != evaluations)
+    {
+      NotificationChain msgs = null;
+      if (evaluations != null)
+        msgs = ((InternalEObject)evaluations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PClassifierPackage.TRAIN__EVALUATIONS, null, msgs);
+      if (newEvaluations != null)
+        msgs = ((InternalEObject)newEvaluations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PClassifierPackage.TRAIN__EVALUATIONS, null, msgs);
+      msgs = basicSetEvaluations(newEvaluations, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PClassifierPackage.TRAIN__EVALUATIONS, newEvaluations, newEvaluations));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case PClassifierPackage.TRAIN__EVALUATIONS:
+        return basicSetEvaluations(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -153,6 +233,8 @@ public class TrainImpl extends StatementImpl implements Train
         return getDataset();
       case PClassifierPackage.TRAIN__SPLIT:
         return getSplit();
+      case PClassifierPackage.TRAIN__EVALUATIONS:
+        return getEvaluations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,6 +254,9 @@ public class TrainImpl extends StatementImpl implements Train
         return;
       case PClassifierPackage.TRAIN__SPLIT:
         setSplit((Double)newValue);
+        return;
+      case PClassifierPackage.TRAIN__EVALUATIONS:
+        setEvaluations((EvaluationList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,6 +278,9 @@ public class TrainImpl extends StatementImpl implements Train
       case PClassifierPackage.TRAIN__SPLIT:
         setSplit(SPLIT_EDEFAULT);
         return;
+      case PClassifierPackage.TRAIN__EVALUATIONS:
+        setEvaluations((EvaluationList)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -211,6 +299,8 @@ public class TrainImpl extends StatementImpl implements Train
         return DATASET_EDEFAULT == null ? dataset != null : !DATASET_EDEFAULT.equals(dataset);
       case PClassifierPackage.TRAIN__SPLIT:
         return split != SPLIT_EDEFAULT;
+      case PClassifierPackage.TRAIN__EVALUATIONS:
+        return evaluations != null;
     }
     return super.eIsSet(featureID);
   }

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Train('", "'dataset'", "'split'", "'Eval('", "'evaluations'", "'Load('", "'file'", "'Save('", "','", "'DecisionTree'", "'SVM'", "'accuracy'", "'f1'", "'recall'", "'cfm'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Train('", "'dataset'", "'split'", "'evaluations'", "'Execute('", "'input'", "'output'", "'Load('", "'file'", "'Save('", "','", "'DecisionTree'", "'SVM'", "'accuracy'", "'f1'", "'recall'", "'cfm'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=9;
@@ -33,7 +33,9 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     public static final int T__18=18;
     public static final int T__33=33;
     public static final int T__12=12;
+    public static final int T__34=34;
     public static final int T__13=13;
+    public static final int T__35=35;
     public static final int T__14=14;
     public static final int EOF=-1;
     public static final int T__30=30;
@@ -152,7 +154,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==12||LA1_0==19||LA1_0==22||LA1_0==24||LA1_0==26) ) {
+                if ( (LA1_0==12||LA1_0==19||LA1_0==23||LA1_0==26||LA1_0==28) ) {
                     alt1=1;
                 }
 
@@ -251,7 +253,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStatement"
-    // InternalPClassifier.g:108:1: ruleStatement returns [EObject current=null] : (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Eval_2= ruleEval | this_Load_3= ruleLoad | this_Save_4= ruleSave ) ;
+    // InternalPClassifier.g:108:1: ruleStatement returns [EObject current=null] : (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Execute_2= ruleExecute | this_Load_3= ruleLoad | this_Save_4= ruleSave ) ;
     public final EObject ruleStatement() throws RecognitionException {
         EObject current = null;
 
@@ -259,7 +261,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
         EObject this_Train_1 = null;
 
-        EObject this_Eval_2 = null;
+        EObject this_Execute_2 = null;
 
         EObject this_Load_3 = null;
 
@@ -270,10 +272,10 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:114:2: ( (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Eval_2= ruleEval | this_Load_3= ruleLoad | this_Save_4= ruleSave ) )
-            // InternalPClassifier.g:115:2: (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Eval_2= ruleEval | this_Load_3= ruleLoad | this_Save_4= ruleSave )
+            // InternalPClassifier.g:114:2: ( (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Execute_2= ruleExecute | this_Load_3= ruleLoad | this_Save_4= ruleSave ) )
+            // InternalPClassifier.g:115:2: (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Execute_2= ruleExecute | this_Load_3= ruleLoad | this_Save_4= ruleSave )
             {
-            // InternalPClassifier.g:115:2: (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Eval_2= ruleEval | this_Load_3= ruleLoad | this_Save_4= ruleSave )
+            // InternalPClassifier.g:115:2: (this_Classifier_0= ruleClassifier | this_Train_1= ruleTrain | this_Execute_2= ruleExecute | this_Load_3= ruleLoad | this_Save_4= ruleSave )
             int alt2=5;
             switch ( input.LA(1) ) {
             case 12:
@@ -286,17 +288,17 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 alt2=2;
                 }
                 break;
-            case 22:
+            case 23:
                 {
                 alt2=3;
                 }
                 break;
-            case 24:
+            case 26:
                 {
                 alt2=4;
                 }
                 break;
-            case 26:
+            case 28:
                 {
                 alt2=5;
                 }
@@ -346,18 +348,18 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPClassifier.g:134:3: this_Eval_2= ruleEval
+                    // InternalPClassifier.g:134:3: this_Execute_2= ruleExecute
                     {
 
-                    			newCompositeNode(grammarAccess.getStatementAccess().getEvalParserRuleCall_2());
+                    			newCompositeNode(grammarAccess.getStatementAccess().getExecuteParserRuleCall_2());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Eval_2=ruleEval();
+                    this_Execute_2=ruleExecute();
 
                     state._fsp--;
 
 
-                    			current = this_Eval_2;
+                    			current = this_Execute_2;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -697,7 +699,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTrain"
-    // InternalPClassifier.g:300:1: ruleTrain returns [EObject current=null] : (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= '}' ) ;
+    // InternalPClassifier.g:300:1: ruleTrain returns [EObject current=null] : (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= 'evaluations' otherlv_10= ':' ( (lv_evaluations_11_0= ruleEvaluationList ) ) otherlv_12= '}' ) ;
     public final EObject ruleTrain() throws RecognitionException {
         EObject current = null;
 
@@ -711,16 +713,20 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         Token otherlv_7=null;
         Token lv_split_8_0=null;
         Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_12=null;
+        EObject lv_evaluations_11_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalPClassifier.g:306:2: ( (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= '}' ) )
-            // InternalPClassifier.g:307:2: (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= '}' )
+            // InternalPClassifier.g:306:2: ( (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= 'evaluations' otherlv_10= ':' ( (lv_evaluations_11_0= ruleEvaluationList ) ) otherlv_12= '}' ) )
+            // InternalPClassifier.g:307:2: (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= 'evaluations' otherlv_10= ':' ( (lv_evaluations_11_0= ruleEvaluationList ) ) otherlv_12= '}' )
             {
-            // InternalPClassifier.g:307:2: (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= '}' )
-            // InternalPClassifier.g:308:3: otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= '}'
+            // InternalPClassifier.g:307:2: (otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= 'evaluations' otherlv_10= ':' ( (lv_evaluations_11_0= ruleEvaluationList ) ) otherlv_12= '}' )
+            // InternalPClassifier.g:308:3: otherlv_0= 'Train(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'dataset' otherlv_4= ':' ( (lv_dataset_5_0= RULE_STRING ) ) otherlv_6= 'split' otherlv_7= ':' ( (lv_split_8_0= RULE_FLOAT ) ) otherlv_9= 'evaluations' otherlv_10= ':' ( (lv_evaluations_11_0= ruleEvaluationList ) ) otherlv_12= '}'
             {
             otherlv_0=(Token)match(input,19,FOLLOW_4); 
 
@@ -804,7 +810,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             // InternalPClassifier.g:369:4: (lv_split_8_0= RULE_FLOAT )
             // InternalPClassifier.g:370:5: lv_split_8_0= RULE_FLOAT
             {
-            lv_split_8_0=(Token)match(input,RULE_FLOAT,FOLLOW_13); 
+            lv_split_8_0=(Token)match(input,RULE_FLOAT,FOLLOW_17); 
 
             					newLeafNode(lv_split_8_0, grammarAccess.getTrainAccess().getSplitFLOATTerminalRuleCall_8_0());
             				
@@ -824,9 +830,48 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,18,FOLLOW_2); 
+            otherlv_9=(Token)match(input,22,FOLLOW_7); 
 
-            			newLeafNode(otherlv_9, grammarAccess.getTrainAccess().getRightCurlyBracketKeyword_9());
+            			newLeafNode(otherlv_9, grammarAccess.getTrainAccess().getEvaluationsKeyword_9());
+            		
+            otherlv_10=(Token)match(input,15,FOLLOW_18); 
+
+            			newLeafNode(otherlv_10, grammarAccess.getTrainAccess().getColonKeyword_10());
+            		
+            // InternalPClassifier.g:394:3: ( (lv_evaluations_11_0= ruleEvaluationList ) )
+            // InternalPClassifier.g:395:4: (lv_evaluations_11_0= ruleEvaluationList )
+            {
+            // InternalPClassifier.g:395:4: (lv_evaluations_11_0= ruleEvaluationList )
+            // InternalPClassifier.g:396:5: lv_evaluations_11_0= ruleEvaluationList
+            {
+
+            					newCompositeNode(grammarAccess.getTrainAccess().getEvaluationsEvaluationListParserRuleCall_11_0());
+            				
+            pushFollow(FOLLOW_13);
+            lv_evaluations_11_0=ruleEvaluationList();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getTrainRule());
+            					}
+            					set(
+            						current,
+            						"evaluations",
+            						lv_evaluations_11_0,
+            						"org.xtext.classifier.dsl.PClassifier.EvaluationList");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_12=(Token)match(input,18,FOLLOW_2); 
+
+            			newLeafNode(otherlv_12, grammarAccess.getTrainAccess().getRightCurlyBracketKeyword_12());
             		
 
             }
@@ -850,25 +895,25 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleTrain"
 
 
-    // $ANTLR start "entryRuleEval"
-    // InternalPClassifier.g:394:1: entryRuleEval returns [EObject current=null] : iv_ruleEval= ruleEval EOF ;
-    public final EObject entryRuleEval() throws RecognitionException {
+    // $ANTLR start "entryRuleExecute"
+    // InternalPClassifier.g:421:1: entryRuleExecute returns [EObject current=null] : iv_ruleExecute= ruleExecute EOF ;
+    public final EObject entryRuleExecute() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleEval = null;
+        EObject iv_ruleExecute = null;
 
 
         try {
-            // InternalPClassifier.g:394:45: (iv_ruleEval= ruleEval EOF )
-            // InternalPClassifier.g:395:2: iv_ruleEval= ruleEval EOF
+            // InternalPClassifier.g:421:48: (iv_ruleExecute= ruleExecute EOF )
+            // InternalPClassifier.g:422:2: iv_ruleExecute= ruleExecute EOF
             {
-             newCompositeNode(grammarAccess.getEvalRule()); 
+             newCompositeNode(grammarAccess.getExecuteRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleEval=ruleEval();
+            iv_ruleExecute=ruleExecute();
 
             state._fsp--;
 
-             current =iv_ruleEval; 
+             current =iv_ruleExecute; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -883,12 +928,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleEval"
+    // $ANTLR end "entryRuleExecute"
 
 
-    // $ANTLR start "ruleEval"
-    // InternalPClassifier.g:401:1: ruleEval returns [EObject current=null] : (otherlv_0= 'Eval(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'evaluations' otherlv_4= ':' ( (lv_evaluations_5_0= ruleEvaluationList ) ) otherlv_6= '}' ) ;
-    public final EObject ruleEval() throws RecognitionException {
+    // $ANTLR start "ruleExecute"
+    // InternalPClassifier.g:428:1: ruleExecute returns [EObject current=null] : (otherlv_0= 'Execute(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'input' otherlv_4= ':' ( (lv_input_5_0= RULE_STRING ) ) otherlv_6= 'output' otherlv_7= ':' ( (lv_output_8_0= RULE_STRING ) ) otherlv_9= '}' ) ;
+    public final EObject ruleExecute() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -896,37 +941,39 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
+        Token lv_input_5_0=null;
         Token otherlv_6=null;
-        EObject lv_evaluations_5_0 = null;
-
+        Token otherlv_7=null;
+        Token lv_output_8_0=null;
+        Token otherlv_9=null;
 
 
         	enterRule();
 
         try {
-            // InternalPClassifier.g:407:2: ( (otherlv_0= 'Eval(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'evaluations' otherlv_4= ':' ( (lv_evaluations_5_0= ruleEvaluationList ) ) otherlv_6= '}' ) )
-            // InternalPClassifier.g:408:2: (otherlv_0= 'Eval(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'evaluations' otherlv_4= ':' ( (lv_evaluations_5_0= ruleEvaluationList ) ) otherlv_6= '}' )
+            // InternalPClassifier.g:434:2: ( (otherlv_0= 'Execute(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'input' otherlv_4= ':' ( (lv_input_5_0= RULE_STRING ) ) otherlv_6= 'output' otherlv_7= ':' ( (lv_output_8_0= RULE_STRING ) ) otherlv_9= '}' ) )
+            // InternalPClassifier.g:435:2: (otherlv_0= 'Execute(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'input' otherlv_4= ':' ( (lv_input_5_0= RULE_STRING ) ) otherlv_6= 'output' otherlv_7= ':' ( (lv_output_8_0= RULE_STRING ) ) otherlv_9= '}' )
             {
-            // InternalPClassifier.g:408:2: (otherlv_0= 'Eval(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'evaluations' otherlv_4= ':' ( (lv_evaluations_5_0= ruleEvaluationList ) ) otherlv_6= '}' )
-            // InternalPClassifier.g:409:3: otherlv_0= 'Eval(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'evaluations' otherlv_4= ':' ( (lv_evaluations_5_0= ruleEvaluationList ) ) otherlv_6= '}'
+            // InternalPClassifier.g:435:2: (otherlv_0= 'Execute(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'input' otherlv_4= ':' ( (lv_input_5_0= RULE_STRING ) ) otherlv_6= 'output' otherlv_7= ':' ( (lv_output_8_0= RULE_STRING ) ) otherlv_9= '}' )
+            // InternalPClassifier.g:436:3: otherlv_0= 'Execute(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'input' otherlv_4= ':' ( (lv_input_5_0= RULE_STRING ) ) otherlv_6= 'output' otherlv_7= ':' ( (lv_output_8_0= RULE_STRING ) ) otherlv_9= '}'
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_4); 
+            otherlv_0=(Token)match(input,23,FOLLOW_4); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getEvalAccess().getEvalKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getExecuteAccess().getExecuteKeyword_0());
             		
-            // InternalPClassifier.g:413:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalPClassifier.g:414:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:440:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalPClassifier.g:441:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalPClassifier.g:414:4: (lv_name_1_0= RULE_ID )
-            // InternalPClassifier.g:415:5: lv_name_1_0= RULE_ID
+            // InternalPClassifier.g:441:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:442:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_5); 
 
-            					newLeafNode(lv_name_1_0, grammarAccess.getEvalAccess().getNameIDTerminalRuleCall_1_0());
+            					newLeafNode(lv_name_1_0, grammarAccess.getExecuteAccess().getNameIDTerminalRuleCall_1_0());
             				
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getEvalRule());
+            						current = createModelElement(grammarAccess.getExecuteRule());
             					}
             					setWithLastConsumed(
             						current,
@@ -940,42 +987,37 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,13,FOLLOW_17); 
+            otherlv_2=(Token)match(input,13,FOLLOW_19); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getEvalAccess().getRightParenthesisLeftCurlyBracketKeyword_2());
+            			newLeafNode(otherlv_2, grammarAccess.getExecuteAccess().getRightParenthesisLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,23,FOLLOW_7); 
+            otherlv_3=(Token)match(input,24,FOLLOW_7); 
 
-            			newLeafNode(otherlv_3, grammarAccess.getEvalAccess().getEvaluationsKeyword_3());
+            			newLeafNode(otherlv_3, grammarAccess.getExecuteAccess().getInputKeyword_3());
             		
-            otherlv_4=(Token)match(input,15,FOLLOW_18); 
+            otherlv_4=(Token)match(input,15,FOLLOW_10); 
 
-            			newLeafNode(otherlv_4, grammarAccess.getEvalAccess().getColonKeyword_4());
+            			newLeafNode(otherlv_4, grammarAccess.getExecuteAccess().getColonKeyword_4());
             		
-            // InternalPClassifier.g:443:3: ( (lv_evaluations_5_0= ruleEvaluationList ) )
-            // InternalPClassifier.g:444:4: (lv_evaluations_5_0= ruleEvaluationList )
+            // InternalPClassifier.g:470:3: ( (lv_input_5_0= RULE_STRING ) )
+            // InternalPClassifier.g:471:4: (lv_input_5_0= RULE_STRING )
             {
-            // InternalPClassifier.g:444:4: (lv_evaluations_5_0= ruleEvaluationList )
-            // InternalPClassifier.g:445:5: lv_evaluations_5_0= ruleEvaluationList
+            // InternalPClassifier.g:471:4: (lv_input_5_0= RULE_STRING )
+            // InternalPClassifier.g:472:5: lv_input_5_0= RULE_STRING
             {
+            lv_input_5_0=(Token)match(input,RULE_STRING,FOLLOW_20); 
 
-            					newCompositeNode(grammarAccess.getEvalAccess().getEvaluationsEvaluationListParserRuleCall_5_0());
+            					newLeafNode(lv_input_5_0, grammarAccess.getExecuteAccess().getInputSTRINGTerminalRuleCall_5_0());
             				
-            pushFollow(FOLLOW_13);
-            lv_evaluations_5_0=ruleEvaluationList();
-
-            state._fsp--;
-
 
             					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getEvalRule());
+            						current = createModelElement(grammarAccess.getExecuteRule());
             					}
-            					set(
+            					setWithLastConsumed(
             						current,
-            						"evaluations",
-            						lv_evaluations_5_0,
-            						"org.xtext.classifier.dsl.PClassifier.EvaluationList");
-            					afterParserOrEnumRuleCall();
+            						"input",
+            						lv_input_5_0,
+            						"org.eclipse.xtext.common.Terminals.STRING");
             				
 
             }
@@ -983,9 +1025,43 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,18,FOLLOW_2); 
+            otherlv_6=(Token)match(input,25,FOLLOW_7); 
 
-            			newLeafNode(otherlv_6, grammarAccess.getEvalAccess().getRightCurlyBracketKeyword_6());
+            			newLeafNode(otherlv_6, grammarAccess.getExecuteAccess().getOutputKeyword_6());
+            		
+            otherlv_7=(Token)match(input,15,FOLLOW_10); 
+
+            			newLeafNode(otherlv_7, grammarAccess.getExecuteAccess().getColonKeyword_7());
+            		
+            // InternalPClassifier.g:496:3: ( (lv_output_8_0= RULE_STRING ) )
+            // InternalPClassifier.g:497:4: (lv_output_8_0= RULE_STRING )
+            {
+            // InternalPClassifier.g:497:4: (lv_output_8_0= RULE_STRING )
+            // InternalPClassifier.g:498:5: lv_output_8_0= RULE_STRING
+            {
+            lv_output_8_0=(Token)match(input,RULE_STRING,FOLLOW_13); 
+
+            					newLeafNode(lv_output_8_0, grammarAccess.getExecuteAccess().getOutputSTRINGTerminalRuleCall_8_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getExecuteRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"output",
+            						lv_output_8_0,
+            						"org.eclipse.xtext.common.Terminals.STRING");
+            				
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,18,FOLLOW_2); 
+
+            			newLeafNode(otherlv_9, grammarAccess.getExecuteAccess().getRightCurlyBracketKeyword_9());
             		
 
             }
@@ -1006,11 +1082,11 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleEval"
+    // $ANTLR end "ruleExecute"
 
 
     // $ANTLR start "entryRuleLoad"
-    // InternalPClassifier.g:470:1: entryRuleLoad returns [EObject current=null] : iv_ruleLoad= ruleLoad EOF ;
+    // InternalPClassifier.g:522:1: entryRuleLoad returns [EObject current=null] : iv_ruleLoad= ruleLoad EOF ;
     public final EObject entryRuleLoad() throws RecognitionException {
         EObject current = null;
 
@@ -1018,8 +1094,8 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPClassifier.g:470:45: (iv_ruleLoad= ruleLoad EOF )
-            // InternalPClassifier.g:471:2: iv_ruleLoad= ruleLoad EOF
+            // InternalPClassifier.g:522:45: (iv_ruleLoad= ruleLoad EOF )
+            // InternalPClassifier.g:523:2: iv_ruleLoad= ruleLoad EOF
             {
              newCompositeNode(grammarAccess.getLoadRule()); 
             pushFollow(FOLLOW_1);
@@ -1046,7 +1122,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLoad"
-    // InternalPClassifier.g:477:1: ruleLoad returns [EObject current=null] : (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) ;
+    // InternalPClassifier.g:529:1: ruleLoad returns [EObject current=null] : (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) ;
     public final EObject ruleLoad() throws RecognitionException {
         EObject current = null;
 
@@ -1062,21 +1138,21 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:483:2: ( (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) )
-            // InternalPClassifier.g:484:2: (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
+            // InternalPClassifier.g:535:2: ( (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) )
+            // InternalPClassifier.g:536:2: (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
             {
-            // InternalPClassifier.g:484:2: (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
-            // InternalPClassifier.g:485:3: otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}'
+            // InternalPClassifier.g:536:2: (otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
+            // InternalPClassifier.g:537:3: otherlv_0= 'Load(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_4); 
+            otherlv_0=(Token)match(input,26,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getLoadAccess().getLoadKeyword_0());
             		
-            // InternalPClassifier.g:489:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalPClassifier.g:490:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:541:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalPClassifier.g:542:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalPClassifier.g:490:4: (lv_name_1_0= RULE_ID )
-            // InternalPClassifier.g:491:5: lv_name_1_0= RULE_ID
+            // InternalPClassifier.g:542:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:543:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_5); 
 
@@ -1098,11 +1174,11 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,13,FOLLOW_19); 
+            otherlv_2=(Token)match(input,13,FOLLOW_21); 
 
             			newLeafNode(otherlv_2, grammarAccess.getLoadAccess().getRightParenthesisLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,25,FOLLOW_7); 
+            otherlv_3=(Token)match(input,27,FOLLOW_7); 
 
             			newLeafNode(otherlv_3, grammarAccess.getLoadAccess().getFileKeyword_3());
             		
@@ -1110,11 +1186,11 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_4, grammarAccess.getLoadAccess().getColonKeyword_4());
             		
-            // InternalPClassifier.g:519:3: ( (lv_file_5_0= RULE_STRING ) )
-            // InternalPClassifier.g:520:4: (lv_file_5_0= RULE_STRING )
+            // InternalPClassifier.g:571:3: ( (lv_file_5_0= RULE_STRING ) )
+            // InternalPClassifier.g:572:4: (lv_file_5_0= RULE_STRING )
             {
-            // InternalPClassifier.g:520:4: (lv_file_5_0= RULE_STRING )
-            // InternalPClassifier.g:521:5: lv_file_5_0= RULE_STRING
+            // InternalPClassifier.g:572:4: (lv_file_5_0= RULE_STRING )
+            // InternalPClassifier.g:573:5: lv_file_5_0= RULE_STRING
             {
             lv_file_5_0=(Token)match(input,RULE_STRING,FOLLOW_13); 
 
@@ -1163,7 +1239,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSave"
-    // InternalPClassifier.g:545:1: entryRuleSave returns [EObject current=null] : iv_ruleSave= ruleSave EOF ;
+    // InternalPClassifier.g:597:1: entryRuleSave returns [EObject current=null] : iv_ruleSave= ruleSave EOF ;
     public final EObject entryRuleSave() throws RecognitionException {
         EObject current = null;
 
@@ -1171,8 +1247,8 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPClassifier.g:545:45: (iv_ruleSave= ruleSave EOF )
-            // InternalPClassifier.g:546:2: iv_ruleSave= ruleSave EOF
+            // InternalPClassifier.g:597:45: (iv_ruleSave= ruleSave EOF )
+            // InternalPClassifier.g:598:2: iv_ruleSave= ruleSave EOF
             {
              newCompositeNode(grammarAccess.getSaveRule()); 
             pushFollow(FOLLOW_1);
@@ -1199,7 +1275,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSave"
-    // InternalPClassifier.g:552:1: ruleSave returns [EObject current=null] : (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) ;
+    // InternalPClassifier.g:604:1: ruleSave returns [EObject current=null] : (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) ;
     public final EObject ruleSave() throws RecognitionException {
         EObject current = null;
 
@@ -1215,21 +1291,21 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:558:2: ( (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) )
-            // InternalPClassifier.g:559:2: (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
+            // InternalPClassifier.g:610:2: ( (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' ) )
+            // InternalPClassifier.g:611:2: (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
             {
-            // InternalPClassifier.g:559:2: (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
-            // InternalPClassifier.g:560:3: otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}'
+            // InternalPClassifier.g:611:2: (otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}' )
+            // InternalPClassifier.g:612:3: otherlv_0= 'Save(' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '){' otherlv_3= 'file' otherlv_4= ':' ( (lv_file_5_0= RULE_STRING ) ) otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_4); 
+            otherlv_0=(Token)match(input,28,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSaveAccess().getSaveKeyword_0());
             		
-            // InternalPClassifier.g:564:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalPClassifier.g:565:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:616:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalPClassifier.g:617:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalPClassifier.g:565:4: (lv_name_1_0= RULE_ID )
-            // InternalPClassifier.g:566:5: lv_name_1_0= RULE_ID
+            // InternalPClassifier.g:617:4: (lv_name_1_0= RULE_ID )
+            // InternalPClassifier.g:618:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_5); 
 
@@ -1251,11 +1327,11 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,13,FOLLOW_19); 
+            otherlv_2=(Token)match(input,13,FOLLOW_21); 
 
             			newLeafNode(otherlv_2, grammarAccess.getSaveAccess().getRightParenthesisLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,25,FOLLOW_7); 
+            otherlv_3=(Token)match(input,27,FOLLOW_7); 
 
             			newLeafNode(otherlv_3, grammarAccess.getSaveAccess().getFileKeyword_3());
             		
@@ -1263,11 +1339,11 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_4, grammarAccess.getSaveAccess().getColonKeyword_4());
             		
-            // InternalPClassifier.g:594:3: ( (lv_file_5_0= RULE_STRING ) )
-            // InternalPClassifier.g:595:4: (lv_file_5_0= RULE_STRING )
+            // InternalPClassifier.g:646:3: ( (lv_file_5_0= RULE_STRING ) )
+            // InternalPClassifier.g:647:4: (lv_file_5_0= RULE_STRING )
             {
-            // InternalPClassifier.g:595:4: (lv_file_5_0= RULE_STRING )
-            // InternalPClassifier.g:596:5: lv_file_5_0= RULE_STRING
+            // InternalPClassifier.g:647:4: (lv_file_5_0= RULE_STRING )
+            // InternalPClassifier.g:648:5: lv_file_5_0= RULE_STRING
             {
             lv_file_5_0=(Token)match(input,RULE_STRING,FOLLOW_13); 
 
@@ -1316,7 +1392,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeatureList"
-    // InternalPClassifier.g:620:1: entryRuleFeatureList returns [EObject current=null] : iv_ruleFeatureList= ruleFeatureList EOF ;
+    // InternalPClassifier.g:672:1: entryRuleFeatureList returns [EObject current=null] : iv_ruleFeatureList= ruleFeatureList EOF ;
     public final EObject entryRuleFeatureList() throws RecognitionException {
         EObject current = null;
 
@@ -1324,8 +1400,8 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPClassifier.g:620:52: (iv_ruleFeatureList= ruleFeatureList EOF )
-            // InternalPClassifier.g:621:2: iv_ruleFeatureList= ruleFeatureList EOF
+            // InternalPClassifier.g:672:52: (iv_ruleFeatureList= ruleFeatureList EOF )
+            // InternalPClassifier.g:673:2: iv_ruleFeatureList= ruleFeatureList EOF
             {
              newCompositeNode(grammarAccess.getFeatureListRule()); 
             pushFollow(FOLLOW_1);
@@ -1352,7 +1428,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureList"
-    // InternalPClassifier.g:627:1: ruleFeatureList returns [EObject current=null] : ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* ) ;
+    // InternalPClassifier.g:679:1: ruleFeatureList returns [EObject current=null] : ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* ) ;
     public final EObject ruleFeatureList() throws RecognitionException {
         EObject current = null;
 
@@ -1366,28 +1442,28 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:633:2: ( ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* ) )
-            // InternalPClassifier.g:634:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* )
+            // InternalPClassifier.g:685:2: ( ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* ) )
+            // InternalPClassifier.g:686:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* )
             {
-            // InternalPClassifier.g:634:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* )
-            // InternalPClassifier.g:635:3: (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )*
+            // InternalPClassifier.g:686:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )* )
+            // InternalPClassifier.g:687:3: (otherlv_0= ',' )* ( (lv_vals_1_0= RULE_STRING ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )* (otherlv_4= ',' )*
             {
-            // InternalPClassifier.g:635:3: (otherlv_0= ',' )*
+            // InternalPClassifier.g:687:3: (otherlv_0= ',' )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==27) ) {
+                if ( (LA3_0==29) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalPClassifier.g:636:4: otherlv_0= ','
+            	    // InternalPClassifier.g:688:4: otherlv_0= ','
             	    {
-            	    otherlv_0=(Token)match(input,27,FOLLOW_8); 
+            	    otherlv_0=(Token)match(input,29,FOLLOW_8); 
 
             	    				newLeafNode(otherlv_0, grammarAccess.getFeatureListAccess().getCommaKeyword_0());
             	    			
@@ -1400,13 +1476,13 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalPClassifier.g:641:3: ( (lv_vals_1_0= RULE_STRING ) )
-            // InternalPClassifier.g:642:4: (lv_vals_1_0= RULE_STRING )
+            // InternalPClassifier.g:693:3: ( (lv_vals_1_0= RULE_STRING ) )
+            // InternalPClassifier.g:694:4: (lv_vals_1_0= RULE_STRING )
             {
-            // InternalPClassifier.g:642:4: (lv_vals_1_0= RULE_STRING )
-            // InternalPClassifier.g:643:5: lv_vals_1_0= RULE_STRING
+            // InternalPClassifier.g:694:4: (lv_vals_1_0= RULE_STRING )
+            // InternalPClassifier.g:695:5: lv_vals_1_0= RULE_STRING
             {
-            lv_vals_1_0=(Token)match(input,RULE_STRING,FOLLOW_20); 
+            lv_vals_1_0=(Token)match(input,RULE_STRING,FOLLOW_22); 
 
             					newLeafNode(lv_vals_1_0, grammarAccess.getFeatureListAccess().getValsSTRINGTerminalRuleCall_1_0());
             				
@@ -1426,32 +1502,32 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalPClassifier.g:659:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )*
+            // InternalPClassifier.g:711:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )*
             loop5:
             do {
                 int alt5=2;
                 alt5 = dfa5.predict(input);
                 switch (alt5) {
             	case 1 :
-            	    // InternalPClassifier.g:660:4: (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) )
+            	    // InternalPClassifier.g:712:4: (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) )
             	    {
-            	    // InternalPClassifier.g:660:4: (otherlv_2= ',' )+
+            	    // InternalPClassifier.g:712:4: (otherlv_2= ',' )+
             	    int cnt4=0;
             	    loop4:
             	    do {
             	        int alt4=2;
             	        int LA4_0 = input.LA(1);
 
-            	        if ( (LA4_0==27) ) {
+            	        if ( (LA4_0==29) ) {
             	            alt4=1;
             	        }
 
 
             	        switch (alt4) {
             	    	case 1 :
-            	    	    // InternalPClassifier.g:661:5: otherlv_2= ','
+            	    	    // InternalPClassifier.g:713:5: otherlv_2= ','
             	    	    {
-            	    	    otherlv_2=(Token)match(input,27,FOLLOW_8); 
+            	    	    otherlv_2=(Token)match(input,29,FOLLOW_8); 
 
             	    	    					newLeafNode(otherlv_2, grammarAccess.getFeatureListAccess().getCommaKeyword_2_0());
             	    	    				
@@ -1468,13 +1544,13 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             	        cnt4++;
             	    } while (true);
 
-            	    // InternalPClassifier.g:666:4: ( (lv_vals_3_0= RULE_STRING ) )
-            	    // InternalPClassifier.g:667:5: (lv_vals_3_0= RULE_STRING )
+            	    // InternalPClassifier.g:718:4: ( (lv_vals_3_0= RULE_STRING ) )
+            	    // InternalPClassifier.g:719:5: (lv_vals_3_0= RULE_STRING )
             	    {
-            	    // InternalPClassifier.g:667:5: (lv_vals_3_0= RULE_STRING )
-            	    // InternalPClassifier.g:668:6: lv_vals_3_0= RULE_STRING
+            	    // InternalPClassifier.g:719:5: (lv_vals_3_0= RULE_STRING )
+            	    // InternalPClassifier.g:720:6: lv_vals_3_0= RULE_STRING
             	    {
-            	    lv_vals_3_0=(Token)match(input,RULE_STRING,FOLLOW_20); 
+            	    lv_vals_3_0=(Token)match(input,RULE_STRING,FOLLOW_22); 
 
             	    						newLeafNode(lv_vals_3_0, grammarAccess.getFeatureListAccess().getValsSTRINGTerminalRuleCall_2_1_0());
             	    					
@@ -1503,22 +1579,22 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalPClassifier.g:685:3: (otherlv_4= ',' )*
+            // InternalPClassifier.g:737:3: (otherlv_4= ',' )*
             loop6:
             do {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==27) ) {
+                if ( (LA6_0==29) ) {
                     alt6=1;
                 }
 
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalPClassifier.g:686:4: otherlv_4= ','
+            	    // InternalPClassifier.g:738:4: otherlv_4= ','
             	    {
-            	    otherlv_4=(Token)match(input,27,FOLLOW_20); 
+            	    otherlv_4=(Token)match(input,29,FOLLOW_22); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getFeatureListAccess().getCommaKeyword_3());
             	    			
@@ -1554,7 +1630,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEvaluationList"
-    // InternalPClassifier.g:695:1: entryRuleEvaluationList returns [EObject current=null] : iv_ruleEvaluationList= ruleEvaluationList EOF ;
+    // InternalPClassifier.g:747:1: entryRuleEvaluationList returns [EObject current=null] : iv_ruleEvaluationList= ruleEvaluationList EOF ;
     public final EObject entryRuleEvaluationList() throws RecognitionException {
         EObject current = null;
 
@@ -1562,8 +1638,8 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPClassifier.g:695:55: (iv_ruleEvaluationList= ruleEvaluationList EOF )
-            // InternalPClassifier.g:696:2: iv_ruleEvaluationList= ruleEvaluationList EOF
+            // InternalPClassifier.g:747:55: (iv_ruleEvaluationList= ruleEvaluationList EOF )
+            // InternalPClassifier.g:748:2: iv_ruleEvaluationList= ruleEvaluationList EOF
             {
              newCompositeNode(grammarAccess.getEvaluationListRule()); 
             pushFollow(FOLLOW_1);
@@ -1590,7 +1666,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvaluationList"
-    // InternalPClassifier.g:702:1: ruleEvaluationList returns [EObject current=null] : ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* ) ;
+    // InternalPClassifier.g:754:1: ruleEvaluationList returns [EObject current=null] : ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* ) ;
     public final EObject ruleEvaluationList() throws RecognitionException {
         EObject current = null;
 
@@ -1606,28 +1682,28 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:708:2: ( ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* ) )
-            // InternalPClassifier.g:709:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* )
+            // InternalPClassifier.g:760:2: ( ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* ) )
+            // InternalPClassifier.g:761:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* )
             {
-            // InternalPClassifier.g:709:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* )
-            // InternalPClassifier.g:710:3: (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )*
+            // InternalPClassifier.g:761:2: ( (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )* )
+            // InternalPClassifier.g:762:3: (otherlv_0= ',' )* ( (lv_vals_1_0= ruleEvaluation ) ) ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )* (otherlv_4= ',' )*
             {
-            // InternalPClassifier.g:710:3: (otherlv_0= ',' )*
+            // InternalPClassifier.g:762:3: (otherlv_0= ',' )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==27) ) {
+                if ( (LA7_0==29) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalPClassifier.g:711:4: otherlv_0= ','
+            	    // InternalPClassifier.g:763:4: otherlv_0= ','
             	    {
-            	    otherlv_0=(Token)match(input,27,FOLLOW_18); 
+            	    otherlv_0=(Token)match(input,29,FOLLOW_18); 
 
             	    				newLeafNode(otherlv_0, grammarAccess.getEvaluationListAccess().getCommaKeyword_0());
             	    			
@@ -1640,16 +1716,16 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalPClassifier.g:716:3: ( (lv_vals_1_0= ruleEvaluation ) )
-            // InternalPClassifier.g:717:4: (lv_vals_1_0= ruleEvaluation )
+            // InternalPClassifier.g:768:3: ( (lv_vals_1_0= ruleEvaluation ) )
+            // InternalPClassifier.g:769:4: (lv_vals_1_0= ruleEvaluation )
             {
-            // InternalPClassifier.g:717:4: (lv_vals_1_0= ruleEvaluation )
-            // InternalPClassifier.g:718:5: lv_vals_1_0= ruleEvaluation
+            // InternalPClassifier.g:769:4: (lv_vals_1_0= ruleEvaluation )
+            // InternalPClassifier.g:770:5: lv_vals_1_0= ruleEvaluation
             {
 
             					newCompositeNode(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_1_0());
             				
-            pushFollow(FOLLOW_20);
+            pushFollow(FOLLOW_22);
             lv_vals_1_0=ruleEvaluation();
 
             state._fsp--;
@@ -1671,32 +1747,32 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalPClassifier.g:735:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )*
+            // InternalPClassifier.g:787:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )*
             loop9:
             do {
                 int alt9=2;
                 alt9 = dfa9.predict(input);
                 switch (alt9) {
             	case 1 :
-            	    // InternalPClassifier.g:736:4: (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) )
+            	    // InternalPClassifier.g:788:4: (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) )
             	    {
-            	    // InternalPClassifier.g:736:4: (otherlv_2= ',' )+
+            	    // InternalPClassifier.g:788:4: (otherlv_2= ',' )+
             	    int cnt8=0;
             	    loop8:
             	    do {
             	        int alt8=2;
             	        int LA8_0 = input.LA(1);
 
-            	        if ( (LA8_0==27) ) {
+            	        if ( (LA8_0==29) ) {
             	            alt8=1;
             	        }
 
 
             	        switch (alt8) {
             	    	case 1 :
-            	    	    // InternalPClassifier.g:737:5: otherlv_2= ','
+            	    	    // InternalPClassifier.g:789:5: otherlv_2= ','
             	    	    {
-            	    	    otherlv_2=(Token)match(input,27,FOLLOW_18); 
+            	    	    otherlv_2=(Token)match(input,29,FOLLOW_18); 
 
             	    	    					newLeafNode(otherlv_2, grammarAccess.getEvaluationListAccess().getCommaKeyword_2_0());
             	    	    				
@@ -1713,16 +1789,16 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             	        cnt8++;
             	    } while (true);
 
-            	    // InternalPClassifier.g:742:4: ( (lv_vals_3_0= ruleEvaluation ) )
-            	    // InternalPClassifier.g:743:5: (lv_vals_3_0= ruleEvaluation )
+            	    // InternalPClassifier.g:794:4: ( (lv_vals_3_0= ruleEvaluation ) )
+            	    // InternalPClassifier.g:795:5: (lv_vals_3_0= ruleEvaluation )
             	    {
-            	    // InternalPClassifier.g:743:5: (lv_vals_3_0= ruleEvaluation )
-            	    // InternalPClassifier.g:744:6: lv_vals_3_0= ruleEvaluation
+            	    // InternalPClassifier.g:795:5: (lv_vals_3_0= ruleEvaluation )
+            	    // InternalPClassifier.g:796:6: lv_vals_3_0= ruleEvaluation
             	    {
 
             	    						newCompositeNode(grammarAccess.getEvaluationListAccess().getValsEvaluationEnumRuleCall_2_1_0());
             	    					
-            	    pushFollow(FOLLOW_20);
+            	    pushFollow(FOLLOW_22);
             	    lv_vals_3_0=ruleEvaluation();
 
             	    state._fsp--;
@@ -1753,22 +1829,22 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalPClassifier.g:762:3: (otherlv_4= ',' )*
+            // InternalPClassifier.g:814:3: (otherlv_4= ',' )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==27) ) {
+                if ( (LA10_0==29) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalPClassifier.g:763:4: otherlv_4= ','
+            	    // InternalPClassifier.g:815:4: otherlv_4= ','
             	    {
-            	    otherlv_4=(Token)match(input,27,FOLLOW_20); 
+            	    otherlv_4=(Token)match(input,29,FOLLOW_22); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getEvaluationListAccess().getCommaKeyword_3());
             	    			
@@ -1804,7 +1880,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMLModel"
-    // InternalPClassifier.g:772:1: ruleMLModel returns [Enumerator current=null] : ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) ;
+    // InternalPClassifier.g:824:1: ruleMLModel returns [Enumerator current=null] : ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) ;
     public final Enumerator ruleMLModel() throws RecognitionException {
         Enumerator current = null;
 
@@ -1815,17 +1891,17 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:778:2: ( ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) )
-            // InternalPClassifier.g:779:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
+            // InternalPClassifier.g:830:2: ( ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) )
+            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
             {
-            // InternalPClassifier.g:779:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
+            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==28) ) {
+            if ( (LA11_0==30) ) {
                 alt11=1;
             }
-            else if ( (LA11_0==29) ) {
+            else if ( (LA11_0==31) ) {
                 alt11=2;
             }
             else {
@@ -1836,12 +1912,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalPClassifier.g:780:3: (enumLiteral_0= 'DecisionTree' )
+                    // InternalPClassifier.g:832:3: (enumLiteral_0= 'DecisionTree' )
                     {
-                    // InternalPClassifier.g:780:3: (enumLiteral_0= 'DecisionTree' )
-                    // InternalPClassifier.g:781:4: enumLiteral_0= 'DecisionTree'
+                    // InternalPClassifier.g:832:3: (enumLiteral_0= 'DecisionTree' )
+                    // InternalPClassifier.g:833:4: enumLiteral_0= 'DecisionTree'
                     {
-                    enumLiteral_0=(Token)match(input,28,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,30,FOLLOW_2); 
 
                     				current = grammarAccess.getMLModelAccess().getDecisonTreeEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getMLModelAccess().getDecisonTreeEnumLiteralDeclaration_0());
@@ -1853,12 +1929,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:788:3: (enumLiteral_1= 'SVM' )
+                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVM' )
                     {
-                    // InternalPClassifier.g:788:3: (enumLiteral_1= 'SVM' )
-                    // InternalPClassifier.g:789:4: enumLiteral_1= 'SVM'
+                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVM' )
+                    // InternalPClassifier.g:841:4: enumLiteral_1= 'SVM'
                     {
-                    enumLiteral_1=(Token)match(input,29,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,31,FOLLOW_2); 
 
                     				current = grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1());
@@ -1892,7 +1968,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvaluation"
-    // InternalPClassifier.g:799:1: ruleEvaluation returns [Enumerator current=null] : ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) ;
+    // InternalPClassifier.g:851:1: ruleEvaluation returns [Enumerator current=null] : ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) ;
     public final Enumerator ruleEvaluation() throws RecognitionException {
         Enumerator current = null;
 
@@ -1905,28 +1981,28 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPClassifier.g:805:2: ( ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) )
-            // InternalPClassifier.g:806:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
+            // InternalPClassifier.g:857:2: ( ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) )
+            // InternalPClassifier.g:858:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
             {
-            // InternalPClassifier.g:806:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
+            // InternalPClassifier.g:858:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
             int alt12=4;
             switch ( input.LA(1) ) {
-            case 30:
+            case 32:
                 {
                 alt12=1;
                 }
                 break;
-            case 31:
+            case 33:
                 {
                 alt12=2;
                 }
                 break;
-            case 32:
+            case 34:
                 {
                 alt12=3;
                 }
                 break;
-            case 33:
+            case 35:
                 {
                 alt12=4;
                 }
@@ -1940,12 +2016,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             switch (alt12) {
                 case 1 :
-                    // InternalPClassifier.g:807:3: (enumLiteral_0= 'accuracy' )
+                    // InternalPClassifier.g:859:3: (enumLiteral_0= 'accuracy' )
                     {
-                    // InternalPClassifier.g:807:3: (enumLiteral_0= 'accuracy' )
-                    // InternalPClassifier.g:808:4: enumLiteral_0= 'accuracy'
+                    // InternalPClassifier.g:859:3: (enumLiteral_0= 'accuracy' )
+                    // InternalPClassifier.g:860:4: enumLiteral_0= 'accuracy'
                     {
-                    enumLiteral_0=(Token)match(input,30,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,32,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getAccuracyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getEvaluationAccess().getAccuracyEnumLiteralDeclaration_0());
@@ -1957,12 +2033,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:815:3: (enumLiteral_1= 'f1' )
+                    // InternalPClassifier.g:867:3: (enumLiteral_1= 'f1' )
                     {
-                    // InternalPClassifier.g:815:3: (enumLiteral_1= 'f1' )
-                    // InternalPClassifier.g:816:4: enumLiteral_1= 'f1'
+                    // InternalPClassifier.g:867:3: (enumLiteral_1= 'f1' )
+                    // InternalPClassifier.g:868:4: enumLiteral_1= 'f1'
                     {
-                    enumLiteral_1=(Token)match(input,31,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,33,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1());
@@ -1974,12 +2050,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPClassifier.g:823:3: (enumLiteral_2= 'recall' )
+                    // InternalPClassifier.g:875:3: (enumLiteral_2= 'recall' )
                     {
-                    // InternalPClassifier.g:823:3: (enumLiteral_2= 'recall' )
-                    // InternalPClassifier.g:824:4: enumLiteral_2= 'recall'
+                    // InternalPClassifier.g:875:3: (enumLiteral_2= 'recall' )
+                    // InternalPClassifier.g:876:4: enumLiteral_2= 'recall'
                     {
-                    enumLiteral_2=(Token)match(input,32,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,34,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2());
@@ -1991,12 +2067,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalPClassifier.g:831:3: (enumLiteral_3= 'cfm' )
+                    // InternalPClassifier.g:883:3: (enumLiteral_3= 'cfm' )
                     {
-                    // InternalPClassifier.g:831:3: (enumLiteral_3= 'cfm' )
-                    // InternalPClassifier.g:832:4: enumLiteral_3= 'cfm'
+                    // InternalPClassifier.g:883:3: (enumLiteral_3= 'cfm' )
+                    // InternalPClassifier.g:884:4: enumLiteral_3= 'cfm'
                     {
-                    enumLiteral_3=(Token)match(input,33,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3());
@@ -2036,12 +2112,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     static final String dfa_1s = "\4\uffff";
     static final String dfa_2s = "\2\2\2\uffff";
     static final String dfa_3s = "\1\20\1\5\2\uffff";
-    static final String dfa_4s = "\2\33\2\uffff";
+    static final String dfa_4s = "\2\35\2\uffff";
     static final String dfa_5s = "\2\uffff\1\2\1\1";
     static final String dfa_6s = "\4\uffff}>";
     static final String[] dfa_7s = {
-            "\1\2\12\uffff\1\1",
-            "\1\3\12\uffff\1\2\12\uffff\1\1",
+            "\1\2\14\uffff\1\1",
+            "\1\3\12\uffff\1\2\14\uffff\1\1",
             "",
             ""
     };
@@ -2068,14 +2144,14 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "()* loopback of 659:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )*";
+            return "()* loopback of 711:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= RULE_STRING ) ) )*";
         }
     }
     static final String dfa_8s = "\2\22\2\uffff";
-    static final String dfa_9s = "\1\33\1\41\2\uffff";
+    static final String dfa_9s = "\1\35\1\43\2\uffff";
     static final String[] dfa_10s = {
-            "\1\2\10\uffff\1\1",
-            "\1\2\10\uffff\1\1\2\uffff\4\3",
+            "\1\2\12\uffff\1\1",
+            "\1\2\12\uffff\1\1\2\uffff\4\3",
             "",
             ""
     };
@@ -2097,30 +2173,32 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
             this.transition = dfa_10;
         }
         public String getDescription() {
-            return "()* loopback of 735:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )*";
+            return "()* loopback of 787:3: ( (otherlv_2= ',' )+ ( (lv_vals_3_0= ruleEvaluation ) ) )*";
         }
     }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000005481002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000014881002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000008000020L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000020000020L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000030000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000C0000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x00000003C8000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000F20000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000020000002L});
 
 }
