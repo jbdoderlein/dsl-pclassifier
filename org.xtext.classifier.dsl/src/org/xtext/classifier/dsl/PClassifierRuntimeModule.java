@@ -3,6 +3,9 @@
  */
 package org.xtext.classifier.dsl;
 
+import org.eclipse.xtext.generator.IGenerator2;
+import org.xtext.classifier.dsl.generator.PClassifierGenerator;
+
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.

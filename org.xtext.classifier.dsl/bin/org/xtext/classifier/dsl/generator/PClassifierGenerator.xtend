@@ -7,138 +7,67 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-
 import org.xtext.classifier.dsl.pClassifier.Classifier
-import org.xtext.classifier.dsl.pClassifier.Train
 import org.xtext.classifier.dsl.pClassifier.Execute
 import org.xtext.classifier.dsl.pClassifier.Load
 import org.xtext.classifier.dsl.pClassifier.Save
-import org.xtext.classifier.dsl.pClassifier.FeatureList
-import org.xtext.classifier.dsl.pClassifier.MLModel
-import org.xtext.classifier.dsl.pClassifier.Evaluation
-import org.xtext.classifier.dsl.pClassifier.EvaluationList
+import org.xtext.classifier.dsl.pClassifier.Train
 
 class PClassifierGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var result = '''
-		import numpy as np
-		import pandas as pd
-		import pickle
-		from sklearn.model_selection import train_test_split
-		from sklearn.tree import DecisionTreeClassifier
-		from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, recall_score
+		var pythonGenerator = new PClassifierPythonGenerator();
+		var juliaGenerator = new PClassifierJuliaGenerator();
+		var codexInterpretor = new PClassifierPythonCodexInterpretor();
+		fsa.generateFile(
+			resource.URI.trimFileExtension.lastSegment+'.jl',
+			juliaGenerator.doGenerate(resource)
+		)
+		fsa.generateFile(
+			resource.URI.trimFileExtension.lastSegment+'.py',
+			pythonGenerator.doGenerate(resource)
+		)
+		fsa.generateFile(
+			resource.URI.trimFileExtension.lastSegment+'_codex.py',
+			codexInterpretor.doGenerate(resource)
+		)
+	}
+}
+
+class PClassifierPythonCodexInterpretor {
+	def doGenerate(Resource resource) {
+		var codexGenerator = new CodexGenerator()
+		var resul = codexGenerator.generate("a")
+		var result = resul.toString()
 		
-		models = {}
-		
-		'''
 		for(e : resource.allContents.toIterable()) {
 			switch (e) {
 				case (e instanceof Classifier): {
-					result += generateClassifier(e as Classifier)
+					result += executeClassifier(e as Classifier)
 					result += "\n"
 				}
 				case (e instanceof Train): {
-					result += generateTrain(e as Train)
+					result += "Train Usage TODO"
 					result += "\n"
 				}
 				case (e instanceof Execute): {
-					result += generateExecute(e as Execute)
+					result += "Execute Usage TODO"
 					result += "\n"
 				}
 				case (e instanceof Load): {
-					result += generateLoad(e as Load)
+					result += "Load Usage TODO"
 					result += "\n"
 				}
 				case (e instanceof Save): {
-					result += generateSave(e as Save)
+					result += "Save Usage TODO"
 					result += "\n"
 				}
-			}
-		}
-		fsa.generateFile('result.py',  
-			result)
-		
-	}
-	
-	private def generateClassifier(Classifier classifier) '''
-		class «classifier.name»:
-			features = [«handleFeatures(classifier.features)»]
-			target = "«classifier.target»"
-			
-			def __init__(self):
-				«handleMLModel(classifier.model)»
-			
-			def train(self, data, split, evaluations):
-				train, test = train_test_split(data, test_size=split)
-				self.model.fit(train[self.features], train[self.target])
-				self.evaluate(test, evaluations)
-				
-			def evaluate(self, test, evaluations):
-				results_eval = {}
-				for evaluation in evaluations:
-					if evaluation == 'accuracy':
-						results_eval[evaluation] = accuracy_score(test[self.target], self.model.predict(test[self.features]))
-					elif evaluation == 'confusion_matrix':
-						results_eval[evaluation] = confusion_matrix(test[self.target], self.model.predict(test[self.features]))
-					elif evaluation == 'f1_score':
-						results_eval[evaluation] = f1_score(test[self.target], self.model.predict(test[self.features]))
-					elif evaluation == 'recall':
-						results_eval[evaluation] = recall_score(test[self.target], self.model.predict(test[self.features]))
-				print(
-					'«classifier.name» training results :\n'+ 
-					pd.DataFrame({'Score':list(results_eval.keys()), '':list(results_eval.values())}).to_markdown(index=False)
-				)
-			
-			def execute(self, data, output):
-				with open(output, 'w') as f:
-					f.write(self.model.predict(data[self.features]).to_string(index=False))
-		
-		models["«classifier.name»"] = «classifier.name»()
-	'''
-	
-	private def generateTrain(Train train) '''
-		df = pd.read_csv("«train.dataset»")
-		classifier = models["«train.name»"].train(data=df, split=«train.split», evaluations=[«handleEvaluationList(train.evaluations)»])
-	'''
-	
-	private def generateExecute(Execute exec) '''
-		df = pd.read_csv("«exec.input»")
-		models["«exec.name»"].execute(df, "«exec.output»")
-	'''
-	
-	private def generateLoad(Load load) '''
-		with open("«load.file»", "r") as f:
-			models["«load.name»"] = pickle.load(f)
-	'''
-	
-	private def generateSave(Save save) '''
-		with open("«save.file»", "wb") as f:
-			pickle.dump(models["«save.name»"], f)
-	'''
-	
-	def handleFeatures(FeatureList features){
-		return "\"" + features.vals.join("\",\"") + "\""
-	}
-	
-	def handleEvaluationList(EvaluationList eval_list){
-		return "\"" + eval_list.vals.join("\",\"") + "\""
-	}
-	
-	def handleMLModel(MLModel mlmodel){
-		var result = "self.model = "
-		switch (mlmodel.literal){
-			case "DecisionTree":{
-				result += "DecisionTreeClassifier(random_state=0, max_depth=5)"
-			}
-			case "SVM":{
-				result += "DecisionTree(random_state=0, max_depth=5)"
 			}
 		}
 		return result
 	}
 	
-	def handleEvaluation(Evaluation evaluation){
-		return evaluation.literal
+	private def executeClassifier(Classifier classifier){
+		return "Registered "+classifier.name
 	}
 }

@@ -11,13 +11,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MLModel">
     <eLiterals name="DecisonTree" literal="DecisionTree"/>
-    <eLiterals name="SVM" value="1" literal="SVM"/>
+    <eLiterals name="SVC" value="1" literal="SVC"/>
+    <eLiterals name="RandomForest" value="2" literal="RandomForest"/>
+    <eLiterals name="MLPClassifier" value="3" literal="MLPClassifier"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Evaluation">
     <eLiterals name="Accuracy" literal="accuracy"/>
     <eLiterals name="F1Score" value="1" literal="f1"/>
     <eLiterals name="Recall" value="2" literal="recall"/>
-    <eLiterals name="ConfusionMatrix" value="3" literal="cfm"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Classifier" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" eType="#//FeatureList"

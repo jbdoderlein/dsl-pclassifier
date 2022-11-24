@@ -357,9 +357,21 @@ rule__MLModel__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1()); }
-		('SVM')
-		{ after(grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1()); }
+		{ before(grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1()); }
+		('SVC')
+		{ after(grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2()); }
+		('RandomForest')
+		{ after(grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3()); }
+		('MLPClassifier')
+		{ after(grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3()); }
 	)
 ;
 finally {
@@ -387,12 +399,6 @@ rule__Evaluation__Alternatives
 		{ before(grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2()); }
 		('recall')
 		{ after(grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3()); }
-		('cfm')
-		{ after(grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3()); }
 	)
 ;
 finally {

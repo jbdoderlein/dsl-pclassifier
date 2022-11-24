@@ -8,13 +8,14 @@
       fileExtensions="pcls" ecorePackage="PClassifier.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="PClassifier.ecore#//MLModel">
       <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//MLModel/DecisonTree"/>
-      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//MLModel/SVM"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//MLModel/SVC"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//MLModel/RandomForest"/>
+      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//MLModel/MLPClassifier"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="PClassifier.ecore#//Evaluation">
       <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/Accuracy"/>
       <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/F1Score"/>
       <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/Recall"/>
-      <genEnumLiterals ecoreEnumLiteral="PClassifier.ecore#//Evaluation/ConfusionMatrix"/>
     </genEnums>
     <genClasses ecoreClass="PClassifier.ecore#//PClassfier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PClassifier.ecore#//PClassfier/elements"/>

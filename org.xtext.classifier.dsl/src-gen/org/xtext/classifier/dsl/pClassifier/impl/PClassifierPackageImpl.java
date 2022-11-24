@@ -587,13 +587,14 @@ public class PClassifierPackageImpl extends EPackageImpl implements PClassifierP
     // Initialize enums and add enum literals
     initEEnum(mlModelEEnum, MLModel.class, "MLModel");
     addEEnumLiteral(mlModelEEnum, MLModel.DECISON_TREE);
-    addEEnumLiteral(mlModelEEnum, MLModel.SVM);
+    addEEnumLiteral(mlModelEEnum, MLModel.SVC);
+    addEEnumLiteral(mlModelEEnum, MLModel.RANDOM_FOREST);
+    addEEnumLiteral(mlModelEEnum, MLModel.MLP_CLASSIFIER);
 
     initEEnum(evaluationEEnum, Evaluation.class, "Evaluation");
     addEEnumLiteral(evaluationEEnum, Evaluation.ACCURACY);
     addEEnumLiteral(evaluationEEnum, Evaluation.F1_SCORE);
     addEEnumLiteral(evaluationEEnum, Evaluation.RECALL);
-    addEEnumLiteral(evaluationEEnum, Evaluation.CONFUSION_MATRIX);
 
     // Create resource
     createResource(eNS_URI);

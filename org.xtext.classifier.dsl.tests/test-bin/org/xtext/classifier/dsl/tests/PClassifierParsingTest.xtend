@@ -4,13 +4,20 @@
 package org.xtext.classifier.dsl.tests
 
 import com.google.inject.Inject
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileWriter
+import java.io.InputStreamReader
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import org.xtext.classifier.dsl.generator.PClassifierPythonGenerator
 import org.xtext.classifier.dsl.pClassifier.PClassfier
+import org.json.JSONObject
+import org.xtext.classifier.dsl.generator.PClassifierJuliaGenerator
 
 @ExtendWith(InjectionExtension)
 @InjectWith(PClassifierInjectorProvider)
@@ -18,13 +25,217 @@ class PClassifierParsingTest {
 	@Inject
 	ParseHelper<PClassfier> parseHelper
 	
+	
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:DecisionTree
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors''')
+	}
+	
+	@Test
+	def void simpleExecutionDT(){
+		var program = parseHelper.parse('''
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:DecisionTree
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy
+			}
+		''')
+		
+		var compiler_python = new PClassifierPythonGenerator();
+		var compiler_julia = new PClassifierJuliaGenerator();
+		
+		var result_python = compiler_python.doExecute(program.eResource)
+		var result_julia = compiler_julia.doExecute(program.eResource)
+		println(result_python)
+		println(result_julia)
+
+		// Check Python
+		var python_json = new JSONObject(result_python);
+		var accuracy_python = python_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_python >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_python <= 1.0, '''Accuracy is not less than 1''')
+		//Check Julia
+		var julia_json = new JSONObject(result_julia)
+		var accuracy_julia = julia_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_julia >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_julia <= 1.0, '''Accuracy is not less than 1''')
+		
+	}
+	
+	@Test
+	def void simpleExecutionRF(){
+		var program = parseHelper.parse('''
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:RandomForest
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy
+			}
+		''')
+		
+		var compiler_python = new PClassifierPythonGenerator();
+		var compiler_julia = new PClassifierJuliaGenerator();
+		
+		var result_python = compiler_python.doExecute(program.eResource)
+		var result_julia = compiler_julia.doExecute(program.eResource)
+		println(result_python)
+		println(result_julia)
+
+		// Check Python
+		var python_json = new JSONObject(result_python);
+		var accuracy_python = python_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_python >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_python <= 1.0, '''Accuracy is not less than 1''')
+		//Check Julia
+		var julia_json = new JSONObject(result_julia)
+		var accuracy_julia = julia_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_julia >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_julia <= 1.0, '''Accuracy is not less than 1''')
+	}
+	
+	@Test
+	def void simpleExecutionSVC(){
+		var program = parseHelper.parse('''
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:SVC
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy
+			}
+		''')
+		
+		var compiler_python = new PClassifierPythonGenerator();
+		var compiler_julia = new PClassifierJuliaGenerator();
+		
+		var result_python = compiler_python.doExecute(program.eResource)
+		var result_julia = compiler_julia.doExecute(program.eResource)
+		println(result_python)
+		println(result_julia)
+
+		// Check Python
+		var python_json = new JSONObject(result_python);
+		var accuracy_python = python_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_python >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_python <= 1.0, '''Accuracy is not less than 1''')
+		//Check Julia
+		var julia_json = new JSONObject(result_julia)
+		var accuracy_julia = julia_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_julia >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_julia <= 1.0, '''Accuracy is not less than 1''')
+	}
+	
+	@Test
+	def void simpleExecutionMLP(){
+		var program = parseHelper.parse('''
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:MLPClassifier
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy
+			}
+		''')
+		
+		var compiler_python = new PClassifierPythonGenerator();
+		var compiler_julia = new PClassifierJuliaGenerator();
+		
+		var result_python = compiler_python.doExecute(program.eResource)
+		var result_julia = compiler_julia.doExecute(program.eResource)
+		println(result_python)
+		println(result_julia)
+
+		// Check Python
+		var python_json = new JSONObject(result_python);
+		var accuracy_python = python_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_python >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_python <= 1.0, '''Accuracy is not less than 1''')
+		//Check Julia
+		var julia_json = new JSONObject(result_julia)
+		var accuracy_julia = julia_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_julia >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_julia <= 1.0, '''Accuracy is not less than 1''')
+	}
+	
+	@Test
+	def void evaluationsTests(){
+		var program = parseHelper.parse('''
+			Classifier(EyeClassifier){
+				features: "eyes_length", "eyes_weigth"
+				target: "eyes_focal"
+				model:DecisionTree
+			}
+			
+			Train(EyeClassifier){
+				dataset: "eyes.csv"
+				split: 0.2
+				evaluations:accuracy, recall, f1
+			}
+		''')
+		
+		var compiler_python = new PClassifierPythonGenerator();
+		var compiler_julia = new PClassifierJuliaGenerator();
+		
+		var result_python = compiler_python.doExecute(program.eResource)
+		var result_julia = compiler_julia.doExecute(program.eResource)
+		println(result_python)
+		println(result_julia)
+
+		// Check Python
+		var python_json = new JSONObject(result_python);
+		var accuracy_python = python_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_python >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_python <= 1.0, '''Accuracy is not less than 1''')
+		var recall_python = python_json.getDouble("recall")
+		Assertions.assertTrue(recall_python > 0.0, '''recall is not greater than 0''')
+		Assertions.assertTrue(recall_python <= 1.0, '''recall is not less than 1''')
+		var f1_python = python_json.getDouble("f1")
+		Assertions.assertTrue(f1_python > 0.0, '''f1 is not greater than 0''')
+		Assertions.assertTrue(f1_python <= 1.0, '''f1 is not less than 1''')
+		//Check Julia
+		var julia_json = new JSONObject(result_julia)
+		var accuracy_julia = julia_json.getDouble("accuracy")
+		Assertions.assertTrue(accuracy_julia >= 0.0, '''Accuracy is not greater than 0''')
+		Assertions.assertTrue(accuracy_julia <= 1.0, '''Accuracy is not less than 1''')
+		var recall_julia = python_json.getDouble("recall")
+		Assertions.assertTrue(recall_julia > 0.0, '''recall is not greater than 0''')
+		Assertions.assertTrue(recall_julia <= 1.0, '''recall is not less than 1''')
+		var f1_julia = python_json.getDouble("f1")
+		Assertions.assertTrue(f1_julia > 0.0, '''f1 is not greater than 0''')
+		Assertions.assertTrue(f1_julia <= 1.0, '''f1 is not less than 1''')
 	}
 }

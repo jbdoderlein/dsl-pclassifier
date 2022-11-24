@@ -505,14 +505,18 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cDecisonTreeEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cDecisonTreeDecisionTreeKeyword_0_0 = (Keyword)cDecisonTreeEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cSVMEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cSVMSVMKeyword_1_0 = (Keyword)cSVMEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cSVCEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cSVCSVCKeyword_1_0 = (Keyword)cSVCEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cRandomForestEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cRandomForestRandomForestKeyword_2_0 = (Keyword)cRandomForestEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cMLPClassifierEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cMLPClassifierMLPClassifierKeyword_3_0 = (Keyword)cMLPClassifierEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum MLModel:
-		//    DecisonTree = 'DecisionTree' | SVM = 'SVM';
+		//    DecisonTree = 'DecisionTree' | SVC = 'SVC' | RandomForest = 'RandomForest' | MLPClassifier = 'MLPClassifier';
 		public EnumRule getRule() { return rule; }
 		
-		//DecisonTree = 'DecisionTree' | SVM = 'SVM'
+		//DecisonTree = 'DecisionTree' | SVC = 'SVC' | RandomForest = 'RandomForest' | MLPClassifier = 'MLPClassifier'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//DecisonTree = 'DecisionTree'
@@ -521,11 +525,23 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		//'DecisionTree'
 		public Keyword getDecisonTreeDecisionTreeKeyword_0_0() { return cDecisonTreeDecisionTreeKeyword_0_0; }
 		
-		//SVM = 'SVM'
-		public EnumLiteralDeclaration getSVMEnumLiteralDeclaration_1() { return cSVMEnumLiteralDeclaration_1; }
+		//SVC = 'SVC'
+		public EnumLiteralDeclaration getSVCEnumLiteralDeclaration_1() { return cSVCEnumLiteralDeclaration_1; }
 		
-		//'SVM'
-		public Keyword getSVMSVMKeyword_1_0() { return cSVMSVMKeyword_1_0; }
+		//'SVC'
+		public Keyword getSVCSVCKeyword_1_0() { return cSVCSVCKeyword_1_0; }
+		
+		//RandomForest = 'RandomForest'
+		public EnumLiteralDeclaration getRandomForestEnumLiteralDeclaration_2() { return cRandomForestEnumLiteralDeclaration_2; }
+		
+		//'RandomForest'
+		public Keyword getRandomForestRandomForestKeyword_2_0() { return cRandomForestRandomForestKeyword_2_0; }
+		
+		//MLPClassifier = 'MLPClassifier'
+		public EnumLiteralDeclaration getMLPClassifierEnumLiteralDeclaration_3() { return cMLPClassifierEnumLiteralDeclaration_3; }
+		
+		//'MLPClassifier'
+		public Keyword getMLPClassifierMLPClassifierKeyword_3_0() { return cMLPClassifierMLPClassifierKeyword_3_0; }
 	}
 	public class EvaluationElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.classifier.dsl.PClassifier.Evaluation");
@@ -536,14 +552,12 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cF1ScoreF1Keyword_1_0 = (Keyword)cF1ScoreEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cRecallEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cRecallRecallKeyword_2_0 = (Keyword)cRecallEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cConfusionMatrixEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cConfusionMatrixCfmKeyword_3_0 = (Keyword)cConfusionMatrixEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum Evaluation:
-		//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
+		//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall';
 		public EnumRule getRule() { return rule; }
 		
-		//Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm'
+		//Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Accuracy = 'accuracy'
@@ -563,12 +577,6 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//'recall'
 		public Keyword getRecallRecallKeyword_2_0() { return cRecallRecallKeyword_2_0; }
-		
-		//ConfusionMatrix = 'cfm'
-		public EnumLiteralDeclaration getConfusionMatrixEnumLiteralDeclaration_3() { return cConfusionMatrixEnumLiteralDeclaration_3; }
-		
-		//'cfm'
-		public Keyword getConfusionMatrixCfmKeyword_3_0() { return cConfusionMatrixCfmKeyword_3_0; }
 	}
 	
 	private final PClassfierElements pPClassfier;
@@ -655,7 +663,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//enum MLModel:
-	//    DecisonTree = 'DecisionTree' | SVM = 'SVM';
+	//    DecisonTree = 'DecisionTree' | SVC = 'SVC' | RandomForest = 'RandomForest' | MLPClassifier = 'MLPClassifier';
 	public MLModelElements getMLModelAccess() {
 		return eMLModel;
 	}
@@ -665,7 +673,7 @@ public class PClassifierGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//enum Evaluation:
-	//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
+	//    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall';
 	public EvaluationElements getEvaluationAccess() {
 		return eEvaluation;
 	}

@@ -11,10 +11,13 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.xtext.classifier.dsl.generator.PClassifierJuliaGenerator;
+import org.xtext.classifier.dsl.generator.PClassifierPythonGenerator;
 import org.xtext.classifier.dsl.pClassifier.PClassfier;
 
 @ExtendWith(InjectionExtension.class)
@@ -28,17 +31,363 @@ public class PClassifierParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:DecisionTree");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final PClassfier result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
+      _builder_1.append("Unexpected errors");
       Assertions.assertTrue(_isEmpty, _builder_1.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void simpleExecutionDT() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:DecisionTree");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      PClassfier program = this.parseHelper.parse(_builder);
+      PClassifierPythonGenerator compiler_python = new PClassifierPythonGenerator();
+      PClassifierJuliaGenerator compiler_julia = new PClassifierJuliaGenerator();
+      String result_python = compiler_python.doExecute(program.eResource());
+      String result_julia = compiler_julia.doExecute(program.eResource());
+      InputOutput.<String>println(result_python);
+      InputOutput.<String>println(result_julia);
+      JSONObject python_json = new JSONObject(result_python);
+      double accuracy_python = python_json.getDouble("accuracy");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_python >= 0.0), _builder_1.toString());
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_python <= 1.0), _builder_2.toString());
+      JSONObject julia_json = new JSONObject(result_julia);
+      double accuracy_julia = julia_json.getDouble("accuracy");
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_julia >= 0.0), _builder_3.toString());
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_julia <= 1.0), _builder_4.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void simpleExecutionRF() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:RandomForest");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      PClassfier program = this.parseHelper.parse(_builder);
+      PClassifierPythonGenerator compiler_python = new PClassifierPythonGenerator();
+      PClassifierJuliaGenerator compiler_julia = new PClassifierJuliaGenerator();
+      String result_python = compiler_python.doExecute(program.eResource());
+      String result_julia = compiler_julia.doExecute(program.eResource());
+      InputOutput.<String>println(result_python);
+      InputOutput.<String>println(result_julia);
+      JSONObject python_json = new JSONObject(result_python);
+      double accuracy_python = python_json.getDouble("accuracy");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_python >= 0.0), _builder_1.toString());
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_python <= 1.0), _builder_2.toString());
+      JSONObject julia_json = new JSONObject(result_julia);
+      double accuracy_julia = julia_json.getDouble("accuracy");
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_julia >= 0.0), _builder_3.toString());
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_julia <= 1.0), _builder_4.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void simpleExecutionSVC() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:SVC");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      PClassfier program = this.parseHelper.parse(_builder);
+      PClassifierPythonGenerator compiler_python = new PClassifierPythonGenerator();
+      PClassifierJuliaGenerator compiler_julia = new PClassifierJuliaGenerator();
+      String result_python = compiler_python.doExecute(program.eResource());
+      String result_julia = compiler_julia.doExecute(program.eResource());
+      InputOutput.<String>println(result_python);
+      InputOutput.<String>println(result_julia);
+      JSONObject python_json = new JSONObject(result_python);
+      double accuracy_python = python_json.getDouble("accuracy");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_python >= 0.0), _builder_1.toString());
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_python <= 1.0), _builder_2.toString());
+      JSONObject julia_json = new JSONObject(result_julia);
+      double accuracy_julia = julia_json.getDouble("accuracy");
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_julia >= 0.0), _builder_3.toString());
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_julia <= 1.0), _builder_4.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void simpleExecutionMLP() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:MLPClassifier");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      PClassfier program = this.parseHelper.parse(_builder);
+      PClassifierPythonGenerator compiler_python = new PClassifierPythonGenerator();
+      PClassifierJuliaGenerator compiler_julia = new PClassifierJuliaGenerator();
+      String result_python = compiler_python.doExecute(program.eResource());
+      String result_julia = compiler_julia.doExecute(program.eResource());
+      InputOutput.<String>println(result_python);
+      InputOutput.<String>println(result_julia);
+      JSONObject python_json = new JSONObject(result_python);
+      double accuracy_python = python_json.getDouble("accuracy");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_python >= 0.0), _builder_1.toString());
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_python <= 1.0), _builder_2.toString());
+      JSONObject julia_json = new JSONObject(result_julia);
+      double accuracy_julia = julia_json.getDouble("accuracy");
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_julia >= 0.0), _builder_3.toString());
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_julia <= 1.0), _builder_4.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void evaluationsTests() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Classifier(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("features: \"eyes_length\", \"eyes_weigth\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("target: \"eyes_focal\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("model:DecisionTree");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Train(EyeClassifier){");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("dataset: \"eyes.csv\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("split: 0.2");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("evaluations:accuracy, recall, f1");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      PClassfier program = this.parseHelper.parse(_builder);
+      PClassifierPythonGenerator compiler_python = new PClassifierPythonGenerator();
+      PClassifierJuliaGenerator compiler_julia = new PClassifierJuliaGenerator();
+      String result_python = compiler_python.doExecute(program.eResource());
+      String result_julia = compiler_julia.doExecute(program.eResource());
+      InputOutput.<String>println(result_python);
+      InputOutput.<String>println(result_julia);
+      JSONObject python_json = new JSONObject(result_python);
+      double accuracy_python = python_json.getDouble("accuracy");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_python >= 0.0), _builder_1.toString());
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_python <= 1.0), _builder_2.toString());
+      double recall_python = python_json.getDouble("recall");
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("recall is not greater than 0");
+      Assertions.assertTrue((recall_python > 0.0), _builder_3.toString());
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("recall is not less than 1");
+      Assertions.assertTrue((recall_python <= 1.0), _builder_4.toString());
+      double f1_python = python_json.getDouble("f1");
+      StringConcatenation _builder_5 = new StringConcatenation();
+      _builder_5.append("f1 is not greater than 0");
+      Assertions.assertTrue((f1_python > 0.0), _builder_5.toString());
+      StringConcatenation _builder_6 = new StringConcatenation();
+      _builder_6.append("f1 is not less than 1");
+      Assertions.assertTrue((f1_python <= 1.0), _builder_6.toString());
+      JSONObject julia_json = new JSONObject(result_julia);
+      double accuracy_julia = julia_json.getDouble("accuracy");
+      StringConcatenation _builder_7 = new StringConcatenation();
+      _builder_7.append("Accuracy is not greater than 0");
+      Assertions.assertTrue((accuracy_julia >= 0.0), _builder_7.toString());
+      StringConcatenation _builder_8 = new StringConcatenation();
+      _builder_8.append("Accuracy is not less than 1");
+      Assertions.assertTrue((accuracy_julia <= 1.0), _builder_8.toString());
+      double recall_julia = python_json.getDouble("recall");
+      StringConcatenation _builder_9 = new StringConcatenation();
+      _builder_9.append("recall is not greater than 0");
+      Assertions.assertTrue((recall_julia > 0.0), _builder_9.toString());
+      StringConcatenation _builder_10 = new StringConcatenation();
+      _builder_10.append("recall is not less than 1");
+      Assertions.assertTrue((recall_julia <= 1.0), _builder_10.toString());
+      double f1_julia = python_json.getDouble("f1");
+      StringConcatenation _builder_11 = new StringConcatenation();
+      _builder_11.append("f1 is not greater than 0");
+      Assertions.assertTrue((f1_julia > 0.0), _builder_11.toString());
+      StringConcatenation _builder_12 = new StringConcatenation();
+      _builder_12.append("f1 is not less than 1");
+      Assertions.assertTrue((f1_julia <= 1.0), _builder_12.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

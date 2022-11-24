@@ -12,10 +12,10 @@ Statement:
     
 
 enum MLModel:
-    DecisonTree = 'DecisionTree' | SVM = 'SVM';
+    DecisonTree = 'DecisionTree' | SVC = 'SVC' | RandomForest = 'RandomForest' | MLPClassifier = 'MLPClassifier';
     
 enum Evaluation:
-    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall' | ConfusionMatrix = 'cfm';
+    Accuracy = 'accuracy' | F1Score = 'f1' | Recall = 'recall';
 
 Classifier:
     'Classifier(' name=ID '){'

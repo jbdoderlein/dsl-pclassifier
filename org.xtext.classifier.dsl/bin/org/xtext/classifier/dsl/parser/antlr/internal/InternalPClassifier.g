@@ -838,10 +838,26 @@ ruleMLModel returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='SVM'
+			enumLiteral_1='SVC'
 			{
-				$current = grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1());
+				$current = grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='RandomForest'
+			{
+				$current = grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='MLPClassifier'
+			{
+				$current = grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3());
 			}
 		)
 	)
@@ -877,14 +893,6 @@ ruleEvaluation returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='cfm'
-			{
-				$current = grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3());
 			}
 		)
 	)

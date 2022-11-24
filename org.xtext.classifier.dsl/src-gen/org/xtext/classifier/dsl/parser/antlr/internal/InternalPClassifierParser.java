@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Train('", "'dataset'", "'split'", "'evaluations'", "'Execute('", "'input'", "'output'", "'Load('", "'file'", "'Save('", "','", "'DecisionTree'", "'SVM'", "'accuracy'", "'f1'", "'recall'", "'cfm'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Classifier('", "'){'", "'features'", "':'", "'target'", "'model'", "'}'", "'Train('", "'dataset'", "'split'", "'evaluations'", "'Execute('", "'input'", "'output'", "'Load('", "'file'", "'Save('", "','", "'DecisionTree'", "'SVC'", "'RandomForest'", "'MLPClassifier'", "'accuracy'", "'f1'", "'recall'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=9;
@@ -37,6 +37,7 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     public static final int T__13=13;
     public static final int T__35=35;
     public static final int T__14=14;
+    public static final int T__36=36;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -1880,36 +1881,52 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMLModel"
-    // InternalPClassifier.g:824:1: ruleMLModel returns [Enumerator current=null] : ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) ;
+    // InternalPClassifier.g:824:1: ruleMLModel returns [Enumerator current=null] : ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVC' ) | (enumLiteral_2= 'RandomForest' ) | (enumLiteral_3= 'MLPClassifier' ) ) ;
     public final Enumerator ruleMLModel() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
 
 
         	enterRule();
 
         try {
-            // InternalPClassifier.g:830:2: ( ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) ) )
-            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
+            // InternalPClassifier.g:830:2: ( ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVC' ) | (enumLiteral_2= 'RandomForest' ) | (enumLiteral_3= 'MLPClassifier' ) ) )
+            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVC' ) | (enumLiteral_2= 'RandomForest' ) | (enumLiteral_3= 'MLPClassifier' ) )
             {
-            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVM' ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
-
-            if ( (LA11_0==30) ) {
+            // InternalPClassifier.g:831:2: ( (enumLiteral_0= 'DecisionTree' ) | (enumLiteral_1= 'SVC' ) | (enumLiteral_2= 'RandomForest' ) | (enumLiteral_3= 'MLPClassifier' ) )
+            int alt11=4;
+            switch ( input.LA(1) ) {
+            case 30:
+                {
                 alt11=1;
-            }
-            else if ( (LA11_0==31) ) {
+                }
+                break;
+            case 31:
+                {
                 alt11=2;
-            }
-            else {
+                }
+                break;
+            case 32:
+                {
+                alt11=3;
+                }
+                break;
+            case 33:
+                {
+                alt11=4;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
+
             switch (alt11) {
                 case 1 :
                     // InternalPClassifier.g:832:3: (enumLiteral_0= 'DecisionTree' )
@@ -1929,15 +1946,49 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVM' )
+                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVC' )
                     {
-                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVM' )
-                    // InternalPClassifier.g:841:4: enumLiteral_1= 'SVM'
+                    // InternalPClassifier.g:840:3: (enumLiteral_1= 'SVC' )
+                    // InternalPClassifier.g:841:4: enumLiteral_1= 'SVC'
                     {
                     enumLiteral_1=(Token)match(input,31,FOLLOW_2); 
 
-                    				current = grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getMLModelAccess().getSVMEnumLiteralDeclaration_1());
+                    				current = grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getMLModelAccess().getSVCEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalPClassifier.g:848:3: (enumLiteral_2= 'RandomForest' )
+                    {
+                    // InternalPClassifier.g:848:3: (enumLiteral_2= 'RandomForest' )
+                    // InternalPClassifier.g:849:4: enumLiteral_2= 'RandomForest'
+                    {
+                    enumLiteral_2=(Token)match(input,32,FOLLOW_2); 
+
+                    				current = grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getMLModelAccess().getRandomForestEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalPClassifier.g:856:3: (enumLiteral_3= 'MLPClassifier' )
+                    {
+                    // InternalPClassifier.g:856:3: (enumLiteral_3= 'MLPClassifier' )
+                    // InternalPClassifier.g:857:4: enumLiteral_3= 'MLPClassifier'
+                    {
+                    enumLiteral_3=(Token)match(input,33,FOLLOW_2); 
+
+                    				current = grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getMLModelAccess().getMLPClassifierEnumLiteralDeclaration_3());
                     			
 
                     }
@@ -1968,43 +2019,37 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvaluation"
-    // InternalPClassifier.g:851:1: ruleEvaluation returns [Enumerator current=null] : ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) ;
+    // InternalPClassifier.g:867:1: ruleEvaluation returns [Enumerator current=null] : ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) ) ;
     public final Enumerator ruleEvaluation() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
-        Token enumLiteral_3=null;
 
 
         	enterRule();
 
         try {
-            // InternalPClassifier.g:857:2: ( ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) ) )
-            // InternalPClassifier.g:858:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
+            // InternalPClassifier.g:873:2: ( ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) ) )
+            // InternalPClassifier.g:874:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) )
             {
-            // InternalPClassifier.g:858:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) | (enumLiteral_3= 'cfm' ) )
-            int alt12=4;
+            // InternalPClassifier.g:874:2: ( (enumLiteral_0= 'accuracy' ) | (enumLiteral_1= 'f1' ) | (enumLiteral_2= 'recall' ) )
+            int alt12=3;
             switch ( input.LA(1) ) {
-            case 32:
+            case 34:
                 {
                 alt12=1;
                 }
                 break;
-            case 33:
+            case 35:
                 {
                 alt12=2;
                 }
                 break;
-            case 34:
+            case 36:
                 {
                 alt12=3;
-                }
-                break;
-            case 35:
-                {
-                alt12=4;
                 }
                 break;
             default:
@@ -2016,12 +2061,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
 
             switch (alt12) {
                 case 1 :
-                    // InternalPClassifier.g:859:3: (enumLiteral_0= 'accuracy' )
+                    // InternalPClassifier.g:875:3: (enumLiteral_0= 'accuracy' )
                     {
-                    // InternalPClassifier.g:859:3: (enumLiteral_0= 'accuracy' )
-                    // InternalPClassifier.g:860:4: enumLiteral_0= 'accuracy'
+                    // InternalPClassifier.g:875:3: (enumLiteral_0= 'accuracy' )
+                    // InternalPClassifier.g:876:4: enumLiteral_0= 'accuracy'
                     {
-                    enumLiteral_0=(Token)match(input,32,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,34,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getAccuracyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getEvaluationAccess().getAccuracyEnumLiteralDeclaration_0());
@@ -2033,12 +2078,12 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPClassifier.g:867:3: (enumLiteral_1= 'f1' )
+                    // InternalPClassifier.g:883:3: (enumLiteral_1= 'f1' )
                     {
-                    // InternalPClassifier.g:867:3: (enumLiteral_1= 'f1' )
-                    // InternalPClassifier.g:868:4: enumLiteral_1= 'f1'
+                    // InternalPClassifier.g:883:3: (enumLiteral_1= 'f1' )
+                    // InternalPClassifier.g:884:4: enumLiteral_1= 'f1'
                     {
-                    enumLiteral_1=(Token)match(input,33,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getEvaluationAccess().getF1ScoreEnumLiteralDeclaration_1());
@@ -2050,32 +2095,15 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPClassifier.g:875:3: (enumLiteral_2= 'recall' )
+                    // InternalPClassifier.g:891:3: (enumLiteral_2= 'recall' )
                     {
-                    // InternalPClassifier.g:875:3: (enumLiteral_2= 'recall' )
-                    // InternalPClassifier.g:876:4: enumLiteral_2= 'recall'
+                    // InternalPClassifier.g:891:3: (enumLiteral_2= 'recall' )
+                    // InternalPClassifier.g:892:4: enumLiteral_2= 'recall'
                     {
-                    enumLiteral_2=(Token)match(input,34,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,36,FOLLOW_2); 
 
                     				current = grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getEvaluationAccess().getRecallEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalPClassifier.g:883:3: (enumLiteral_3= 'cfm' )
-                    {
-                    // InternalPClassifier.g:883:3: (enumLiteral_3= 'cfm' )
-                    // InternalPClassifier.g:884:4: enumLiteral_3= 'cfm'
-                    {
-                    enumLiteral_3=(Token)match(input,35,FOLLOW_2); 
-
-                    				current = grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_3, grammarAccess.getEvaluationAccess().getConfusionMatrixEnumLiteralDeclaration_3());
                     			
 
                     }
@@ -2148,10 +2176,10 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
         }
     }
     static final String dfa_8s = "\2\22\2\uffff";
-    static final String dfa_9s = "\1\35\1\43\2\uffff";
+    static final String dfa_9s = "\1\35\1\44\2\uffff";
     static final String[] dfa_10s = {
             "\1\2\12\uffff\1\1",
-            "\1\2\12\uffff\1\1\2\uffff\4\3",
+            "\1\2\12\uffff\1\1\4\uffff\3\3",
             "",
             ""
     };
@@ -2189,13 +2217,13 @@ public class InternalPClassifierParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000C0000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000003C0000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000F20000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000001C20000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000008000000L});

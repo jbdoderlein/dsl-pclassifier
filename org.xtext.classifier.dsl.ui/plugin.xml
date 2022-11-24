@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <?eclipse version="3.0"?>
 <plugin>
+	<!-- Interpret Code -->
+	
+	<extension point="org.eclipse.ui.handlers">
+	     <handler class="org.xtext.classifier.dsl.ui.handler.InterpretCodeHandler" commandId="org.xtext.classifier.dsl.ui.handler.InterpretCommand">
+	     </handler>  
+	</extension> 
+	
+	<extension point="org.eclipse.ui.menus">
+	    <menuContribution locationURI="popup:#TextEditorContext?after=additions">
+	        <command
+               commandId="org.xtext.classifier.dsl.ui.handler.InterpretCommand"
+               label="Interpret"
+               style="push">
+	            <visibleWhen checkEnabled="false">
+	                   <reference definitionId="org.xtext.classifier.dsl.PClassifier.Editor.opened"></reference>
+	            </visibleWhen>
+	        </command>
+	    </menuContribution>
+	</extension>
+	
+	<!-- Button in tool bar -->
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar">
+			<toolbar
+         	id="org.xtext.classifier.dsl.ui.toolbar1">
+			
+	        <command commandId="org.xtext.classifier.dsl.ui.handler.InterpretCommand" style="push" label="Interpret">
+	            <visibleWhen checkEnabled="false">
+	                   <reference definitionId="org.xtext.classifier.dsl.PClassifier.Editor.opened"></reference>
+	            </visibleWhen>
+	        </command>
+	        </toolbar>
+	    </menuContribution>
+    </extension>
+	
+	<extension point="org.eclipse.ui.commands">
+	      <command name="Interpret" id="org.xtext.classifier.dsl.ui.handler.InterpretCommand">
+	      </command>
+	</extension> 
+	
+	
+	<!-- View -->
+	<extension point="org.eclipse.ui.views">
+        <view id="org.xtext.classifier.dsl.ui.views.InterpreterView"
+             name="Interpreter View"
+          class="org.xtext.classifier.dsl.ui.views.InterpreterView"
+          />
+	</extension>
+	
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor

@@ -48,17 +48,7 @@ public enum Evaluation implements Enumerator
    * @generated
    * @ordered
    */
-  RECALL(2, "Recall", "recall"),
-
-  /**
-   * The '<em><b>Confusion Matrix</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #CONFUSION_MATRIX_VALUE
-   * @generated
-   * @ordered
-   */
-  CONFUSION_MATRIX(3, "ConfusionMatrix", "cfm");
+  RECALL(2, "Recall", "recall");
 
   /**
    * The '<em><b>Accuracy</b></em>' literal value.
@@ -94,17 +84,6 @@ public enum Evaluation implements Enumerator
   public static final int RECALL_VALUE = 2;
 
   /**
-   * The '<em><b>Confusion Matrix</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #CONFUSION_MATRIX
-   * @model name="ConfusionMatrix" literal="cfm"
-   * @generated
-   * @ordered
-   */
-  public static final int CONFUSION_MATRIX_VALUE = 3;
-
-  /**
    * An array of all the '<em><b>Evaluation</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -116,7 +95,6 @@ public enum Evaluation implements Enumerator
       ACCURACY,
       F1_SCORE,
       RECALL,
-      CONFUSION_MATRIX,
     };
 
   /**
@@ -184,7 +162,6 @@ public enum Evaluation implements Enumerator
       case ACCURACY_VALUE: return ACCURACY;
       case F1_SCORE_VALUE: return F1_SCORE;
       case RECALL_VALUE: return RECALL;
-      case CONFUSION_MATRIX_VALUE: return CONFUSION_MATRIX;
     }
     return null;
   }

@@ -31,14 +31,34 @@ public enum MLModel implements Enumerator
   DECISON_TREE(0, "DecisonTree", "DecisionTree"),
 
   /**
-   * The '<em><b>SVM</b></em>' literal object.
+   * The '<em><b>SVC</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #SVM_VALUE
+   * @see #SVC_VALUE
    * @generated
    * @ordered
    */
-  SVM(1, "SVM", "SVM");
+  SVC(1, "SVC", "SVC"),
+
+  /**
+   * The '<em><b>Random Forest</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #RANDOM_FOREST_VALUE
+   * @generated
+   * @ordered
+   */
+  RANDOM_FOREST(2, "RandomForest", "RandomForest"),
+
+  /**
+   * The '<em><b>MLP Classifier</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MLP_CLASSIFIER_VALUE
+   * @generated
+   * @ordered
+   */
+  MLP_CLASSIFIER(3, "MLPClassifier", "MLPClassifier");
 
   /**
    * The '<em><b>Decison Tree</b></em>' literal value.
@@ -52,15 +72,37 @@ public enum MLModel implements Enumerator
   public static final int DECISON_TREE_VALUE = 0;
 
   /**
-   * The '<em><b>SVM</b></em>' literal value.
+   * The '<em><b>SVC</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #SVM
+   * @see #SVC
    * @model
    * @generated
    * @ordered
    */
-  public static final int SVM_VALUE = 1;
+  public static final int SVC_VALUE = 1;
+
+  /**
+   * The '<em><b>Random Forest</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #RANDOM_FOREST
+   * @model name="RandomForest"
+   * @generated
+   * @ordered
+   */
+  public static final int RANDOM_FOREST_VALUE = 2;
+
+  /**
+   * The '<em><b>MLP Classifier</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MLP_CLASSIFIER
+   * @model name="MLPClassifier"
+   * @generated
+   * @ordered
+   */
+  public static final int MLP_CLASSIFIER_VALUE = 3;
 
   /**
    * An array of all the '<em><b>ML Model</b></em>' enumerators.
@@ -72,7 +114,9 @@ public enum MLModel implements Enumerator
     new MLModel[]
     {
       DECISON_TREE,
-      SVM,
+      SVC,
+      RANDOM_FOREST,
+      MLP_CLASSIFIER,
     };
 
   /**
@@ -138,7 +182,9 @@ public enum MLModel implements Enumerator
     switch (value)
     {
       case DECISON_TREE_VALUE: return DECISON_TREE;
-      case SVM_VALUE: return SVM;
+      case SVC_VALUE: return SVC;
+      case RANDOM_FOREST_VALUE: return RANDOM_FOREST;
+      case MLP_CLASSIFIER_VALUE: return MLP_CLASSIFIER;
     }
     return null;
   }
