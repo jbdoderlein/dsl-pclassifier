@@ -187,7 +187,7 @@ Ces deux codes produisent donc un Classifier qui classifie les alligators
 
 ### Fonctionnement et exemple du générateur Codex
 
-Une première utilisation d'un outils de génération de code dans ce projet aurait été de faire une extension à la Copilot pour aider les développeurs à écrire du PClassifier. Cependant étant donnée la simplicité du langage et le temps de développement nécéssaire pour le faire nosu ne l'avons pas fait.
+Une première utilisation d'un outils de génération de code dans ce projet aurait été de faire une extension à la Copilot pour aider les développeurs à écrire du PClassifier. Cependant étant donnée la simplicité du langage et le temps de développement nécéssaire pour le faire nous ne l'avons pas fait.
 
 Nous avons essayé ensuite d'utiliser Codex pour générer du code Python. Pour cela, nous avons créé un générateur qui à partir de chaque instruction génère un commentaire expliquant son but. Nous constituons le prompt avec les imports en Python nécéssaire, puis les commentaires de chaque instruction. 3 exemples de générations de Codex sont présent dans le dossier `codex_generation`.
 Les résultats de ces générations sont très variables et ne répondent pas toujours au commandes demandé. Dans `gen1.py` le code est globalement bon mais il manque une séparation jeu d'entrainement/test. `gen2.py` génére un code correct mais donne en plus la confusion matric qui n'était pas demandé. Enfin `gen3.py` ne contient que des commentaires et ne génère pas de code.
