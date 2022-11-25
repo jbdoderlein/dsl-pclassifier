@@ -20,7 +20,7 @@ public class PClassifierLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	// Labels and icons can be computed like this:
-	
+
 //	String text(Greeting ele) {
 //		return "A greeting to " + ele.getName();
 //	}

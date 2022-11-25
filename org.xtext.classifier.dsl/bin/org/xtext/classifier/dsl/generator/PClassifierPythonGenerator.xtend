@@ -27,7 +27,6 @@ class PClassifierPythonGenerator{
 		from sklearn.ensemble import RandomForestClassifier
 		from sklearn.svm import SVC
 		from sklearn.neural_network import MLPClassifier
-		import pickle
 		
 		models = {}
 		
@@ -148,7 +147,7 @@ class PClassifierPythonGenerator{
      	myWriter.write(result);
      	myWriter.close();
 		
-		var builder = new ProcessBuilder("python",  "-c", "import os;print(os.getcwd())")
+		var builder = new ProcessBuilder("python",  "temp.py")
 		//builder.directory(new File(""))
 		var process = builder.start()
 	    var output = new BufferedReader(new InputStreamReader(process.getInputStream()))
@@ -161,24 +160,4 @@ class PClassifierPythonGenerator{
 		return sbuilder.toString();
 	}
 	
-	def doExecute(Resource ressource, String path){
-		var result = doGenerate(ressource)
-    	var file = File.createTempFile("temp", "py");
-		file.deleteOnExit();
-		var myWriter = new FileWriter("temp.py");
-     	myWriter.write(result);
-     	myWriter.close();
-		
-		var builder = new ProcessBuilder("python",  "-c", "import os;print(os.getcwd())")
-		builder.directory(new File(path))
-		var process = builder.start()
-	    var output = new BufferedReader(new InputStreamReader(process.getInputStream()))
-	    var sbuilder = new StringBuilder()
-		var line = ""
-		while ( (line = output.readLine()) != null) {
-		   sbuilder.append(line);
-		   sbuilder.append(System.getProperty("line.separator"));
-		}
-		return sbuilder.toString();
-	}
 }

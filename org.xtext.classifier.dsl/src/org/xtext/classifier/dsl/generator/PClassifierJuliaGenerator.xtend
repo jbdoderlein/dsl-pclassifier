@@ -45,7 +45,7 @@ class PClassifierJuliaGenerator {
 			X = Array(df[:, classifier.features])
 			y = Array(df[:, classifier.target])
 			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2)
-			fit!(model, X, y)
+			fit!(model, X_train, y_train)
 			results = Dict()
 			if "accuracy" in scores
 				results["accuracy"] = accuracy_score(y_test, predict(model, X_test))

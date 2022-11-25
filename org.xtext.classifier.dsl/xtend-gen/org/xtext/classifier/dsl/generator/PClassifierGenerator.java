@@ -14,7 +14,7 @@ public class PClassifierGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     PClassifierPythonGenerator pythonGenerator = new PClassifierPythonGenerator();
     PClassifierJuliaGenerator juliaGenerator = new PClassifierJuliaGenerator();
-    PClassifierPythonCodexInterpretor codexInterpretor = new PClassifierPythonCodexInterpretor();
+    PClassifierPythonCodexGenerator codexInterpretor = new PClassifierPythonCodexGenerator();
     String _lastSegment = resource.getURI().trimFileExtension().lastSegment();
     String _plus = (_lastSegment + ".jl");
     fsa.generateFile(_plus, 

@@ -45,10 +45,10 @@ public class InterpretCodeHandler extends AbstractHandler implements IHandler {
 
                     @Override
                     public Boolean exec(XtextResource state) {
-                    	interpretorView.setText("Execution en cours");
+                    	interpretorView.setText("Execution en cours dans "+file.getLocationURI().getRawPath());
                     	
-                    	//String result = pythonInterpretor.doExecute(state.getResourceSet().getResources().get(0), file.getLocationURI().getRawPath());
-                    	String result = pythonInterpretor.doGenerate(state.getResourceSet().getResources().get(0));
+                    	String result = pythonInterpretor.doExecute(state.getResourceSet().getResources().get(0));
+                    	//String result = pythonInterpretor.doGenerate(state.getResourceSet().getResources().get(0));
                     	interpretorView.setText(result);
                         return Boolean.TRUE;
                     }

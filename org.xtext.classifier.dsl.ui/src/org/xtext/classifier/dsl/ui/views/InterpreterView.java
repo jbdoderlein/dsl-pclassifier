@@ -18,8 +18,8 @@ public class InterpreterView extends ViewPart {
         }
      
         public void createPartControl(Composite parent) {
-                label = new Label(parent, 0);
-                label.setText("Interpréteur en attente");
+            label = new Label(parent, 0);
+            label.setText("Interpréteur en attente");
         }
         
         public void setText(String str)

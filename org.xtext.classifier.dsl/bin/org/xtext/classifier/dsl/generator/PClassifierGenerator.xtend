@@ -7,18 +7,13 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.xtext.classifier.dsl.pClassifier.Classifier
-import org.xtext.classifier.dsl.pClassifier.Execute
-import org.xtext.classifier.dsl.pClassifier.Load
-import org.xtext.classifier.dsl.pClassifier.Save
-import org.xtext.classifier.dsl.pClassifier.Train
 
 class PClassifierGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var pythonGenerator = new PClassifierPythonGenerator();
 		var juliaGenerator = new PClassifierJuliaGenerator();
-		var codexInterpretor = new PClassifierPythonCodexInterpretor();
+		var codexInterpretor = new PClassifierPythonCodexGenerator();
 		fsa.generateFile(
 			resource.URI.trimFileExtension.lastSegment+'.jl',
 			juliaGenerator.doGenerate(resource)
@@ -31,43 +26,5 @@ class PClassifierGenerator extends AbstractGenerator {
 			resource.URI.trimFileExtension.lastSegment+'_codex.py',
 			codexInterpretor.doGenerate(resource)
 		)
-	}
-}
-
-class PClassifierPythonCodexInterpretor {
-	def doGenerate(Resource resource) {
-		var codexGenerator = new CodexGenerator()
-		var resul = codexGenerator.generate("a")
-		var result = resul.toString()
-		
-		for(e : resource.allContents.toIterable()) {
-			switch (e) {
-				case (e instanceof Classifier): {
-					result += executeClassifier(e as Classifier)
-					result += "\n"
-				}
-				case (e instanceof Train): {
-					result += "Train Usage TODO"
-					result += "\n"
-				}
-				case (e instanceof Execute): {
-					result += "Execute Usage TODO"
-					result += "\n"
-				}
-				case (e instanceof Load): {
-					result += "Load Usage TODO"
-					result += "\n"
-				}
-				case (e instanceof Save): {
-					result += "Save Usage TODO"
-					result += "\n"
-				}
-			}
-		}
-		return result
-	}
-	
-	private def executeClassifier(Classifier classifier){
-		return "Registered "+classifier.name
 	}
 }
