@@ -1,7 +1,7 @@
 # PClassifier
 
 <p align="center">
-  <img src="media/logo.png" />
+  <img src="media/logo.png" height="450"/>
 </p>
 
 PClassifier est un DSL créé avec Xtext qui permet de générer des programmes Python et Julia utilisant scikitlearn pour faire des classifications à partir d'un csv
