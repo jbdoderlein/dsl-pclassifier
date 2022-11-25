@@ -125,6 +125,33 @@ Ces tests sont effectués à partir d'un code PClassifier, et sont testés pour 
 
 Nous avons mesuré pour les générateurs Julia et Python l'accuracy sur les différents modèles proposés par PClassifier, ainsi que le temps de calcul. Les test ont été fait sur le dataset `diabete.csv`
 
+Toutes les mesures ont été réalisé sur la machine suivante : 
+```
+OS: Ubuntu 20.04.5 LTS x86_64 
+Host: Latitude 5320 
+Kernel: 5.14.0-1054-oem 
+CPU: 11th Gen Intel i7-1185G7 (8) @  
+GPU: Intel Device 9a49 
+Memory: 15736MiB
+```
+
+Le programme PClassifier utilisé pour l'expérimentation est le suivant :
+```pclassifier
+Classifier(Diabete){
+    features: "pregnant", "insulin", "bmi", "age","glucose","bp","pedigree"
+    target: "label"
+    model: [MODEL]
+}
+
+Train(Diabete){
+    dataset: "diabetes.csv"
+    split: 0.2
+    evaluations: accuracy
+}
+```
+
+Les mesures de temps ont été fait avec le module `time` en Python, et avec `@time` en Julia
+
 ### Python
 
 Les codes ont été exécutés 1000 fois pour obtenir des temps plus précis.
