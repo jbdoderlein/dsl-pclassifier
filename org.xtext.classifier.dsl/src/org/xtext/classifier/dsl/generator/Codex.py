@@ -13,7 +13,7 @@ code = sys.argv[1]
 
 PROMPT += "#".join(code.split("\n"))
 
-openai.api_key = "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"
+openai.api_key = ""
 print(PROMPT)
 response = openai.Completion.create(
     engine="code-davinci-002",
