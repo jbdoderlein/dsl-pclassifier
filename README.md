@@ -137,6 +137,15 @@ Les codes ont été exécutés 1000 fois pour obtenir des temps plus précis.
 |AvTime| 0.005025548219680786 | 0.14114576888084412 | 0.01218522334098816 | 0.23683735013008117|
 |TotalTime | 5.025548219680786 | 141.14576888084412 | 12.18522334098816 | 236.83735013008118 | 
 
+### Julia
+
+Etant donné les temps très long d'execution, les codes n'ont été exécuté qu'une seule fois.
+
+  |Model|DecisionTreeClassifier| RandomForestClassifier | SVC | MLPClassifier |
+|-|-|-|-|-|
+|Accuracy| 0.6948051948051948 | 0.7272727272727273 | 0.7792207792207793 | 0.6428571428571429 |
+|Time | 2.346279 | 2.535407 | 2.484588 | 2.657494 | 
+
 ## Bonus
 
 ### Interopérabilité avec PureJizon
@@ -178,6 +187,12 @@ Ces deux codes produisent donc un Classifier qui classifie les alligators
 
 ### Fonctionnement et exemple du générateur Codex
 
+Une première utilisation d'un outils de génération de code dans ce projet aurait été de faire une extension à la Copilot pour aider les développeurs à écrire du PClassifier. Cependant étant donnée la simplicité du langage et le temps de développement nécéssaire pour le faire nosu ne l'avons pas fait.
+
+Nous avons essayé ensuite d'utiliser Codex pour générer du code Python. Pour cela, nous avons créé un générateur qui à partir de chaque instruction génère un commentaire expliquant son but. Nous constituons le prompt avec les imports en Python nécéssaire, puis les commentaires de chaque instruction. 3 exemples de générations de Codex sont présent dans le dossier `codex_generation`.
+Les résultats de ces générations sont très variables et ne répondent pas toujours au commandes demandé. Dans `gen1.py` le code est globalement bon mais il manque une séparation jeu d'entrainement/test. `gen2.py` génére un code correct mais donne en plus la confusion matric qui n'était pas demandé. Enfin `gen3.py` ne contient que des commentaires et ne génère pas de code.
+
+Ainsi, meme si prometteur, la génération automatique est trop instable pour etre utilisé seule et sans controle d'un développeur.
 
 ### Logo
 
@@ -186,8 +201,3 @@ Ces deux codes produisent donc un Classifier qui classifie les alligators
 ```language
 Cute baby snake playing with papers, logo, digital art, drawing, in a dark circle as the background, cartoon, simple flat
 ```
-
-
-
-
-
